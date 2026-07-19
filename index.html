@@ -3,19 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4f46e5">
 <title>Domowik — Polityka prywatności / Privacy Policy</title>
 <style>
-  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto;
-         padding: 24px 16px; line-height: 1.6; color: #1c2433; }
-  h1 { font-size: 1.5rem; } h2 { font-size: 1.15rem; margin-top: 2em; }
-  hr { margin: 3em 0; border: none; border-top: 1px solid #ddd; }
-  .muted { color: #69707f; font-size: .9rem; }
+  :root {
+    --primary: #4f46e5; --accent: #7c3aed; --bg: #f3f4f9; --card: #ffffff;
+    --border: #e3e7ef; --text: #1c2433; --text-muted: #69707f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #6d64f5; --accent: #9d5cf6; --bg: #12151c; --card: #1c212c;
+      --border: #2a3040; --text: #e6e9f0; --text-muted: #98a0b3;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 16px 40px;
+    line-height: 1.6; color: var(--text); background: var(--bg);
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  h2 { font-size: 1.1rem; margin-top: 1.8em; }
+  .muted { color: var(--text-muted); font-size: .9rem; }
+  a { color: var(--primary); }
+
+  /* pasek przełącznika języków — przyklejony u góry */
+  .langbar {
+    position: sticky; top: 0; z-index: 5;
+    display: flex; gap: 6px; flex-wrap: wrap;
+    padding: 14px 0; margin: 0 0 8px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .langbar button {
+    font: inherit; font-size: .85rem; font-weight: 600;
+    padding: 7px 14px; border-radius: 999px;
+    border: 1.5px solid var(--border); background: var(--card); color: var(--text);
+    cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+  }
+  .langbar button.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+  .backlink { display: inline-block; margin: 18px 0 0; font-size: .9rem; }
 </style>
 </head>
 <body>
 
+<nav class="langbar" id="langbar" aria-label="Wybór języka / Language switch">
+  <button type="button" data-lang="pl">Polski</button>
+  <button type="button" data-lang="en">English</button>
+  <button type="button" data-lang="de">Deutsch</button>
+  <button type="button" data-lang="fr">Français</button>
+  <button type="button" data-lang="es">Español</button>
+  <button type="button" data-lang="uk">Українська</button>
+  <button type="button" data-lang="cs">Čeština</button>
+</nav>
+
+<section id="sec-pl" data-lang="pl">
 <h1>Polityka prywatności aplikacji Domowik</h1>
-<p class="muted">Ostatnia aktualizacja: 17 lipca 2026</p>
+<p class="muted">Ostatnia aktualizacja: 19 lipca 2026</p>
 
 <h2>Najkrócej</h2>
 <p><b>Domowik nie zbiera, nie przechowuje na serwerach ani nie udostępnia nikomu
@@ -56,11 +101,12 @@ kopii Twoich danych.</p>
 
 <h2>Kontakt</h2>
 <p>Pytania dotyczące prywatności: <b>domowik-app@proton.me</b></p>
+<a class="backlink" href="app.html">← Poznaj aplikację Domowik</a>
+</section>
 
-<hr>
-
+<section id="sec-en" data-lang="en" hidden>
 <h1>Domowik — Privacy Policy</h1>
-<p class="muted">Last updated: July 17, 2026</p>
+<p class="muted">Last updated: July 19, 2026</p>
 
 <h2>In short</h2>
 <p><b>Domowik does not collect, store on servers, or share any of your data with
@@ -98,9 +144,10 @@ You never need to ask us — we hold no copy of your data.</p>
 
 <h2>Contact</h2>
 <p>Privacy questions: <b>domowik-app@proton.me</b></p>
+<a class="backlink" href="app.html">← Discover the Domowik app</a>
+</section>
 
-<hr>
-
+<section id="sec-de" data-lang="de" hidden>
 <h1>Domowik — Datenschutzerklärung</h1>
 <p class="muted">Letzte Aktualisierung: 19. Juli 2026</p>
 
@@ -145,9 +192,10 @@ deiner Daten.</p>
 
 <h2>Kontakt</h2>
 <p>Fragen zum Datenschutz: <b>domowik-app@proton.me</b></p>
+<a class="backlink" href="app.html">← Die App Domowik entdecken</a>
+</section>
 
-<hr>
-
+<section id="sec-fr" data-lang="fr" hidden>
 <h1>Domowik — Politique de confidentialité</h1>
 <p class="muted">Dernière mise à jour : 19 juillet 2026</p>
 
@@ -193,9 +241,10 @@ nous demander — nous ne détenons aucune copie de vos données.</p>
 
 <h2>Contact</h2>
 <p>Questions relatives à la confidentialité : <b>domowik-app@proton.me</b></p>
+<a class="backlink" href="app.html">← Découvrir l'application Domowik</a>
+</section>
 
-<hr>
-
+<section id="sec-es" data-lang="es" hidden>
 <h1>Domowik — Política de privacidad</h1>
 <p class="muted">Última actualización: 19 de julio de 2026</p>
 
@@ -240,9 +289,10 @@ guardamos ninguna copia de tus datos.</p>
 
 <h2>Contacto</h2>
 <p>Preguntas sobre privacidad: <b>domowik-app@proton.me</b></p>
+<a class="backlink" href="app.html">← Descubre la app Domowik</a>
+</section>
 
-<hr>
-
+<section id="sec-uk" data-lang="uk" hidden>
 <h1>Domowik — Політика конфіденційності</h1>
 <p class="muted">Останнє оновлення: 19 липня 2026</p>
 
@@ -286,9 +336,10 @@ guardamos ninguna copia de tus datos.</p>
 
 <h2>Контакт</h2>
 <p>Питання щодо конфіденційності: <b>domowik-app@proton.me</b></p>
+<a class="backlink" href="app.html">← Дізнатися більше про застосунок Domowik</a>
+</section>
 
-<hr>
-
+<section id="sec-cs" data-lang="cs" hidden>
 <h1>Domowik — Zásady ochrany osobních údajů</h1>
 <p class="muted">Poslední aktualizace: 19. července 2026</p>
 
@@ -331,6 +382,35 @@ kopii vašich dat.</p>
 
 <h2>Kontakt</h2>
 <p>Dotazy ohledně soukromí: <b>domowik-app@proton.me</b></p>
+<a class="backlink" href="app.html">← Poznejte aplikaci Domowik</a>
+</section>
+
+<script>
+(function () {
+  var sections = document.querySelectorAll('section[data-lang]');
+  var buttons = document.querySelectorAll('#langbar button');
+  var KEY = 'domowik-privacy-lang';
+
+  function show(lang) {
+    sections.forEach(function (s) { s.hidden = s.dataset.lang !== lang; });
+    buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.lang === lang); });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.lang); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  var sysLang = (navigator.language || 'pl').toLowerCase().slice(0, 2);
+  var available = Array.prototype.map.call(sections, function (s) { return s.dataset.lang; });
+  var initial = (saved && available.indexOf(saved) !== -1) ? saved
+    : (available.indexOf(sysLang) !== -1 ? sysLang : 'pl');
+  show(initial);
+})();
+</script>
 
 </body>
 </html>
