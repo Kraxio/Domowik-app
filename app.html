@@ -192,15 +192,17 @@
   <section id="screenshots" hidden>
     <h2 data-t="shotsTitle"></h2>
     <p class="lead" data-t="shotsLead"></p>
+    <!-- UWAGA: bez loading="lazy" — obrazki w ukrytej sekcji nigdy by się
+         nie doczytały (lazy czeka na widoczność, sekcja czeka na load). -->
     <div class="shots" id="shots">
-      <img src="screens/screen-1.png" alt="" loading="lazy">
-      <img src="screens/screen-2.png" alt="" loading="lazy">
-      <img src="screens/screen-3.png" alt="" loading="lazy">
-      <img src="screens/screen-4.png" alt="" loading="lazy">
-      <img src="screens/screen-5.png" alt="" loading="lazy">
-      <img src="screens/screen-6.png" alt="" loading="lazy">
-      <img src="screens/screen-7.png" alt="" loading="lazy">
-      <img src="screens/screen-8.png" alt="" loading="lazy">
+      <img src="screens/screen-1.png" alt="">
+      <img src="screens/screen-2.png" alt="">
+      <img src="screens/screen-3.png" alt="">
+      <img src="screens/screen-4.png" alt="">
+      <img src="screens/screen-5.png" alt="">
+      <img src="screens/screen-6.png" alt="">
+      <img src="screens/screen-7.png" alt="">
+      <img src="screens/screen-8.png" alt="">
     </div>
     <p class="shots-hint" data-t="shotsHint"></p>
   </section>
@@ -492,12 +494,19 @@ var I18N = {
   apply(saved && I18N[saved] ? saved : (I18N[sys] ? sys : 'pl'));
 
   // Karuzela zrzutów: pokaż sekcję tylko, gdy przynajmniej jeden plik istnieje.
+  // Uwaga na cache: obrazek może być już gotowy (img.complete) zanim
+  // podpięliśmy nasłuch — wtedy zdarzenie load by nie przyszło.
   var section = document.getElementById('screenshots');
   var imgs = document.querySelectorAll('#shots img');
-  var loaded = 0;
   imgs.forEach(function (img) {
-    img.addEventListener('load', function () { loaded++; section.hidden = false; });
-    img.addEventListener('error', function () { img.remove(); });
+    function ok() { section.hidden = false; }
+    function fail() { img.remove(); }
+    if (img.complete) {
+      if (img.naturalWidth > 0) ok(); else fail();
+    } else {
+      img.addEventListener('load', ok);
+      img.addEventListener('error', fail);
+    }
   });
 })();
 </script>
