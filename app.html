@@ -78,6 +78,14 @@
   h2 { font-size: 1.5rem; text-align: center; margin: 0 0 8px; }
   .lead { text-align: center; color: var(--text-muted); max-width: 560px; margin: 0 auto 32px; }
 
+  /* sekcja z ikoną 3D aplikacji */
+  .app-icon-section { text-align: center; padding: 40px 0 8px; }
+  .app-icon-3d {
+    width: 180px; height: 180px; border-radius: 40px;
+    filter: drop-shadow(0 18px 40px rgba(79, 70, 229, .35));
+  }
+  .app-icon-caption { color: var(--text-muted); font-size: 1rem; margin: 18px 0 0; }
+
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
   .feature-card {
     background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -171,6 +179,11 @@
 
 <div class="wrap">
 
+  <section id="app-icon" class="app-icon-section">
+    <img src="icon-app.png" alt="Domowik" class="app-icon-3d" width="180" height="180" loading="lazy">
+    <p class="app-icon-caption" data-t="iconCaption"></p>
+  </section>
+
   <section id="funkcje">
     <h2 data-t="featTitle"></h2>
     <p class="lead" data-t="featLead"></p>
@@ -253,6 +266,7 @@ var I18N = {
   pl: {
     tagline: 'Przedmioty, terminy, finanse i listy — w jednej aplikacji. 100% offline, bez konta, bez chmury, bez reklam.',
     ctaPlay: '▶ Pobierz z Google Play', soon: 'Wkrótce', ctaPrivacy: 'Polityka prywatności',
+    iconCaption: 'Domowik — porządek w domu w zasięgu ręki.',
     featTitle: 'Wszystko, co domowe, w jednym miejscu',
     featLead: 'Domowik zastępuje notatnik, kalendarz papierowy, Excela do finansów i karteczki z listami zakupów — jedną prostą aplikacją.',
     f1t: 'Katalog przedmiotów', f1x: 'Zdjęcia, lokalizacja, wartość i data zakupu każdego przedmiotu — gotowa dokumentacja np. dla ubezpieczyciela.',
@@ -273,7 +287,7 @@ var I18N = {
     p2: 'Nawet 6 zdjęć do jednego przedmiotu — paragon, faktura, wygląd z każdej strony',
     p3: 'Wiele kont i portfeli, w tym waluty obce',
     p4: 'Płatności cykliczne (wypłata, czynsz) i szybkie powielanie wpisów',
-    p5: 'Cała historia finansów z porównaniem rok do roku (darmowa: 6 mies.)',
+    p5: 'Cała historia finansów, wybór dowolnego roku i porównanie rok do roku (darmowa: 12 mies.)',
     p6: 'Listy zakupów bez limitu + zapisywanie i wczytywanie własnych list',
     p7: 'Wszystkie gotowe listy pakowania i dowolnie długa własna lista',
     p8: 'Zadania bez limitu',
@@ -284,6 +298,7 @@ var I18N = {
   en: {
     tagline: 'Items, deadlines, finances and lists — in one app. 100% offline, no account, no cloud, no ads.',
     ctaPlay: '▶ Get it on Google Play', soon: 'Soon', ctaPrivacy: 'Privacy policy',
+    iconCaption: 'Domowik — order at home within reach.',
     featTitle: 'Everything home-related, in one place',
     featLead: 'Domowik replaces a notebook, a paper calendar, a finance spreadsheet and shopping-list notes — with one simple app.',
     f1t: 'Home inventory', f1x: 'Photos, location, value and purchase date of every item — insurance-ready documentation.',
@@ -315,6 +330,7 @@ var I18N = {
   de: {
     tagline: 'Gegenstände, Termine, Finanzen und Listen — in einer App. 100% offline, ohne Konto, ohne Cloud, ohne Werbung.',
     ctaPlay: '▶ Bei Google Play laden', soon: 'Bald', ctaPrivacy: 'Datenschutzerklärung',
+    iconCaption: 'Domowik — Ordnung zu Hause griffbereit.',
     featTitle: 'Alles rund ums Zuhause, an einem Ort',
     featLead: 'Domowik ersetzt Notizbuch, Papierkalender, Finanz-Tabelle und Einkaufszettel — mit einer einfachen App.',
     f1t: 'Hausinventar', f1x: 'Fotos, Ort, Wert und Kaufdatum jedes Gegenstands — versicherungsfertige Dokumentation.',
@@ -346,6 +362,7 @@ var I18N = {
   fr: {
     tagline: 'Objets, échéances, finances et listes — dans une seule application. 100 % hors-ligne, sans compte, sans cloud, sans publicité.',
     ctaPlay: '▶ Disponible sur Google Play', soon: 'Bientôt', ctaPrivacy: 'Politique de confidentialité',
+    iconCaption: 'Domowik — l\'ordre à la maison à portée de main.',
     featTitle: 'Tout ce qui concerne la maison, au même endroit',
     featLead: 'Domowik remplace le carnet, le calendrier papier, le tableur des finances et les listes de courses — avec une seule application simple.',
     f1t: 'Inventaire de la maison', f1x: 'Photos, emplacement, valeur et date d\'achat de chaque objet — documentation prête pour l\'assurance.',
@@ -377,6 +394,7 @@ var I18N = {
   es: {
     tagline: 'Objetos, plazos, finanzas y listas — en una sola app. 100% sin conexión, sin cuenta, sin nube, sin anuncios.',
     ctaPlay: '▶ Descargar en Google Play', soon: 'Pronto', ctaPrivacy: 'Política de privacidad',
+    iconCaption: 'Domowik — el orden en casa al alcance de tu mano.',
     featTitle: 'Todo lo del hogar, en un solo lugar',
     featLead: 'Domowik sustituye la libreta, el calendario de papel, la hoja de cálculo y las notas de la compra — con una sola app sencilla.',
     f1t: 'Inventario del hogar', f1x: 'Fotos, ubicación, valor y fecha de compra de cada objeto — documentación lista para el seguro.',
@@ -408,6 +426,7 @@ var I18N = {
   uk: {
     tagline: 'Речі, терміни, фінанси та списки — в одному застосунку. 100% офлайн, без акаунту, без хмари, без реклами.',
     ctaPlay: '▶ Завантажити в Google Play', soon: 'Скоро', ctaPrivacy: 'Політика конфіденційності',
+    iconCaption: 'Domowik — порядок удома під рукою.',
     featTitle: 'Усе домашнє — в одному місці',
     featLead: 'Domowik замінює нотатник, паперовий календар, таблицю фінансів і папірці зі списками покупок — одним простим застосунком.',
     f1t: 'Каталог речей', f1x: 'Фото, місце, вартість і дата покупки кожної речі — готова документація, напр. для страхової.',
@@ -439,6 +458,7 @@ var I18N = {
   cs: {
     tagline: 'Věci, termíny, finance a seznamy — v jedné aplikaci. 100% offline, bez účtu, bez cloudu, bez reklam.',
     ctaPlay: '▶ Stáhnout z Google Play', soon: 'Brzy', ctaPrivacy: 'Zásady ochrany osobních údajů',
+    iconCaption: 'Domowik — pořádek doma na dosah.',
     featTitle: 'Vše kolem domácnosti na jednom místě',
     featLead: 'Domowik nahrazuje zápisník, papírový kalendář, tabulku financí a lístečky s nákupy — jednou jednoduchou aplikací.',
     f1t: 'Katalog věcí', f1x: 'Fotky, umístění, hodnota a datum koupě každé věci — dokumentace připravená např. pro pojišťovnu.',
