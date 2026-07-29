@@ -3,17 +3,91 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  <meta name="application-name" content="Domowik">
+  <meta name="apple-mobile-web-app-title" content="Domowik">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#4f46e5">
   <meta name="description" content="Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Domowik">
   <meta property="og:locale" content="pl_PL">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="uk_UA">
+  <meta property="og:locale:alternate" content="cs_CZ">
   <meta property="og:title" content="Domowik — cały dom w jednym miejscu">
   <meta property="og:description" content="Katalog rzeczy, terminy, finanse i codzienne listy w jednej prywatnej aplikacji.">
-  <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://domowik.dev/">
   <meta property="og:url" content="https://domowik.dev/">
+  <meta property="og:image" content="https://domowik.dev/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://domowik.dev/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Domowik — cały dom w jednym miejscu">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Domowik — cały dom w jednym miejscu">
+  <meta name="twitter:description" content="Katalog rzeczy, terminy, finanse i codzienne listy w jednej prywatnej aplikacji.">
+  <meta name="twitter:image" content="https://domowik.dev/og-image.jpg">
+  <meta name="twitter:image:alt" content="Domowik — cały dom w jednym miejscu">
   <title>Domowik — cały dom w jednym miejscu</title>
+  <link rel="canonical" href="https://domowik.dev/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Domowik",
+      "alternateName": "Domowik — organizer domu",
+      "url": "https://domowik.dev/",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=pl.domowik.app",
+      "image": "https://domowik.dev/og-image.jpg",
+      "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.",
+      "applicationCategory": "LifestyleApplication",
+      "applicationSubCategory": "Home organization",
+      "operatingSystem": "Android",
+      "softwareVersion": "1.26.0",
+      "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"],
+      "featureList": [
+        "Katalog domowych przedmiotów",
+        "Terminy i kalendarz",
+        "Finanse domowe",
+        "Listy zakupów i pakowania",
+        "Zadania i nawyki",
+        "Lokalny backup i eksport"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "PLN",
+        "availability": "https://schema.org/InStock"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Domowik",
+        "url": "https://domowik.dev/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://domowik.dev/icons/pwa-512x512.png",
+          "width": 512,
+          "height": 512
+        }
+      }
+    }
+  </script>
   <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
   <noscript>
@@ -117,7 +191,7 @@
           </div>
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
-            <img src="screens/items.png" width="1080" height="2400" fetchpriority="high" alt="Katalog przedmiotów w aplikacji Domowik z kategoriami, lokalizacjami i wartością rzeczy">
+            <img src="assets/screens/items.png" width="1080" height="2400" fetchpriority="high" alt="Katalog przedmiotów w aplikacji Domowik z kategoriami, lokalizacjami i wartością rzeczy">
           </figure>
         </div>
       </div>
@@ -193,7 +267,7 @@
               </ul>
             </div>
             <div class="feature-visual crop-items" aria-hidden="true">
-              <img src="screens/items.png" width="1080" height="2400" loading="lazy" decoding="async" alt="">
+              <img src="assets/screens/items.png" width="1080" height="2400" loading="lazy" decoding="async" alt="">
             </div>
           </article>
 
@@ -266,27 +340,27 @@
         <div class="screen-gallery" data-gallery tabindex="0" aria-label="Screenshoty aplikacji">
           <figure class="screen-slide">
             <div class="screen-caption"><strong>Wiesz, co masz</strong><span>Katalog przedmiotów</span></div>
-            <div class="phone phone-gallery"><img src="screens/items.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Katalog przedmiotów z kategoriami, lokalizacjami i wartością rzeczy"></div>
+            <div class="phone phone-gallery"><img src="assets/screens/items.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Katalog przedmiotów z kategoriami, lokalizacjami i wartością rzeczy"></div>
           </figure>
           <figure class="screen-slide">
             <div class="screen-caption"><strong>Terminy pod kontrolą</strong><span>Lista najbliższych spraw</span></div>
-            <div class="phone phone-gallery"><img src="screens/deadlines.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Lista nadchodzących terminów z datami i oznaczeniem spraw cyklicznych"></div>
+            <div class="phone phone-gallery"><img src="assets/screens/deadlines.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Lista nadchodzących terminów z datami i oznaczeniem spraw cyklicznych"></div>
           </figure>
           <figure class="screen-slide">
             <div class="screen-caption"><strong>Cały miesiąc przed Tobą</strong><span>Kalendarz terminów i zadań</span></div>
-            <div class="phone phone-gallery"><img src="screens/calendar.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Miesięczny kalendarz terminów z wydarzeniami wybranego dnia"></div>
+            <div class="phone phone-gallery"><img src="assets/screens/calendar.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Miesięczny kalendarz terminów z wydarzeniami wybranego dnia"></div>
           </figure>
           <figure class="screen-slide">
             <div class="screen-caption"><strong>Kontroluj domowy budżet</strong><span>Konta, wydatki i wykresy</span></div>
-            <div class="phone phone-gallery"><img src="screens/finance.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Przegląd finansów domowych z saldem, wpływami, wydatkami i wykresem"></div>
+            <div class="phone phone-gallery"><img src="assets/screens/finance.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Przegląd finansów domowych z saldem, wpływami, wydatkami i wykresem"></div>
           </figure>
           <figure class="screen-slide">
             <div class="screen-caption"><strong>Zakupy bez chaosu</strong><span>Produkty według sklepów</span></div>
-            <div class="phone phone-gallery"><img src="screens/shopping.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Lista zakupów z produktami pogrupowanymi według sklepów"></div>
+            <div class="phone phone-gallery"><img src="assets/screens/shopping.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Lista zakupów z produktami pogrupowanymi według sklepów"></div>
           </figure>
           <figure class="screen-slide">
             <div class="screen-caption"><strong>Dopasuj wygląd</strong><span>Wygodny tryb ciemny</span></div>
-            <div class="phone phone-gallery"><img src="screens/dark.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Ekran finansów domowych w trybie ciemnym"></div>
+            <div class="phone phone-gallery"><img src="assets/screens/dark.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Ekran finansów domowych w trybie ciemnym"></div>
           </figure>
         </div>
       </div>
@@ -458,7 +532,7 @@
         <a href="#prywatnosc">Prywatność</a>
         <a href="#premium">Premium</a>
         <a href="#faq">FAQ</a>
-        <a href="polityka.html">Polityka prywatności</a>
+        <a href="../../store/index.html">Polityka prywatności</a>
         <a href="mailto:domowik-app@proton.me">Kontakt</a>
       </nav>
     </div>
