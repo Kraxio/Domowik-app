@@ -196,6 +196,10 @@
   const description = document.querySelector('meta[name="description"]');
   const ogTitle = document.querySelector('meta[property="og:title"]');
   const ogDescription = document.querySelector('meta[property="og:description"]');
+  const ogImageAlt = document.querySelector('meta[property="og:image:alt"]');
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+  const twitterImageAlt = document.querySelector('meta[name="twitter:image:alt"]');
   const ogLocale = document.querySelector('meta[property="og:locale"]');
   const ogLocales = {
     pl: 'pl_PL', en: 'en_US', de: 'de_DE', fr: 'fr_FR',
@@ -205,6 +209,10 @@
     { element: description, source: description?.content },
     { element: ogTitle, source: ogTitle?.content },
     { element: ogDescription, source: ogDescription?.content },
+    { element: ogImageAlt, source: ogImageAlt?.content },
+    { element: twitterTitle, source: twitterTitle?.content },
+    { element: twitterDescription, source: twitterDescription?.content },
+    { element: twitterImageAlt, source: twitterImageAlt?.content },
   ].filter((entry) => entry.element && entry.source);
 
   function translate(source, language = currentLanguage) {
