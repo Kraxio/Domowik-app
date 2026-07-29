@@ -1,344 +1,470 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#6246ea">
-<meta name="color-scheme" content="light dark">
-<title>Domowik — domowe sprawy pod kontrolą</title>
-<meta name="description" content="Domowik porządkuje terminy, przedmioty, finanse, listy i zadania. 100% offline, bez konta, chmury i reklam.">
-<meta property="og:title" content="Domowik — domowe sprawy pod kontrolą">
-<meta property="og:description" content="Terminy, przedmioty, finanse, listy i zadania. Offline, prywatnie i bez subskrypcji.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="icon-app.png">
-<link rel="icon" type="image/png" href="icon-app.png">
-<style>
-:root {
-  --primary:#6246ea; --primary-2:#8b3dff; --primary-dark:#4934c8;
-  --bg:#f6f7fb; --card:rgba(255,255,255,.9); --text:#172033; --muted:#667085;
-  --border:rgba(98,70,234,.14); --soft:#eeebff; --shadow:0 18px 60px rgba(42,31,105,.13);
-  --radius:26px;
-}
-@media (prefers-color-scheme:dark) {
-  :root { --bg:#10131b; --card:rgba(26,30,42,.92); --text:#f4f5f8; --muted:#a7aec0; --border:rgba(151,130,255,.2); --soft:#24203f; --shadow:0 20px 70px rgba(0,0,0,.38); }
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-a{color:inherit} .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
-.langbar{position:sticky;top:0;z-index:20;display:flex;justify-content:center;gap:7px;flex-wrap:wrap;padding:10px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.langbar button{font:inherit;font-size:.78rem;font-weight:700;padding:7px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer} .langbar button.active{background:var(--primary);border-color:var(--primary);color:#fff}
-.hero{overflow:hidden;position:relative;padding:76px 0 72px;background:radial-gradient(circle at 84% 14%,rgba(255,255,255,.22),transparent 24%),linear-gradient(135deg,#5142df 0%,#7547f1 48%,#9b35ff 100%);color:white}
-.hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-170px;bottom:-240px;background:rgba(255,255,255,.09)}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:58px;align-items:center;position:relative;z-index:1}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);border-radius:999px;font-size:.83rem;font-weight:800}
-.hero h1{font-size:clamp(2.65rem,6vw,5rem);line-height:1.02;letter-spacing:-.055em;margin:20px 0 18px} .hero h1 span{display:block;font-size:.47em;letter-spacing:-.025em;margin-top:12px;opacity:.95}
-.tagline{font-size:clamp(1rem,2vw,1.23rem);max-width:690px;opacity:.94;margin:0 0 28px}
-.trust{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 28px;padding:0;list-style:none} .trust li{font-size:.9rem;font-weight:700} .trust li:before{content:"✓";margin-right:7px}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap} .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;border-radius:15px;text-decoration:none;font-weight:800;transition:.2s transform,.2s box-shadow} .btn:hover{transform:translateY(-2px)}
-.btn-main{background:white;color:var(--primary-dark);box-shadow:0 12px 30px rgba(25,16,80,.22)} .btn-alt{border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.12);color:white}
-.badge-soon{font-size:.65rem;text-transform:uppercase;background:var(--primary);color:white;padding:3px 7px;border-radius:999px}
-.visual{position:relative;min-height:430px;display:grid;place-items:center} .app-icon{width:min(330px,75vw);filter:drop-shadow(0 30px 46px rgba(27,15,92,.35));animation:float 5s ease-in-out infinite} @keyframes float{50%{transform:translateY(-10px)}}
-.float-card{position:absolute;background:rgba(255,255,255,.92);color:#28223c;border-radius:18px;padding:13px 16px;box-shadow:0 16px 40px rgba(26,15,80,.24);font-size:.88rem;font-weight:800;backdrop-filter:blur(10px)} .fc1{top:52px;left:0} .fc2{right:-5px;bottom:66px} .float-card small{display:block;color:#746d86;font-weight:600}
-section{padding:78px 0} .section-head{max-width:720px;margin:0 auto 38px;text-align:center} h2{font-size:clamp(1.75rem,3.5vw,2.65rem);line-height:1.15;letter-spacing:-.035em;margin:0 0 12px} .lead{color:var(--muted);margin:0}
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px} .problem{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)} .problem b{display:block;font-size:1.05rem;margin:10px 0 7px} .problem p{margin:0;color:var(--muted);font-size:.94rem} .big-emoji{font-size:2rem}
-.module{display:grid;grid-template-columns:repeat(2,1fr);gap:18px} .feature-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);display:grid;grid-template-columns:52px 1fr;gap:15px} .feature-card .icon{width:52px;height:52px;border-radius:16px;background:var(--soft);display:grid;place-items:center;font-size:1.55rem} .feature-card h3{margin:1px 0 5px;font-size:1.05rem} .feature-card p{margin:0;color:var(--muted);font-size:.91rem}
-.privacy{background:linear-gradient(135deg,#1f174c,#4f2bb8 58%,#7629db);color:#fff;border-radius:34px;padding:45px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;box-shadow:0 28px 70px rgba(61,35,155,.25)} .privacy h2{text-align:left} .privacy p{margin:0;opacity:.9;max-width:720px} .lock{font-size:5rem}
-.shots{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 24px} .shots img{height:520px;max-height:72vh;width:auto;border-radius:25px;border:1px solid var(--border);box-shadow:var(--shadow);scroll-snap-align:center} .shots-hint{text-align:center;color:var(--muted);font-size:.84rem}
-.premium{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:34px;padding:38px;box-shadow:var(--shadow)} .price{font-size:3rem;font-weight:900;letter-spacing:-.05em;color:var(--primary)} .premium-note{color:var(--muted);margin-bottom:15px} .premium-list{list-style:none;padding:0;margin:0;columns:2;column-gap:30px} .premium-list li{break-inside:avoid;padding:6px 0;font-size:.91rem} .premium-list li:before{content:"✓";color:var(--primary);font-weight:900;margin-right:8px}
-.lang-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:9px} .lang-chips span{background:var(--card);border:1px solid var(--border);padding:9px 14px;border-radius:999px;font-weight:700;font-size:.86rem}
-footer{border-top:1px solid var(--border);padding:30px 20px 42px;text-align:center;color:var(--muted);font-size:.87rem} footer a{margin:0 8px}
-@media(max-width:820px){.hero{padding-top:54px}.hero-grid{grid-template-columns:1fr;text-align:center;gap:24px}.tagline{margin-left:auto;margin-right:auto}.trust,.cta-row{justify-content:center}.visual{min-height:330px}.app-icon{width:255px}.fc1{left:4px;top:35px}.fc2{right:3px;bottom:35px}.problem-grid{grid-template-columns:1fr}.module{grid-template-columns:1fr}.privacy{grid-template-columns:1fr;text-align:center;padding:32px 24px}.privacy h2{text-align:center}.lock{font-size:3.4rem}.premium{grid-template-columns:1fr;padding:28px 22px}.premium-list{columns:1}}
-@media(max-width:480px){.wrap{width:min(100% - 28px,1160px)}.hero h1{font-size:2.75rem}.float-card{font-size:.75rem;padding:10px 12px}.feature-card{grid-template-columns:44px 1fr;padding:20px}.feature-card .icon{width:44px;height:44px}section{padding:58px 0}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="description" content="Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:title" content="Domowik — cały dom w jednym miejscu">
+  <meta property="og:description" content="Katalog rzeczy, terminy, finanse i codzienne listy w jednej prywatnej aplikacji.">
+  <meta name="twitter:card" content="summary">
+  <!-- TODO: dodać rel="canonical" po zatwierdzeniu publicznej domeny. -->
+  <title>Domowik — cały dom w jednym miejscu</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
+  <noscript>
+    <style>
+      .site-header { position: static; height: auto; background: #fff; }
+      .header-inner { min-height: 72px; flex-wrap: wrap; }
+      .nav-toggle { display: none; }
+      .language-picker { display: none; }
+      .site-nav {
+        position: static; z-index: auto; width: 100%; padding: 8px 0 20px;
+        opacity: 1; transform: none; visibility: visible;
+      }
+      .hero { padding-top: 56px; }
+    </style>
+  </noscript>
 </head>
 <body>
-<nav class="langbar" id="langbar" aria-label="Language switch">
-<button type="button" data-lang="pl">Polski</button><button type="button" data-lang="en">English</button><button type="button" data-lang="de">Deutsch</button><button type="button" data-lang="fr">Français</button><button type="button" data-lang="es">Español</button><button type="button" data-lang="uk">Українська</button><button type="button" data-lang="cs">Čeština</button>
-</nav>
-<header class="hero">
-<div class="wrap hero-grid">
-<div>
-<div class="eyebrow">🏠 Domowik · Android</div>
-<h1>Domowik<span data-t="iconCaption"></span></h1>
-<p class="tagline" data-t="tagline"></p>
-<ul class="trust"><li>100% offline</li><li data-t="premNote"></li><li>7 języków</li></ul>
-<div class="cta-row">
-<a class="btn btn-main" href="#" aria-disabled="true"><span data-t="ctaPlay"></span><span class="badge-soon" data-t="soon"></span></a>
-<a class="btn btn-alt" href="#funkcje">Zobacz możliwości ↓</a>
-</div>
-</div>
-<div class="visual">
-<img src="icon-app.png" alt="Ikona aplikacji Domowik" class="app-icon" width="512" height="512">
-<div class="float-card fc1">📅 Wymiana filtra<small>za 3 dni</small></div>
-<div class="float-card fc2">🧾 Gwarancja pralki<small>do 18.10.2027</small></div>
-</div>
-</div>
-</header>
-<main>
-<section>
-<div class="wrap">
-<div class="section-head"><h2>Nie pamiętaj o wszystkim</h2><p class="lead">Domowik zbiera codzienne domowe sprawy w jednym miejscu i przypomina wtedy, gdy trzeba.</p></div>
-<div class="problem-grid">
-<article class="problem"><span class="big-emoji">🧾</span><b>„Gdzie jest ten paragon?”</b><p>Zapisz przedmiot, zdjęcia, datę zakupu, wartość i dokumenty.</p></article>
-<article class="problem"><span class="big-emoji">⏰</span><b>„Znowu zapomniałem o przeglądzie”</b><p>Ustaw terminy gwarancji, serwisu, filtrów i cykliczne przypomnienia.</p></article>
-<article class="problem"><span class="big-emoji">💸</span><b>„Na co poszły pieniądze?”</b><p>Porządkuj domowe finanse, konta, wydatki i płatności cykliczne.</p></article>
-</div>
-</div>
-</section>
-<section id="funkcje">
-<div class="wrap">
-<div class="section-head"><h2 data-t="featTitle"></h2><p class="lead" data-t="featLead"></p></div>
-<div class="module">
-<div class="feature-card"><span class="icon">📦</span><div><h3 data-t="f1t"></h3><p data-t="f1x"></p></div></div>
-<div class="feature-card"><span class="icon">📅</span><div><h3 data-t="f2t"></h3><p data-t="f2x"></p></div></div>
-<div class="feature-card"><span class="icon">📝</span><div><h3 data-t="f3t"></h3><p data-t="f3x"></p></div></div>
-<div class="feature-card"><span class="icon">💰</span><div><h3 data-t="f4t"></h3><p data-t="f4x"></p></div></div>
-<div class="feature-card"><span class="icon">📱</span><div><h3 data-t="f5t"></h3><p data-t="f5x"></p></div></div>
-<div class="feature-card"><span class="icon">🎨</span><div><h3 data-t="f7t"></h3><p data-t="f7x"></p></div></div>
-<div class="feature-card"><span class="icon">🤝</span><div><h3 data-t="f8t"></h3><p data-t="f8x"></p></div></div>
-<div class="feature-card"><span class="icon">🔐</span><div><h3 data-t="f6t"></h3><p data-t="f6x"></p></div></div>
-</div>
-</div>
-</section>
-<section><div class="wrap"><div class="privacy"><div><h2 data-t="privTitle"></h2><p data-t="privText"></p></div><div class="lock">🔒</div></div></div></section>
-<section id="screenshots" hidden><div class="wrap"><div class="section-head"><h2 data-t="shotsTitle"></h2><p class="lead" data-t="shotsLead"></p></div><div class="shots" id="shots">
-<img src="screens/screen-1.png" alt=""><img src="screens/screen-2.png" alt=""><img src="screens/screen-3.png" alt=""><img src="screens/screen-4.png" alt=""><img src="screens/screen-5.png" alt=""><img src="screens/screen-6.png" alt=""><img src="screens/screen-7.png" alt=""><img src="screens/screen-8.png" alt="">
-</div><p class="shots-hint">Przesuń, aby zobaczyć więcej</p></div></section>
-<section id="premium"><div class="wrap"><div class="premium"><div><h2>Domowik Premium</h2><div class="price">34,99 zł</div><div class="premium-note" data-t="premNote"></div><p class="lead" style="text-align:left;margin:0">Pełna wersja bez abonamentu i bez automatycznego odnawiania.</p></div><ul class="premium-list"><li data-t="p1"></li><li data-t="p2"></li><li data-t="p3"></li><li data-t="p4"></li><li data-t="p5"></li><li data-t="p6"></li><li data-t="p7"></li><li data-t="p8"></li><li data-t="p9"></li><li data-t="p10"></li></ul></div></div></section>
-<section id="jezyki"><div class="wrap"><div class="section-head"><h2 data-t="langTitle"></h2><p class="lead" data-t="langLead"></p></div><div class="lang-chips"><span>🇵🇱 Polski</span><span>🇬🇧 English</span><span>🇩🇪 Deutsch</span><span>🇫🇷 Français</span><span>🇪🇸 Español</span><span>🇺🇦 Українська</span><span>🇨🇿 Čeština</span></div></div></section>
-</main>
-<footer><div><a href="index.html" data-t="ctaPrivacy"></a><a href="mailto:domowik-app@proton.me" data-t="contact"></a></div><div data-t="footNote"></div></footer>
-<script>
-var I18N = {
-  pl: {
-    tagline: 'Przedmioty, terminy, finanse i listy — w jednej aplikacji. 100% offline, bez konta, bez chmury, bez reklam.',
-    ctaPlay: '▶ Pobierz z Google Play', soon: 'Wkrótce', ctaPrivacy: 'Polityka prywatności',
-    iconCaption: 'Domowik — porządek w domu w zasięgu ręki.',
-    featTitle: 'Wszystko, co domowe, w jednym miejscu',
-    featLead: 'Domowik zastępuje notatnik, kalendarz papierowy, Excela do finansów i karteczki z listami zakupów — jedną prostą aplikacją.',
-    f1t: 'Katalog przedmiotów', f1x: 'Zdjęcia, lokalizacja, wartość i data zakupu każdego przedmiotu — gotowa dokumentacja np. dla ubezpieczyciela.',
-    f2t: 'Terminy pod kontrolą', f2x: 'Koniec gwarancji, przegląd, wymiana filtra — z powtarzaniem, powiadomieniami i widokiem kalendarza.',
-    f3t: 'Listy i zadania', f3x: 'Zakupy grupowane po sklepach, pakowanie z gotowymi szablonami, codzienne zadania z przypomnieniem.',
-    f4t: 'Finanse domowe', f4x: 'Konta i portfele, wykresy miesiąc po miesiącu, płatności cykliczne i szybkie powielanie wpisów.',
-    f5t: 'Widżet na ekranie głównym', f5x: 'Najbliższe terminy i zadania widoczne bez otwierania aplikacji (Premium).',
-    f6t: 'Prywatność i bezpieczeństwo', f6x: 'Blokada PIN-em i biometrią, zero konta, zero śledzenia — dane zostają tylko na Twoim telefonie.',
-    f7t: 'Motywy i tryb ciemny', f7x: '6 palet kolorystycznych oraz tryb jasny / ciemny / auto — dostępne w wersji darmowej.',
-    f8t: 'Udostępnianie modułów', f8x: 'Wyślij komuś tylko wybraną część danych — np. same listy albo finanse; u odbiorcy dane się dopisują.',
-    shotsTitle: 'Tak wygląda Domowik', shotsLead: 'Przesuwaj, żeby zobaczyć więcej.', shotsHint: '',
-    privTitle: '🔒 Zero chmury. Zero konta. Zero reklam.',
-    privText: 'Wszystkie dane żyją wyłącznie na Twoim urządzeniu. Domowik nie wysyła niczego do internetu — kopię zapasową robisz sam, kiedy chcesz.',
-    langTitle: 'Dostępny w 7 językach',
-    langLead: 'Cały interfejs, kategorie i gotowe szablony przetłumaczone w każdym z języków — nie tylko menu.',
-    premNote: 'jednorazowo — bez subskrypcji, na zawsze',
-    p1: 'Bez limitu przedmiotów w katalogu (darmowa: 20)',
-    p2: 'Nawet 6 zdjęć do jednego przedmiotu — paragon, faktura, wygląd z każdej strony',
-    p3: 'Wiele kont i portfeli, w tym waluty obce',
-    p4: 'Płatności cykliczne (wypłata, czynsz) i szybkie powielanie wpisów',
-    p5: 'Cała historia finansów, wybór dowolnego roku i porównanie rok do roku (darmowa: 12 mies.)',
-    p6: 'Listy zakupów bez limitu + zapisywanie i wczytywanie własnych list',
-    p7: 'Wszystkie gotowe listy pakowania i dowolnie długa własna lista',
-    p8: 'Zadania bez limitu',
-    p9: 'Widżet z najbliższymi sprawami na ekranie głównym',
-    p10: 'Eksport CSV finansów do Excela',
-    contact: 'Kontakt', footNote: 'Domowik — aplikacja stworzona z myślą o prostym porządku w domu.'
-  },
-  en: {
-    tagline: 'Items, deadlines, finances and lists — in one app. 100% offline, no account, no cloud, no ads.',
-    ctaPlay: '▶ Get it on Google Play', soon: 'Soon', ctaPrivacy: 'Privacy policy',
-    iconCaption: 'Domowik — order at home within reach.',
-    featTitle: 'Everything home-related, in one place',
-    featLead: 'Domowik replaces a notebook, a paper calendar, a finance spreadsheet and shopping-list notes — with one simple app.',
-    f1t: 'Home inventory', f1x: 'Photos, location, value and purchase date of every item — insurance-ready documentation.',
-    f2t: 'Deadlines under control', f2x: 'Warranty end, service, filter change — with repeats, notifications and a calendar view.',
-    f3t: 'Lists & tasks', f3x: 'Shopping grouped by store, packing with ready-made templates, everyday tasks with reminders.',
-    f4t: 'Home finances', f4x: 'Accounts and wallets, month-by-month charts, recurring payments and quick duplicating.',
-    f5t: 'Home screen widget', f5x: 'Upcoming deadlines and tasks visible without opening the app (Premium).',
-    f6t: 'Privacy & security', f6x: 'PIN and biometric lock, no account, no tracking — data stays only on your phone.',
-    f7t: 'Themes & dark mode', f7x: '6 color palettes and light / dark / auto mode — available in the free version.',
-    f8t: 'Module sharing', f8x: 'Send someone only a chosen part of your data — e.g. just lists or finances; it merges into theirs.',
-    shotsTitle: 'This is Domowik', shotsLead: 'Swipe to see more.', shotsHint: '',
-    privTitle: '🔒 No cloud. No account. No ads.',
-    privText: 'All data lives only on your device. Domowik sends nothing to the internet — you make a backup yourself, whenever you want.',
-    langTitle: 'Available in 7 languages',
-    langLead: 'The whole interface, categories and templates translated in every language — not just the menu.',
-    premNote: 'one-time — no subscription, forever',
-    p1: 'Unlimited items in the catalog (free: 20)',
-    p2: 'Up to 6 photos per item — receipt, invoice, every angle',
-    p3: 'Multiple accounts and wallets, including foreign currencies',
-    p4: 'Recurring payments (salary, rent) and quick duplicating',
-    p5: 'Full finance history with year-over-year comparison (free: 12 months)',
-    p6: 'Unlimited shopping lists + saving and reloading your own lists',
-    p7: 'All ready-made packing lists and an unlimited custom list',
-    p8: 'Unlimited tasks',
-    p9: 'Home screen widget with upcoming items',
-    p10: 'CSV export of finances for Excel',
-    contact: 'Contact', footNote: 'Domowik — an app built for simple order at home.'
-  },
-  de: {
-    tagline: 'Gegenstände, Termine, Finanzen und Listen — in einer App. 100% offline, ohne Konto, ohne Cloud, ohne Werbung.',
-    ctaPlay: '▶ Bei Google Play laden', soon: 'Bald', ctaPrivacy: 'Datenschutzerklärung',
-    iconCaption: 'Domowik — Ordnung zu Hause griffbereit.',
-    featTitle: 'Alles rund ums Zuhause, an einem Ort',
-    featLead: 'Domowik ersetzt Notizbuch, Papierkalender, Finanz-Tabelle und Einkaufszettel — mit einer einfachen App.',
-    f1t: 'Hausinventar', f1x: 'Fotos, Ort, Wert und Kaufdatum jedes Gegenstands — versicherungsfertige Dokumentation.',
-    f2t: 'Termine im Griff', f2x: 'Garantieende, Wartung, Filterwechsel — mit Wiederholung, Benachrichtigungen und Kalenderansicht.',
-    f3t: 'Listen & Aufgaben', f3x: 'Einkauf nach Geschäft gruppiert, Packen mit fertigen Vorlagen, Alltagsaufgaben mit Erinnerung.',
-    f4t: 'Haushaltsfinanzen', f4x: 'Konten und Wallets, monatliche Diagramme, wiederkehrende Zahlungen und schnelles Duplizieren.',
-    f5t: 'Startbildschirm-Widget', f5x: 'Anstehende Termine und Aufgaben ohne Öffnen der App sichtbar (Premium).',
-    f6t: 'Datenschutz & Sicherheit', f6x: 'PIN- und Biometrie-Sperre, kein Konto, kein Tracking — Daten bleiben nur auf deinem Telefon.',
-    f7t: 'Themes & Dunkelmodus', f7x: '6 Farbpaletten und heller / dunkler / Auto-Modus — in der kostenlosen Version enthalten.',
-    f8t: 'Module teilen', f8x: 'Sende jemandem nur einen Teil deiner Daten — z. B. nur Listen oder Finanzen; beim Empfänger wird ergänzt.',
-    shotsTitle: 'So sieht Domowik aus', shotsLead: 'Wischen für mehr.', shotsHint: '',
-    privTitle: '🔒 Keine Cloud. Kein Konto. Keine Werbung.',
-    privText: 'Alle Daten leben nur auf deinem Gerät. Domowik sendet nichts ins Internet — eine Sicherung machst du selbst, wann du willst.',
-    langTitle: 'In 7 Sprachen verfügbar',
-    langLead: 'Die ganze Oberfläche, Kategorien und Vorlagen in jeder Sprache übersetzt — nicht nur das Menü.',
-    premNote: 'einmalig — kein Abo, für immer',
-    p1: 'Unbegrenzte Gegenstände im Katalog (kostenlos: 20)',
-    p2: 'Bis zu 6 Fotos pro Gegenstand — Beleg, Rechnung, jede Seite',
-    p3: 'Mehrere Konten und Wallets, auch Fremdwährungen',
-    p4: 'Wiederkehrende Zahlungen (Gehalt, Miete) und schnelles Duplizieren',
-    p5: 'Komplette Finanzhistorie mit Jahresvergleich (kostenlos: 12 Monate)',
-    p6: 'Unbegrenzte Einkaufslisten + eigene Listen speichern und laden',
-    p7: 'Alle fertigen Packlisten und eine beliebig lange eigene Liste',
-    p8: 'Unbegrenzte Aufgaben',
-    p9: 'Startbildschirm-Widget mit anstehenden Terminen',
-    p10: 'CSV-Export der Finanzen für Excel',
-    contact: 'Kontakt', footNote: 'Domowik — eine App für einfache Ordnung zu Hause.'
-  },
-  fr: {
-    tagline: 'Objets, échéances, finances et listes — dans une seule application. 100 % hors-ligne, sans compte, sans cloud, sans publicité.',
-    ctaPlay: '▶ Disponible sur Google Play', soon: 'Bientôt', ctaPrivacy: 'Politique de confidentialité',
-    iconCaption: 'Domowik — l\'ordre à la maison à portée de main.',
-    featTitle: 'Tout ce qui concerne la maison, au même endroit',
-    featLead: 'Domowik remplace le carnet, le calendrier papier, le tableur des finances et les listes de courses — avec une seule application simple.',
-    f1t: 'Inventaire de la maison', f1x: 'Photos, emplacement, valeur et date d\'achat de chaque objet — documentation prête pour l\'assurance.',
-    f2t: 'Échéances sous contrôle', f2x: 'Fin de garantie, entretien, changement de filtre — avec répétition, notifications et vue calendrier.',
-    f3t: 'Listes et tâches', f3x: 'Courses groupées par magasin, bagages avec modèles prêts, tâches du quotidien avec rappel.',
-    f4t: 'Finances du foyer', f4x: 'Comptes et portefeuilles, graphiques mensuels, paiements récurrents et duplication rapide.',
-    f5t: 'Widget d\'accueil', f5x: 'Échéances et tâches à venir visibles sans ouvrir l\'application (Premium).',
-    f6t: 'Confidentialité et sécurité', f6x: 'Verrouillage PIN et biométrie, aucun compte, aucun suivi — les données restent sur votre téléphone.',
-    f7t: 'Thèmes et mode sombre', f7x: '6 palettes de couleurs et mode clair / sombre / auto — dans la version gratuite.',
-    f8t: 'Partage de modules', f8x: 'Envoyez seulement une partie choisie de vos données — p. ex. les listes ou les finances ; elles s\'ajoutent chez le destinataire.',
-    shotsTitle: 'Voici Domowik', shotsLead: 'Faites défiler pour en voir plus.', shotsHint: '',
-    privTitle: '🔒 Pas de cloud. Pas de compte. Pas de pub.',
-    privText: 'Toutes les données vivent uniquement sur votre appareil. Domowik n\'envoie rien sur internet — vous faites la sauvegarde vous-même, quand vous voulez.',
-    langTitle: 'Disponible en 7 langues',
-    langLead: 'Toute l\'interface, les catégories et les modèles traduits dans chaque langue — pas seulement le menu.',
-    premNote: 'paiement unique — sans abonnement, à vie',
-    p1: 'Objets illimités dans le catalogue (gratuit : 20)',
-    p2: 'Jusqu\'à 6 photos par objet — ticket, facture, sous tous les angles',
-    p3: 'Plusieurs comptes et portefeuilles, y compris devises étrangères',
-    p4: 'Paiements récurrents (salaire, loyer) et duplication rapide',
-    p5: 'Historique financier complet avec comparaison annuelle (gratuit : 12 mois)',
-    p6: 'Listes de courses illimitées + enregistrement de vos propres listes',
-    p7: 'Toutes les listes de bagages prêtes et une liste personnelle illimitée',
-    p8: 'Tâches illimitées',
-    p9: 'Widget avec les échéances à venir sur l\'écran d\'accueil',
-    p10: 'Export CSV des finances pour Excel',
-    contact: 'Contact', footNote: 'Domowik — une application pensée pour l\'ordre à la maison.'
-  },
-  es: {
-    tagline: 'Objetos, plazos, finanzas y listas — en una sola app. 100% sin conexión, sin cuenta, sin nube, sin anuncios.',
-    ctaPlay: '▶ Descargar en Google Play', soon: 'Pronto', ctaPrivacy: 'Política de privacidad',
-    iconCaption: 'Domowik — el orden en casa al alcance de tu mano.',
-    featTitle: 'Todo lo del hogar, en un solo lugar',
-    featLead: 'Domowik sustituye la libreta, el calendario de papel, la hoja de cálculo y las notas de la compra — con una sola app sencilla.',
-    f1t: 'Inventario del hogar', f1x: 'Fotos, ubicación, valor y fecha de compra de cada objeto — documentación lista para el seguro.',
-    f2t: 'Plazos bajo control', f2x: 'Fin de garantía, revisión, cambio de filtro — con repetición, notificaciones y vista de calendario.',
-    f3t: 'Listas y tareas', f3x: 'Compras agrupadas por tienda, equipaje con plantillas listas, tareas diarias con recordatorio.',
-    f4t: 'Finanzas del hogar', f4x: 'Cuentas y monederos, gráficos mes a mes, pagos recurrentes y duplicación rápida.',
-    f5t: 'Widget de pantalla de inicio', f5x: 'Plazos y tareas próximos visibles sin abrir la app (Premium).',
-    f6t: 'Privacidad y seguridad', f6x: 'Bloqueo con PIN y biometría, sin cuenta, sin rastreo — los datos se quedan solo en tu teléfono.',
-    f7t: 'Temas y modo oscuro', f7x: '6 paletas de colores y modo claro / oscuro / auto — en la versión gratuita.',
-    f8t: 'Compartir módulos', f8x: 'Envía a alguien solo una parte de tus datos — p. ej. las listas o las finanzas; se añaden a los suyos.',
-    shotsTitle: 'Así es Domowik', shotsLead: 'Desliza para ver más.', shotsHint: '',
-    privTitle: '🔒 Sin nube. Sin cuenta. Sin anuncios.',
-    privText: 'Todos los datos viven solo en tu dispositivo. Domowik no envía nada a internet — la copia de seguridad la haces tú, cuando quieras.',
-    langTitle: 'Disponible en 7 idiomas',
-    langLead: 'Toda la interfaz, categorías y plantillas traducidas en cada idioma — no solo el menú.',
-    premNote: 'pago único — sin suscripción, para siempre',
-    p1: 'Objetos ilimitados en el catálogo (gratis: 20)',
-    p2: 'Hasta 6 fotos por objeto — recibo, factura, cada ángulo',
-    p3: 'Varias cuentas y monederos, incluidas divisas extranjeras',
-    p4: 'Pagos recurrentes (nómina, alquiler) y duplicación rápida',
-    p5: 'Historial financiero completo con comparación anual (gratis: 12 meses)',
-    p6: 'Listas de compras ilimitadas + guardar tus propias listas',
-    p7: 'Todas las listas de equipaje predefinidas y una lista propia ilimitada',
-    p8: 'Tareas ilimitadas',
-    p9: 'Widget con lo próximo en la pantalla de inicio',
-    p10: 'Exportación CSV de finanzas para Excel',
-    contact: 'Contacto', footNote: 'Domowik — una app pensada para el orden en casa.'
-  },
-  uk: {
-    tagline: 'Речі, терміни, фінанси та списки — в одному застосунку. 100% офлайн, без акаунту, без хмари, без реклами.',
-    ctaPlay: '▶ Завантажити в Google Play', soon: 'Скоро', ctaPrivacy: 'Політика конфіденційності',
-    iconCaption: 'Domowik — порядок удома під рукою.',
-    featTitle: 'Усе домашнє — в одному місці',
-    featLead: 'Domowik замінює нотатник, паперовий календар, таблицю фінансів і папірці зі списками покупок — одним простим застосунком.',
-    f1t: 'Каталог речей', f1x: 'Фото, місце, вартість і дата покупки кожної речі — готова документація, напр. для страхової.',
-    f2t: 'Терміни під контролем', f2x: 'Кінець гарантії, огляд, заміна фільтра — з повторенням, сповіщеннями та календарем.',
-    f3t: 'Списки та завдання', f3x: 'Покупки за магазинами, пакування з готовими шаблонами, щоденні завдання з нагадуванням.',
-    f4t: 'Домашні фінанси', f4x: 'Рахунки й гаманці, графіки місяць за місяцем, циклічні платежі та швидке дублювання.',
-    f5t: 'Віджет на головному екрані', f5x: 'Найближчі терміни та завдання видно без відкриття застосунку (Premium).',
-    f6t: 'Приватність і безпека', f6x: 'Блокування PIN-кодом і біометрією, без акаунту, без стеження — дані лише на вашому телефоні.',
-    f7t: 'Теми та темний режим', f7x: '6 кольорових палітр і світлий / темний / авто режим — у безкоштовній версії.',
-    f8t: 'Поділ модулями', f8x: 'Надішліть комусь лише обрану частину даних — напр. списки або фінанси; вони додаються до його даних.',
-    shotsTitle: 'Ось так виглядає Domowik', shotsLead: 'Гортайте, щоб побачити більше.', shotsHint: '',
-    privTitle: '🔒 Без хмари. Без акаунту. Без реклами.',
-    privText: 'Усі дані живуть лише на вашому пристрої. Domowik нічого не надсилає в інтернет — резервну копію робите самі, коли захочете.',
-    langTitle: 'Доступний 7 мовами',
-    langLead: 'Увесь інтерфейс, категорії та шаблони перекладені кожною мовою — не лише меню.',
-    premNote: 'одноразово — без підписки, назавжди',
-    p1: 'Необмежена кількість речей у каталозі (безкоштовно: 20)',
-    p2: 'До 6 фото на річ — чек, рахунок, з усіх боків',
-    p3: 'Кілька рахунків і гаманців, зокрема іноземні валюти',
-    p4: 'Циклічні платежі (зарплата, оренда) та швидке дублювання',
-    p5: 'Повна історія фінансів з порівнянням років (безкоштовно: 12 міс.)',
-    p6: 'Необмежені списки покупок + збереження власних списків',
-    p7: 'Усі готові списки пакування та як завгодно довгий власний список',
-    p8: 'Необмежена кількість завдань',
-    p9: 'Віджет із найближчими справами на головному екрані',
-    p10: 'Експорт CSV фінансів для Excel',
-    contact: 'Контакт', footNote: 'Domowik — застосунок для простого порядку вдома.'
-  },
-  cs: {
-    tagline: 'Věci, termíny, finance a seznamy — v jedné aplikaci. 100% offline, bez účtu, bez cloudu, bez reklam.',
-    ctaPlay: '▶ Stáhnout z Google Play', soon: 'Brzy', ctaPrivacy: 'Zásady ochrany osobních údajů',
-    iconCaption: 'Domowik — pořádek doma na dosah.',
-    featTitle: 'Vše kolem domácnosti na jednom místě',
-    featLead: 'Domowik nahrazuje zápisník, papírový kalendář, tabulku financí a lístečky s nákupy — jednou jednoduchou aplikací.',
-    f1t: 'Katalog věcí', f1x: 'Fotky, umístění, hodnota a datum koupě každé věci — dokumentace připravená např. pro pojišťovnu.',
-    f2t: 'Termíny pod kontrolou', f2x: 'Konec záruky, servis, výměna filtru — s opakováním, notifikacemi a kalendářem.',
-    f3t: 'Seznamy a úkoly', f3x: 'Nákupy seskupené podle obchodů, balení s hotovými šablonami, každodenní úkoly s připomenutím.',
-    f4t: 'Domácí finance', f4x: 'Účty a peněženky, měsíční grafy, opakované platby a rychlé duplikování.',
-    f5t: 'Widget na ploše', f5x: 'Nejbližší termíny a úkoly viditelné bez otevření aplikace (Premium).',
-    f6t: 'Soukromí a zabezpečení', f6x: 'Zámek PINem a biometrií, žádný účet, žádné sledování — data zůstávají jen ve vašem telefonu.',
-    f7t: 'Motivy a tmavý režim', f7x: '6 barevných palet a světlý / tmavý / auto režim — v bezplatné verzi.',
-    f8t: 'Sdílení modulů', f8x: 'Pošlete někomu jen vybranou část dat — např. seznamy nebo finance; přidají se k jeho datům.',
-    shotsTitle: 'Takhle vypadá Domowik', shotsLead: 'Posouvejte pro více.', shotsHint: '',
-    privTitle: '🔒 Žádný cloud. Žádný účet. Žádné reklamy.',
-    privText: 'Všechna data žijí pouze ve vašem zařízení. Domowik nic neposílá na internet — zálohu si děláte sami, kdy chcete.',
-    langTitle: 'Dostupný v 7 jazycích',
-    langLead: 'Celé rozhraní, kategorie i šablony přeložené v každém jazyce — nejen menu.',
-    premNote: 'jednorázově — žádné předplatné, navždy',
-    p1: 'Neomezený počet věcí v katalogu (zdarma: 20)',
-    p2: 'Až 6 fotek na věc — účtenka, faktura, každý úhel',
-    p3: 'Více účtů a peněženek, včetně cizích měn',
-    p4: 'Opakované platby (výplata, nájem) a rychlé duplikování',
-    p5: 'Kompletní historie financí s porovnáním let (zdarma: 12 měsíců)',
-    p6: 'Neomezené nákupní seznamy + ukládání vlastních seznamů',
-    p7: 'Všechny hotové seznamy balení a libovolně dlouhý vlastní seznam',
-    p8: 'Neomezený počet úkolů',
-    p9: 'Widget s nejbližšími záležitostmi na ploše',
-    p10: 'Export CSV financí pro Excel',
-    contact: 'Kontakt', footNote: 'Domowik — aplikace pro jednoduchý pořádek doma.'
-  }
-};
-(function(){
- var KEY='domowik-app-lang', buttons=document.querySelectorAll('#langbar button');
- function apply(lang){var dict=I18N[lang]||I18N.pl;document.querySelectorAll('[data-t]').forEach(function(el){var v=dict[el.getAttribute('data-t')];if(v!==undefined)el.textContent=v;});buttons.forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});document.documentElement.lang=lang;try{localStorage.setItem(KEY,lang)}catch(e){}}
- buttons.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.lang)})});var saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}var sys=(navigator.language||'pl').toLowerCase().slice(0,2);apply(saved&&I18N[saved]?saved:(I18N[sys]?sys:'pl'));
- var section=document.getElementById('screenshots');document.querySelectorAll('#shots img').forEach(function(img){function ok(){section.hidden=false}function fail(){img.remove()}if(img.complete){img.naturalWidth>0?ok():fail()}else{img.addEventListener('load',ok);img.addEventListener('error',fail)}});
-})();
-</script>
-</body></html>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Domowik — strona główna">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 8 7 31h7v23h36V31h7L32 8Z" fill="currentColor"/>
+          <path d="m23 35 6 6 13-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Domowik</span>
+      </a>
+
+      <label class="language-picker">
+        <span class="sr-only">Język strony</span>
+        <select data-language aria-label="Język strony">
+          <option value="pl">PL</option>
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="es">ES</option>
+          <option value="uk">UK</option>
+          <option value="cs">CS</option>
+        </select>
+      </label>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Otwórz menu</span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Główna nawigacja" data-nav>
+        <a href="#dlaczego">Dlaczego Domowik</a>
+        <a href="#funkcje">Funkcje</a>
+        <a href="#zobacz">Zobacz aplikację</a>
+        <a href="#premium">Premium</a>
+        <a href="#faq">FAQ</a>
+        <a class="button button-small button-primary nav-cta" href="https://play.google.com/store/apps/details?id=pl.domowik.app">
+          Google Play
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span>Prywatny organizer domu</p>
+          <h1 id="hero-title">Cały dom.<br><span>Jedno miejsce.</span></h1>
+          <p class="hero-lead">
+            Rzeczy, terminy, finanse i codzienne listy — uporządkowane
+            w jednej aplikacji, z danymi pod Twoją kontrolą.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary button-large" href="https://play.google.com/store/apps/details?id=pl.domowik.app">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M3.6 2.4c-.4.4-.6 1-.6 1.8v15.6c0 .7.2 1.3.6 1.7l9.1-9.5-9.1-9.6Zm10.3 10.8-2.3 2.4-7.1 7.3c.3.1.6.1.9.1.4 0 .8-.1 1.2-.3l11.5-6.5-4.2-3Zm5.6-3.2-3.7-2.1-4.2-2.4-5-2.8c-.4-.2-.8-.3-1.2-.3-.3 0-.6 0-.9.1l7.1 7.3 2.3 2.4 4.2-2.4 1.4-.8Zm0 4-1.4-.8-3.1-1.7-1.1 1.1 1.9 2 3.7-2.1c.5-.3.8-.7.8-1.2 0-.6-.3-1-.8-1.3Z"/>
+              </svg>
+              <span><small>Pobierz z</small>Google Play</span>
+            </a>
+            <a class="button button-secondary button-large" href="#zobacz">Zobacz, jak działa</a>
+          </div>
+          <ul class="trust-list" aria-label="Najważniejsze wyróżniki">
+            <li><span aria-hidden="true">✓</span> Bez obowiązkowego konta</li>
+            <li><span aria-hidden="true">✓</span> Dane przechowywane lokalnie</li>
+            <li><span aria-hidden="true">✓</span> Działa offline</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <div class="floating-note note-deadline" aria-hidden="true">
+            <span>📅</span>
+            <div><strong>Przegląd</strong><small>za 7 dni</small></div>
+          </div>
+          <div class="floating-note note-value" aria-hidden="true">
+            <span>📦</span>
+            <div><strong>5 rzeczy</strong><small>8 800 zł</small></div>
+          </div>
+          <figure class="phone phone-hero">
+            <div class="phone-speaker" aria-hidden="true"></div>
+            <img src="assets/screens/items.png" width="1080" height="2400" fetchpriority="high" alt="Katalog przedmiotów w aplikacji Domowik z kategoriami, lokalizacjami i wartością rzeczy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Obszary aplikacji">
+      <div class="container proof-grid">
+        <span>📦 Przedmioty</span>
+        <span>📅 Terminy</span>
+        <span>📊 Finanse</span>
+        <span>📝 Listy i zadania</span>
+      </div>
+    </section>
+
+    <section class="section why" id="dlaczego" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">Mniej rozproszonych informacji</p>
+          <h2 id="why-title">Dom nie mieści się w jednej notatce</h2>
+          <p>
+            Terminy w kalendarzu, zakupy na kartce, wydatki w arkuszu,
+            a zdjęcie paragonu gdzieś w galerii. Domowik łączy te informacje
+            wokół codziennych spraw Twojego domu.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card">
+            <span class="card-number">01</span>
+            <div class="icon-tile indigo" aria-hidden="true">⌂</div>
+            <h3>Wiesz, co masz</h3>
+            <p>Zapisuj rzeczy, zdjęcia, lokalizacje, wartość oraz dane zakupu.</p>
+          </article>
+          <article class="why-card featured">
+            <span class="card-number">02</span>
+            <div class="icon-tile cyan" aria-hidden="true">✓</div>
+            <h3>Pamiętasz, co ważne</h3>
+            <p>Łącz terminy z przedmiotami i przeglądaj sprawy na liście lub w kalendarzu.</p>
+          </article>
+          <article class="why-card">
+            <span class="card-number">03</span>
+            <div class="icon-tile violet" aria-hidden="true">◎</div>
+            <h3>Zachowujesz kontrolę</h3>
+            <p>Dane zostają lokalnie, a backup i eksport uruchamiasz wtedy, gdy chcesz.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section features" id="funkcje" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">Jedna aplikacja, wiele codziennych spraw</p>
+            <h2 id="features-title">Porządek, który ma kontekst</h2>
+          </div>
+          <p>
+            Domowik nie jest tylko listą. Przedmiot może mieć zdjęcia, dane zakupu
+            i własne terminy, a domowe finanse oraz listy pozostają obok.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card feature-large feature-items">
+            <div class="feature-copy">
+              <span class="feature-icon" aria-hidden="true">📦</span>
+              <h3>Katalog domowych rzeczy</h3>
+              <p>Wyszukuj, filtruj i grupuj przedmioty. Dodawaj zdjęcia, lokalizacje, kategorie, wartość oraz dane zakupu.</p>
+              <ul class="mini-list">
+                <li>Widok listy i siatki</li>
+                <li>Podsumowanie wartości</li>
+                <li>Do 6 zdjęć w Premium</li>
+              </ul>
+            </div>
+            <div class="feature-visual crop-items" aria-hidden="true">
+              <img src="assets/screens/items.png" width="1080" height="2400" loading="lazy" decoding="async" alt="">
+            </div>
+          </article>
+
+          <article class="feature-card feature-deadlines">
+            <span class="feature-icon" aria-hidden="true">📅</span>
+            <h3>Terminy i kalendarz</h3>
+            <p>Gwarancje, przeglądy, opłaty i inne ważne daty — ogólne albo przypisane do konkretnej rzeczy.</p>
+            <div class="deadline-demo" aria-hidden="true">
+              <span class="demo-date"><strong>22</strong> LIP</span>
+              <span><strong>Przegląd samochodu</strong><small>jutro, 15:00</small></span>
+              <b>✓</b>
+            </div>
+          </article>
+
+          <article class="feature-card feature-finance">
+            <span class="feature-icon" aria-hidden="true">📊</span>
+            <h3>Finanse domowe</h3>
+            <p>Konta, wpływy, wydatki, kategorie i wykresy dają szybki obraz domowego budżetu.</p>
+            <div class="bars" aria-hidden="true">
+              <i style="--h: 36%"></i><i style="--h: 58%"></i><i style="--h: 43%"></i>
+              <i style="--h: 78%"></i><i style="--h: 54%"></i><i style="--h: 92%"></i>
+            </div>
+          </article>
+
+          <article class="feature-card feature-lists">
+            <span class="feature-icon" aria-hidden="true">🛒</span>
+            <h3>Listy na co dzień</h3>
+            <p>Zakupy według sklepów, pakowanie z postępem i zadania z datą, adresem oraz notatką.</p>
+            <div class="check-list-demo" aria-hidden="true">
+              <span><i>✓</i><s>Pieczywo</s></span>
+              <span><i></i>Mleko</span>
+              <span><i></i>Filtry do wody</span>
+            </div>
+          </article>
+
+          <article class="feature-card feature-theme">
+            <span class="feature-icon" aria-hidden="true">◐</span>
+            <h3>Wygląd po Twojemu</h3>
+            <p>Tryb jasny, ciemny lub automatyczny oraz sześć motywów kolorystycznych.</p>
+            <div class="swatches" aria-label="Kolory motywów">
+              <i class="swatch-indigo"></i><i class="swatch-emerald"></i><i class="swatch-ocean"></i>
+              <i class="swatch-rose"></i><i class="swatch-amber"></i><i class="swatch-slate"></i>
+            </div>
+          </article>
+
+          <article class="feature-card feature-backup">
+            <span class="feature-icon" aria-hidden="true">↗</span>
+            <h3>Backup i eksport</h3>
+            <p>Twórz pełną kopię JSON, eksportuj wybrane moduły, przedmioty do CSV i terminy do ICS.</p>
+            <div class="file-chips" aria-hidden="true"><span>JSON</span><span>CSV</span><span>ICS</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section screenshots" id="zobacz" aria-labelledby="screens-title">
+      <div class="container">
+        <div class="section-heading centered inverse">
+          <p class="eyebrow">Zobacz Domowika w działaniu</p>
+          <h2 id="screens-title">Przejrzyście od pierwszego spojrzenia</h2>
+          <p>Przesuń galerię i zobacz najważniejsze obszary aplikacji.</p>
+        </div>
+
+        <div class="screen-controls" aria-label="Sterowanie galerią">
+          <button type="button" data-gallery-prev aria-label="Poprzedni screenshot">←</button>
+          <span data-gallery-status aria-live="polite">1 / 6</span>
+          <button type="button" data-gallery-next aria-label="Następny screenshot">→</button>
+        </div>
+
+        <div class="screen-gallery" data-gallery tabindex="0" aria-label="Screenshoty aplikacji">
+          <figure class="screen-slide">
+            <div class="screen-caption"><strong>Wiesz, co masz</strong><span>Katalog przedmiotów</span></div>
+            <div class="phone phone-gallery"><img src="assets/screens/items.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Katalog przedmiotów z kategoriami, lokalizacjami i wartością rzeczy"></div>
+          </figure>
+          <figure class="screen-slide">
+            <div class="screen-caption"><strong>Terminy pod kontrolą</strong><span>Lista najbliższych spraw</span></div>
+            <div class="phone phone-gallery"><img src="assets/screens/deadlines.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Lista nadchodzących terminów z datami i oznaczeniem spraw cyklicznych"></div>
+          </figure>
+          <figure class="screen-slide">
+            <div class="screen-caption"><strong>Cały miesiąc przed Tobą</strong><span>Kalendarz terminów i zadań</span></div>
+            <div class="phone phone-gallery"><img src="assets/screens/calendar.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Miesięczny kalendarz terminów z wydarzeniami wybranego dnia"></div>
+          </figure>
+          <figure class="screen-slide">
+            <div class="screen-caption"><strong>Kontroluj domowy budżet</strong><span>Konta, wydatki i wykresy</span></div>
+            <div class="phone phone-gallery"><img src="assets/screens/finance.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Przegląd finansów domowych z saldem, wpływami, wydatkami i wykresem"></div>
+          </figure>
+          <figure class="screen-slide">
+            <div class="screen-caption"><strong>Zakupy bez chaosu</strong><span>Produkty według sklepów</span></div>
+            <div class="phone phone-gallery"><img src="assets/screens/shopping.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Lista zakupów z produktami pogrupowanymi według sklepów"></div>
+          </figure>
+          <figure class="screen-slide">
+            <div class="screen-caption"><strong>Dopasuj wygląd</strong><span>Wygodny tryb ciemny</span></div>
+            <div class="phone phone-gallery"><img src="assets/screens/dark.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Ekran finansów domowych w trybie ciemnym"></div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section privacy" id="prywatnosc" aria-labelledby="privacy-title">
+      <div class="container privacy-grid">
+        <div class="privacy-visual" aria-hidden="true">
+          <div class="shield">
+            <svg viewBox="0 0 80 92">
+              <path d="M40 3 72 15v25c0 22-13 39-32 49C21 79 8 62 8 40V15L40 3Z" fill="currentColor"/>
+              <path d="m25 43 10 10 21-24" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="privacy-ring ring-a"></div>
+          <div class="privacy-ring ring-b"></div>
+          <span class="data-pill pill-one">Bez konta</span>
+          <span class="data-pill pill-two">Lokalnie</span>
+          <span class="data-pill pill-three">Offline</span>
+        </div>
+
+        <div class="privacy-copy">
+          <p class="eyebrow">Prywatność z natury</p>
+          <h2 id="privacy-title">Twoje dane zostają pod Twoją kontrolą</h2>
+          <p class="lead">
+            Domowik nie ma własnego backendu do przechowywania Twojej domowej
+            bazy. Nie musisz zakładać konta, a aplikacja może działać offline.
+          </p>
+          <div class="privacy-points">
+            <article>
+              <span aria-hidden="true">⌂</span>
+              <div><h3>Lokalny zapis</h3><p>Rzeczy, terminy, finanse i listy są przechowywane na urządzeniu.</p></div>
+            </article>
+            <article>
+              <span aria-hidden="true">⇩</span>
+              <div><h3>Kopia na Twoich zasadach</h3><p>Pełny backup wykonujesz samodzielnie, kiedy go potrzebujesz.</p></div>
+            </article>
+            <article>
+              <span aria-hidden="true">↗</span>
+              <div><h3>Otwarty eksport</h3><p>Zapisuj dane jako JSON, CSV lub ICS i przenoś je świadomie.</p></div>
+            </article>
+          </div>
+          <p class="privacy-note">
+            <strong>Ważne:</strong> dane nie synchronizują się automatycznie.
+            Przed zmianą telefonu lub odinstalowaniem aplikacji wykonaj backup.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section premium" id="premium" aria-labelledby="premium-title">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">Zacznij bezpłatnie</p>
+          <h2 id="premium-title">Więcej możliwości z Domowik Premium</h2>
+          <p>
+            Podstawowe funkcje są dostępne bez opłat. Premium rozszerza limity
+            i odblokowuje narzędzia dla bardziej wymagających domowych baz.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <p class="plan-label">Domowik Free</p>
+            <h3>Dobry początek</h3>
+            <p class="plan-description">Najważniejsze moduły do codziennej organizacji domu.</p>
+            <ul>
+              <li><span>✓</span> Do 20 przedmiotów</li>
+              <li><span>✓</span> Do 2 zdjęć na przedmiot</li>
+              <li><span>✓</span> Terminy i kalendarz</li>
+              <li><span>✓</span> Finanse z jednym kontem</li>
+              <li><span>✓</span> Zakupy, pakowanie i zadania</li>
+              <li><span>✓</span> Backup oraz eksport</li>
+            </ul>
+          </article>
+
+          <article class="price-card price-premium">
+            <span class="premium-badge">Premium</span>
+            <p class="plan-label">Domowik Premium</p>
+            <h3>Więcej przestrzeni na dom</h3>
+            <p class="plan-description">Rozszerzone możliwości dla większej liczby rzeczy, danych i codziennych planów.</p>
+            <ul>
+              <li><span>✓</span> Bez limitu liczby przedmiotów</li>
+              <li><span>✓</span> Do 6 zdjęć na przedmiot</li>
+              <li><span>✓</span> Wiele kont i szersza historia finansów</li>
+              <li><span>✓</span> Zapisane listy zakupów i pakowania</li>
+              <li><span>✓</span> Nawyki, serie i statystyki</li>
+              <li><span>✓</span> Dodatkowe szablony i eksport finansów</li>
+            </ul>
+            <a class="button button-primary button-block" href="https://play.google.com/store/apps/details?id=pl.domowik.app">Zobacz w Google Play</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div class="faq-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Najczęstsze pytania</h2>
+          <p>Krótko i bez ukrywania ważnych ograniczeń.</p>
+          <a href="mailto:domowik-app@proton.me">Masz inne pytanie? Napisz do nas →</a>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>Czy muszę zakładać konto?<span aria-hidden="true">+</span></summary>
+            <p>Nie. Domowik nie wymaga własnego konta. Dane aplikacji są przechowywane lokalnie na urządzeniu.</p>
+          </details>
+          <details>
+            <summary>Czy Domowik działa bez internetu?<span aria-hidden="true">+</span></summary>
+            <p>Podstawowe funkcje działają bez internetu. Połączenie może być potrzebne między innymi podczas zakupu Premium w Google Play lub przekazywania terminu do Kalendarza Google.</p>
+          </details>
+          <details>
+            <summary>Jak przenieść dane na nowy telefon?<span aria-hidden="true">+</span></summary>
+            <p>Na starym urządzeniu utwórz pełną kopię JSON w Ustawieniach, a następnie zaimportuj ją na nowym. Dane nie synchronizują się automatycznie.</p>
+          </details>
+          <details>
+            <summary>Co mogę przechowywać przy przedmiocie?<span aria-hidden="true">+</span></summary>
+            <p>Nazwę, lokalizację, kategorię, notatkę, ilość, wartość, datę i miejsce zakupu, zdjęcia oraz powiązane terminy.</p>
+          </details>
+          <details>
+            <summary>Czym różni się Premium?<span aria-hidden="true">+</span></summary>
+            <p>Premium znosi limit liczby przedmiotów i rozszerza m.in. zdjęcia, finanse, zapisane listy, szablony oraz moduł nawyków.</p>
+          </details>
+          <details>
+            <summary>W jakich językach działa aplikacja?<span aria-hidden="true">+</span></summary>
+            <p>Interfejs zawiera wersje: polską, angielską, niemiecką, francuską, hiszpańską, ukraińską i czeską.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="cta-title">
+      <div class="cta-orb cta-orb-one" aria-hidden="true"></div>
+      <div class="cta-orb cta-orb-two" aria-hidden="true"></div>
+      <div class="container cta-inner">
+        <svg class="cta-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 8 7 31h7v23h36V31h7L32 8Z" fill="currentColor"/>
+          <path d="m23 35 6 6 13-14" fill="none" stroke="#4f46e5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="eyebrow">Twój dom. Jedna aplikacja.</p>
+        <h2 id="cta-title">Zacznij porządkować dom po swojemu</h2>
+        <p>Rzeczy, terminy, finanse i listy — lokalnie, przejrzyście i zawsze pod ręką.</p>
+        <a class="button button-white button-large" href="https://play.google.com/store/apps/details?id=pl.domowik.app">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M3.6 2.4c-.4.4-.6 1-.6 1.8v15.6c0 .7.2 1.3.6 1.7l9.1-9.5-9.1-9.6Zm10.3 10.8-2.3 2.4-7.1 7.3c.3.1.6.1.9.1.4 0 .8-.1 1.2-.3l11.5-6.5-4.2-3Zm5.6-3.2-3.7-2.1-4.2-2.4-5-2.8c-.4-.2-.8-.3-1.2-.3-.3 0-.6 0-.9.1l7.1 7.3 2.3 2.4 4.2-2.4 1.4-.8Zm0 4-1.4-.8-3.1-1.7-1.1 1.1 1.9 2 3.7-2.1c.5-.3.8-.7.8-1.2 0-.6-.3-1-.8-1.3Z"/>
+          </svg>
+          <span><small>Pobierz z</small>Google Play</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="#top" aria-label="Domowik — wróć na początek strony">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 8 7 31h7v23h36V31h7L32 8Z" fill="currentColor"/>
+            <path d="m23 35 6 6 13-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Domowik</span>
+        </a>
+        <p>Prywatne centrum organizacji domu.</p>
+      </div>
+      <nav class="footer-links" aria-label="Nawigacja w stopce">
+        <a href="#funkcje">Funkcje</a>
+        <a href="#prywatnosc">Prywatność</a>
+        <a href="#premium">Premium</a>
+        <a href="#faq">FAQ</a>
+        <a href="../../store/index.html">Polityka prywatności</a>
+        <a href="mailto:domowik-app@proton.me">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span data-year>2026</span> Domowik. Wszystkie prawa zastrzeżone.</p>
+      <p>Bez obowiązkowego konta · Dane lokalne · Offline-first</p>
+    </div>
+  </footer>
+</body>
+</html>
