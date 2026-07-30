@@ -14,7 +14,7 @@
   <meta name="color-scheme" content="light">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#4f46e5">
-  <meta name="description" content="Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.">
+  <meta name="description" content="Domowik to aplikacja do organizacji domu. Zarządzaj przedmiotami, gwarancjami, terminami, finansami i listami — lokalnie, bez obowiązkowego konta.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Domowik">
   <meta property="og:locale" content="pl_PL">
@@ -24,8 +24,8 @@
   <meta property="og:locale:alternate" content="es_ES">
   <meta property="og:locale:alternate" content="uk_UA">
   <meta property="og:locale:alternate" content="cs_CZ">
-  <meta property="og:title" content="Domowik — cały dom w jednym miejscu">
-  <meta property="og:description" content="Katalog rzeczy, terminy, finanse i codzienne listy w jednej prywatnej aplikacji.">
+  <meta property="og:title" content="Domowik — aplikacja do organizacji domu">
+  <meta property="og:description" content="Organizuj domowe przedmioty, gwarancje, terminy, finanse i listy w jednej prywatnej aplikacji działającej także offline.">
   <meta property="og:url" content="https://domowik.dev/">
   <meta property="og:image" content="https://domowik.dev/og-image.jpg">
   <meta property="og:image:secure_url" content="https://domowik.dev/og-image.jpg">
@@ -34,11 +34,11 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Domowik — cały dom w jednym miejscu">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Domowik — cały dom w jednym miejscu">
-  <meta name="twitter:description" content="Katalog rzeczy, terminy, finanse i codzienne listy w jednej prywatnej aplikacji.">
+  <meta name="twitter:title" content="Domowik — aplikacja do organizacji domu">
+  <meta name="twitter:description" content="Organizuj domowe przedmioty, gwarancje, terminy, finanse i listy w jednej prywatnej aplikacji działającej także offline.">
   <meta name="twitter:image" content="https://domowik.dev/og-image.jpg">
   <meta name="twitter:image:alt" content="Domowik — cały dom w jednym miejscu">
-  <title>Domowik — cały dom w jednym miejscu</title>
+  <title>Domowik – aplikacja do organizacji domu, terminów i finansów</title>
   <link rel="canonical" href="https://domowik.dev/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
@@ -47,36 +47,12 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Domowik",
-      "alternateName": "Domowik — organizer domu",
-      "url": "https://domowik.dev/",
-      "downloadUrl": "https://play.google.com/store/apps/details?id=pl.domowik.app",
-      "image": "https://domowik.dev/og-image.jpg",
-      "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.",
-      "applicationCategory": "LifestyleApplication",
-      "applicationSubCategory": "Home organization",
-      "operatingSystem": "Android",
-      "softwareVersion": "1.26.0",
-      "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"],
-      "featureList": [
-        "Katalog domowych przedmiotów",
-        "Terminy i kalendarz",
-        "Finanse domowe",
-        "Listy zakupów i pakowania",
-        "Zadania i nawyki",
-        "Lokalny backup i eksport"
-      ],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "PLN",
-        "availability": "https://schema.org/InStock"
-      },
-      "publisher": {
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Organization",
+        "@id": "https://domowik.dev/#organization",
         "name": "Domowik",
         "url": "https://domowik.dev/",
         "logo": {
@@ -84,9 +60,111 @@
           "url": "https://domowik.dev/icons/pwa-512x512.png",
           "width": 512,
           "height": 512
+        },
+        "email": "mailto:domowik-app@proton.me"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://domowik.dev/#website",
+        "url": "https://domowik.dev/",
+        "name": "Domowik",
+        "description": "Oficjalna strona aplikacji Domowik do organizacji domu, przedmiotów, terminów, finansów i codziennych list.",
+        "inLanguage": "pl-PL",
+        "publisher": {
+          "@id": "https://domowik.dev/#organization"
         }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://domowik.dev/#app",
+        "name": "Domowik",
+        "alternateName": "Domowik — organizer domu",
+        "url": "https://domowik.dev/",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=pl.domowik.app",
+        "image": "https://domowik.dev/og-image.jpg",
+        "description": "Domowik to aplikacja do organizacji domu. Pomaga zarządzać domowymi przedmiotami, gwarancjami, terminami, finansami, listami zakupów, zadaniami i backupem danych.",
+        "applicationCategory": "LifestyleApplication",
+        "applicationSubCategory": "Home organization",
+        "operatingSystem": "Android",
+        "softwareVersion": "1.26.0",
+        "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"],
+        "featureList": [
+          "Katalog domowych przedmiotów",
+          "Gwarancje, przeglądy i ważne terminy",
+          "Kalendarz terminów i zadań",
+          "Finanse i budżet domowy",
+          "Listy zakupów i pakowania",
+          "Zadania i nawyki",
+          "Lokalny backup i eksport JSON, CSV oraz ICS",
+          "Działanie offline bez obowiązkowego konta"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "PLN",
+          "availability": "https://schema.org/InStock",
+          "url": "https://play.google.com/store/apps/details?id=pl.domowik.app"
+        },
+        "publisher": {
+          "@id": "https://domowik.dev/#organization"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://domowik.dev/#faq-schema",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Czy muszę zakładać konto?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nie. Domowik nie wymaga własnego konta. Dane aplikacji są przechowywane lokalnie na urządzeniu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy Domowik działa bez internetu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Podstawowe funkcje działają bez internetu. Połączenie może być potrzebne między innymi podczas zakupu Premium w Google Play lub przekazywania terminu do Kalendarza Google."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak przenieść dane na nowy telefon?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Na starym urządzeniu utwórz pełną kopię JSON w Ustawieniach, a następnie zaimportuj ją na nowym. Dane nie synchronizują się automatycznie."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co mogę przechowywać przy przedmiocie?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nazwę, lokalizację, kategorię, notatkę, ilość, wartość, datę i miejsce zakupu, zdjęcia oraz powiązane terminy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czym różni się Premium?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Premium znosi limit liczby przedmiotów i rozszerza między innymi zdjęcia, finanse, zapisane listy, szablony oraz moduł nawyków."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "W jakich językach działa aplikacja?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Interfejs zawiera wersje: polską, angielską, niemiecką, francuską, hiszpańską, ukraińską i czeską."
+            }
+          }
+        ]
       }
-    }
+    ]
+  }
   </script>
   <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
@@ -143,7 +221,7 @@
         <a href="#zobacz">Zobacz aplikację</a>
         <a href="#premium">Premium</a>
         <a href="#faq">FAQ</a>
-        <a class="button button-small button-primary nav-cta" href="https://play.google.com/store/apps/details?id=pl.domowik.app">
+        <a class="button button-small button-primary nav-cta" href="https://play.google.com/store/apps/details?id=pl.domowik.app" aria-label="Pobierz aplikację Domowik z Google Play">
           Google Play
         </a>
       </nav>
@@ -157,13 +235,13 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow"><span></span>Prywatny organizer domu</p>
-          <h1 id="hero-title">Cały dom.<br><span>Jedno miejsce.</span></h1>
+          <h1 id="hero-title">Aplikacja do organizacji domu<br><span>Cały dom w jednym miejscu.</span></h1>
           <p class="hero-lead">
-            Rzeczy, terminy, finanse i codzienne listy — uporządkowane
-            w jednej aplikacji, z danymi pod Twoją kontrolą.
+            Organizuj domowe przedmioty, gwarancje, terminy, finanse i codzienne listy
+            w jednej prywatnej aplikacji, z danymi pod Twoją kontrolą.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary button-large" href="https://play.google.com/store/apps/details?id=pl.domowik.app">
+            <a class="button button-primary button-large" href="https://play.google.com/store/apps/details?id=pl.domowik.app" aria-label="Pobierz aplikację Domowik z Google Play">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path fill="currentColor" d="M3.6 2.4c-.4.4-.6 1-.6 1.8v15.6c0 .7.2 1.3.6 1.7l9.1-9.5-9.1-9.6Zm10.3 10.8-2.3 2.4-7.1 7.3c.3.1.6.1.9.1.4 0 .8-.1 1.2-.3l11.5-6.5-4.2-3Zm5.6-3.2-3.7-2.1-4.2-2.4-5-2.8c-.4-.2-.8-.3-1.2-.3-.3 0-.6 0-.9.1l7.1 7.3 2.3 2.4 4.2-2.4 1.4-.8Zm0 4-1.4-.8-3.1-1.7-1.1 1.1 1.9 2 3.7-2.1c.5-.3.8-.7.8-1.2 0-.6-.3-1-.8-1.3Z"/>
               </svg>
@@ -246,7 +324,7 @@
         <div class="section-heading split-heading">
           <div>
             <p class="eyebrow">Jedna aplikacja, wiele codziennych spraw</p>
-            <h2 id="features-title">Porządek, który ma kontekst</h2>
+            <h2 id="features-title">Organizer domu, który łączy rzeczy, terminy i finanse</h2>
           </div>
           <p>
             Domowik nie jest tylko listą. Przedmiot może mieć zdjęcia, dane zakupu
@@ -258,7 +336,7 @@
           <article class="feature-card feature-large feature-items">
             <div class="feature-copy">
               <span class="feature-icon" aria-hidden="true">📦</span>
-              <h3>Katalog domowych rzeczy</h3>
+              <h3>Domowy katalog przedmiotów</h3>
               <p>Wyszukuj, filtruj i grupuj przedmioty. Dodawaj zdjęcia, lokalizacje, kategorie, wartość oraz dane zakupu.</p>
               <ul class="mini-list">
                 <li>Widok listy i siatki</li>
@@ -273,7 +351,7 @@
 
           <article class="feature-card feature-deadlines">
             <span class="feature-icon" aria-hidden="true">📅</span>
-            <h3>Terminy i kalendarz</h3>
+            <h3>Gwarancje, przeglądy i kalendarz terminów</h3>
             <p>Gwarancje, przeglądy, opłaty i inne ważne daty — ogólne albo przypisane do konkretnej rzeczy.</p>
             <div class="deadline-demo" aria-hidden="true">
               <span class="demo-date"><strong>22</strong> LIP</span>
@@ -284,7 +362,7 @@
 
           <article class="feature-card feature-finance">
             <span class="feature-icon" aria-hidden="true">📊</span>
-            <h3>Finanse domowe</h3>
+            <h3>Budżet i finanse domowe</h3>
             <p>Konta, wpływy, wydatki, kategorie i wykresy dają szybki obraz domowego budżetu.</p>
             <div class="bars" aria-hidden="true">
               <i style="--h: 36%"></i><i style="--h: 58%"></i><i style="--h: 43%"></i>
@@ -450,7 +528,7 @@
               <li><span>✓</span> Nawyki, serie i statystyki</li>
               <li><span>✓</span> Dodatkowe szablony i eksport finansów</li>
             </ul>
-            <a class="button button-primary button-block" href="https://play.google.com/store/apps/details?id=pl.domowik.app">Zobacz w Google Play</a>
+            <a class="button button-primary button-block" href="https://play.google.com/store/apps/details?id=pl.domowik.app" aria-label="Zobacz Domowik Premium w Google Play">Zobacz w Google Play</a>
           </article>
         </div>
       </div>
@@ -505,7 +583,7 @@
         <p class="eyebrow">Twój dom. Jedna aplikacja.</p>
         <h2 id="cta-title">Zacznij porządkować dom po swojemu</h2>
         <p>Rzeczy, terminy, finanse i listy — lokalnie, przejrzyście i zawsze pod ręką.</p>
-        <a class="button button-white button-large" href="https://play.google.com/store/apps/details?id=pl.domowik.app">
+        <a class="button button-white button-large" href="https://play.google.com/store/apps/details?id=pl.domowik.app" aria-label="Pobierz aplikację Domowik z Google Play">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M3.6 2.4c-.4.4-.6 1-.6 1.8v15.6c0 .7.2 1.3.6 1.7l9.1-9.5-9.1-9.6Zm10.3 10.8-2.3 2.4-7.1 7.3c.3.1.6.1.9.1.4 0 .8-.1 1.2-.3l11.5-6.5-4.2-3Zm5.6-3.2-3.7-2.1-4.2-2.4-5-2.8c-.4-.2-.8-.3-1.2-.3-.3 0-.6 0-.9.1l7.1 7.3 2.3 2.4 4.2-2.4 1.4-.8Zm0 4-1.4-.8-3.1-1.7-1.1 1.1 1.9 2 3.7-2.1c.5-.3.8-.7.8-1.2 0-.6-.3-1-.8-1.3Z"/>
           </svg>
