@@ -254,16 +254,26 @@
     if (name) option.title = name;
   });
 
-  let initialLanguage = 'pl';
-  try {
-    const requested = new URLSearchParams(window.location.search).get('lang');
-    const saved = localStorage.getItem('domowik:website-language');
-    const browser = (navigator.language || 'pl').toLowerCase().slice(0, 2);
-    initialLanguage = languages.includes(requested)
-      ? requested
-      : (languages.includes(saved) ? saved : (languages.includes(browser) ? browser : 'pl'));
-  } catch { /* use Polish */ }
-  setLanguage(initialLanguage, false);
+let initialLanguage = 'pl';
+
+try {
+  const requested = new URLSearchParams(window.location.search).get('lang');
+  const saved = localStorage.getItem('domowik:website-language');
+
+  if (languages.includes(requested)) {
+    initialLanguage = requested;
+  } else if (languages.includes(saved)) {
+    initialLanguage = saved;
+  } else {
+    // Pierwsza wizyta - zawsze polski
+    initialLanguage = 'pl';
+  }
+
+} catch {
+  initialLanguage = 'pl';
+}
+
+setLanguage(initialLanguage, false);
 
   window.domowikI18n = {
     get language() { return currentLanguage; },
