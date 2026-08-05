@@ -58,43 +58,81 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Domowik",
-      "alternateName": "Domowik — organizer domu",
-      "url": "https://domowik.dev/",
-      "downloadUrl": "https://play.google.com/store/apps/details?id=pl.domowik.app",
-      "image": "https://domowik.dev/og-image.jpg",
-      "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.",
-      "applicationCategory": "LifestyleApplication",
-      "applicationSubCategory": "Home organization",
-      "operatingSystem": "Android",
-      "softwareVersion": "1.26.0",
-      "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"],
-      "featureList": [
-        "Katalog domowych przedmiotów",
-        "Terminy i kalendarz",
-        "Finanse domowe",
-        "Listy zakupów i pakowania",
-        "Zadania i nawyki",
-        "Lokalny backup i eksport"
-      ],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "PLN",
-        "availability": "https://schema.org/InStock"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Domowik",
-        "url": "https://domowik.dev/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://domowik.dev/icons/pwa-512x512.png",
-          "width": 512,
-          "height": 512
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://domowik.dev/#organization",
+          "name": "Domowik",
+          "url": "https://domowik.dev/",
+          "description": "Twórca aplikacji Domowik — organizera domu działającego lokalnie, bez obowiązkowego konta.",
+          "email": "domowik-app@proton.me",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://domowik.dev/#logo",
+            "url": "https://domowik.dev/icons/pwa-512x512.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Domowik"
+          },
+          "image": { "@id": "https://domowik.dev/#logo" },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "domowik-app@proton.me",
+            "availableLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"]
+          },
+          "sameAs": [
+            "https://play.google.com/store/apps/details?id=pl.domowik.app"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://domowik.dev/#website",
+          "url": "https://domowik.dev/",
+          "name": "Domowik",
+          "alternateName": "Domowik — organizer domu",
+          "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.",
+          "publisher": { "@id": "https://domowik.dev/#organization" },
+          "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://domowik.dev/#app",
+          "name": "Domowik",
+          "alternateName": "Domowik — organizer domu",
+          "url": "https://domowik.dev/",
+          "downloadUrl": "https://play.google.com/store/apps/details?id=pl.domowik.app",
+          "installUrl": "https://play.google.com/store/apps/details?id=pl.domowik.app",
+          "image": "https://domowik.dev/og-image.jpg",
+          "screenshot": [
+            "https://domowik.dev/screens/items.webp",
+            "https://domowik.dev/screens/deadlines.webp",
+            "https://domowik.dev/screens/finance.webp"
+          ],
+          "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.",
+          "applicationCategory": "LifestyleApplication",
+          "applicationSubCategory": "Home organization",
+          "operatingSystem": "Android",
+          "softwareVersion": "1.26.0",
+          "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"],
+          "featureList": [
+            "Katalog domowych przedmiotów",
+            "Terminy i kalendarz",
+            "Finanse domowe",
+            "Listy zakupów i pakowania",
+            "Zadania i nawyki",
+            "Lokalny backup i eksport"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "PLN",
+            "availability": "https://schema.org/InStock"
+          },
+          "publisher": { "@id": "https://domowik.dev/#organization" },
+          "isPartOf": { "@id": "https://domowik.dev/#website" }
         }
-      }
+      ]
     }
   </script>
   <script src="i18n.js" defer></script>
