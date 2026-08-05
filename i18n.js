@@ -154,6 +154,7 @@
     ["Kolory motywów","Theme colors","Designfarben","Couleurs des thèmes","Colores de temas","Кольори тем","Barvy motivů"],
     ["Domowik — strona główna","Domowik — home page","Domowik — Startseite","Domowik — accueil","Domowik — inicio","Domowik — головна сторінка","Domowik — hlavní stránka"],
     ["Domowik — wróć na początek strony","Domowik — back to the top","Domowik — zurück nach oben","Domowik — retour en haut","Domowik — volver arriba","Domowik — повернутися нагору","Domowik — zpět nahoru"]
+    ["Poradniki","Guides","Ratgeber","Guides","Guías","Порадники","Průvodci"],
   ];
 
   const languageNames = {
