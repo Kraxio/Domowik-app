@@ -155,6 +155,8 @@
     ["Domowik — strona główna","Domowik — home page","Domowik — Startseite","Domowik — accueil","Domowik — inicio","Domowik — головна сторінка","Domowik — hlavní stránka"],
     ["Domowik — wróć na początek strony","Domowik — back to the top","Domowik — zurück nach oben","Domowik — retour en haut","Domowik — volver arriba","Domowik — повернутися нагору","Domowik — zpět nahoru"],
     ["Poradniki","Guides","Ratgeber","Guides","Guías","Порадники","Průvodci"],
+    ["Zeskanuj telefonem","Scan with your phone","Mit dem Handy scannen","Scannez avec votre téléphone","Escanea con el móvil","Скануйте телефоном","Naskenujte telefonem"],
+    ["Kod QR prowadzący do Domowika w Google Play","QR code linking to Domowik on Google Play","QR-Code zu Domowik bei Google Play","QR code vers Domowik sur Google Play","Código QR que lleva a Domowik en Google Play","QR-код, що веде до Domowik у Google Play","QR kód vedoucí na Domowik v Google Play"],
   ];
 
   const languageNames = {
