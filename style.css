@@ -1377,6 +1377,48 @@ p {
   bottom: -300px;
 }
 
+/* Language picker: real links to per-language pages, so each locale is a
+   crawlable URL rather than a client-side swap. */
+.lang-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.lang-links a {
+  min-height: 32px;
+  padding: 5px 8px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, .86);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: .72rem;
+  font-weight: 750;
+  line-height: 1.4;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-links a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.lang-links a[aria-current="page"] {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+@media (max-width: 720px) {
+  .lang-links a:not([aria-current="page"]) {
+    padding: 5px 6px;
+    font-size: .68rem;
+  }
+}
+
 /* Only useful on a pointer device; on a phone the reader already holds the
    device that would scan it, and the button above is right there. */
 .cta-qr {

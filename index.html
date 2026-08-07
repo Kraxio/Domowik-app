@@ -40,14 +40,14 @@
   <meta name="twitter:image:alt" content="Domowik — cały dom w jednym miejscu">
   <title>Domowik — cały dom w jednym miejscu</title>
   <link rel="canonical" href="https://domowik.dev/">
-  <link rel="alternate" hreflang="pl" href="https://domowik.dev/?lang=pl">
-  <link rel="alternate" hreflang="en" href="https://domowik.dev/?lang=en">
-  <link rel="alternate" hreflang="de" href="https://domowik.dev/?lang=de">
-  <link rel="alternate" hreflang="fr" href="https://domowik.dev/?lang=fr">
-  <link rel="alternate" hreflang="es" href="https://domowik.dev/?lang=es">
-  <link rel="alternate" hreflang="uk" href="https://domowik.dev/?lang=uk">
-  <link rel="alternate" hreflang="cs" href="https://domowik.dev/?lang=cs">
-  <link rel="alternate" hreflang="x-default" href="https://domowik.dev/?lang=pl">
+  <link rel="alternate" hreflang="pl" href="https://domowik.dev/">
+  <link rel="alternate" hreflang="en" href="https://domowik.dev/en/">
+  <link rel="alternate" hreflang="de" href="https://domowik.dev/de/">
+  <link rel="alternate" hreflang="fr" href="https://domowik.dev/fr/">
+  <link rel="alternate" hreflang="es" href="https://domowik.dev/es/">
+  <link rel="alternate" hreflang="uk" href="https://domowik.dev/uk/">
+  <link rel="alternate" hreflang="cs" href="https://domowik.dev/cs/">
+  <link rel="alternate" hreflang="x-default" href="https://domowik.dev/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
@@ -135,7 +135,6 @@
       ]
     }
   </script>
-  <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
   <noscript>
     <style>
@@ -164,18 +163,15 @@
         <span>Domowik</span>
       </a>
 
-      <label class="language-picker">
-        <span class="sr-only">Język strony</span>
-        <select data-language aria-label="Język strony">
-          <option value="pl">PL</option>
-          <option value="en">EN</option>
-          <option value="de">DE</option>
-          <option value="fr">FR</option>
-          <option value="es">ES</option>
-          <option value="uk">UK</option>
-          <option value="cs">CS</option>
-        </select>
-      </label>
+      <nav class="language-picker lang-links" aria-label="Język strony">
+        <a href="https://domowik.dev/" hreflang="pl" aria-current="page">PL</a>
+        <a href="https://domowik.dev/en/" hreflang="en">EN</a>
+        <a href="https://domowik.dev/de/" hreflang="de">DE</a>
+        <a href="https://domowik.dev/fr/" hreflang="fr">FR</a>
+        <a href="https://domowik.dev/es/" hreflang="es">ES</a>
+        <a href="https://domowik.dev/uk/" hreflang="uk">UK</a>
+        <a href="https://domowik.dev/cs/" hreflang="cs">CS</a>
+      </nav>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
         <span class="sr-only">Otwórz menu</span>
