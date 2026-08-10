@@ -113,15 +113,20 @@
           "applicationCategory": "LifestyleApplication",
           "applicationSubCategory": "Home organization",
           "operatingSystem": "Android",
-          "softwareVersion": "1.26.0",
+          "softwareVersion": "1.45.24",
           "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"],
           "featureList": [
-            "Katalog domowych przedmiotów",
-            "Terminy i kalendarz",
-            "Finanse domowe",
-            "Listy zakupów i pakowania",
-            "Zadania i nawyki",
-            "Lokalny backup i eksport"
+            "Katalog domowych przedmiotów ze zdjęciami i paragonami",
+            "Historia serwisów i napraw przedmiotu",
+            "Terminy, gwarancje i kalendarz z przypomnieniami",
+            "Finanse domowe z kontami i płatnościami cyklicznymi",
+            "Listy zakupów, pakowania i zadania",
+            "Notatki z checklistami i rysunkiem odręcznym",
+            "Nawyki z seriami i statystykami",
+            "Lokalny backup, eksport JSON, CSV i ICS",
+            "Kopia zabezpieczona hasłem",
+            "Blokada aplikacji kodem PIN lub biometrią",
+            "Widżet na ekranie głównym"
           ],
           "offers": {
             "@type": "Offer",
@@ -293,8 +298,8 @@
             <h2 id="features-title">Porządek, który ma kontekst</h2>
           </div>
           <p>
-            Domowik nie jest tylko listą. Przedmiot może mieć zdjęcia, dane zakupu
-            i własne terminy, a domowe finanse oraz listy pozostają obok.
+            Tablica główna pokazuje, co wymaga uwagi. Rzeczy, terminy, finanse,
+            listy, notatki i nawyki pozostają połączone w jednym miejscu.
           </p>
         </div>
 
@@ -303,11 +308,11 @@
             <div class="feature-copy">
               <span class="feature-icon" aria-hidden="true">📦</span>
               <h3>Katalog domowych rzeczy</h3>
-              <p>Wyszukuj, filtruj i grupuj przedmioty. Dodawaj zdjęcia, lokalizacje, kategorie, wartość oraz dane zakupu.</p>
+              <p>Wyszukuj, filtruj i grupuj przedmioty. Dodawaj zdjęcia, osobny paragon, notatki, historię serwisów oraz dane zakupu.</p>
               <ul class="mini-list">
                 <li>Widok listy i siatki</li>
-                <li>Podsumowanie wartości</li>
-                <li>Do 6 zdjęć w Premium</li>
+                <li>Podsumowanie wartości i historia przedmiotu</li>
+                <li>Do 6 zdjęć rzeczy + paragon w Premium</li>
               </ul>
             </div>
             <div class="feature-visual crop-items" aria-hidden="true">
@@ -318,7 +323,7 @@
           <article class="feature-card feature-deadlines">
             <span class="feature-icon" aria-hidden="true">📅</span>
             <h3>Terminy i kalendarz</h3>
-            <p>Gwarancje, przeglądy, opłaty i inne ważne daty — ogólne albo przypisane do konkretnej rzeczy.</p>
+            <p>Gwarancje, przeglądy, opłaty i zadania w jednym miejscu — z kalendarzem, przypomnieniami i zakresem dat.</p>
             <div class="deadline-demo" aria-hidden="true">
               <span class="demo-date"><strong>22</strong> LIP</span>
               <span><strong>Przegląd samochodu</strong><small>jutro, 15:00</small></span>
@@ -329,7 +334,7 @@
           <article class="feature-card feature-finance">
             <span class="feature-icon" aria-hidden="true">📊</span>
             <h3>Finanse domowe</h3>
-            <p>Konta, wpływy, wydatki, kategorie i wykresy dają szybki obraz domowego budżetu.</p>
+            <p>Konta, bilans, wykresy i filtry pokazują domowy budżet. Zakup rzeczy lub koszt serwisu dodasz bez przepisywania danych.</p>
             <div class="bars" aria-hidden="true">
               <i style="--h: 36%"></i><i style="--h: 58%"></i><i style="--h: 43%"></i>
               <i style="--h: 78%"></i><i style="--h: 54%"></i><i style="--h: 92%"></i>
@@ -339,7 +344,7 @@
           <article class="feature-card feature-lists">
             <span class="feature-icon" aria-hidden="true">🛒</span>
             <h3>Listy na co dzień</h3>
-            <p>Zakupy według sklepów, pakowanie z postępem i zadania z datą, adresem oraz notatką.</p>
+            <p>Zakupy według sklepów, pakowanie dla wielu osób oraz kolorowe notatki, checklisty i rysunki odręczne.</p>
             <div class="check-list-demo" aria-hidden="true">
               <span><i>✓</i><s>Pieczywo</s></span>
               <span><i></i>Mleko</span>
@@ -360,7 +365,7 @@
           <article class="feature-card feature-backup">
             <span class="feature-icon" aria-hidden="true">↗</span>
             <h3>Backup i eksport</h3>
-            <p>Twórz pełną kopię JSON, eksportuj wybrane moduły, przedmioty do CSV i terminy do ICS.</p>
+            <p>Twórz kopie z opcjonalnym hasłem, scalaj dane bez duplikatów i udostępniaj wybrane moduły bez konta ani chmury.</p>
             <div class="file-chips" aria-hidden="true"><span>JSON</span><span>CSV</span><span>ICS</span></div>
           </article>
         </div>
@@ -446,6 +451,18 @@
               <span aria-hidden="true">↗</span>
               <div><h3>Otwarty eksport</h3><p>Zapisuj dane jako JSON, CSV lub ICS i przenoś je świadomie.</p></div>
             </article>
+            <article>
+              <span aria-hidden="true">🔒</span>
+              <div><h3>Blokada aplikacji</h3><p>Dostęp możesz zabezpieczyć kodem PIN lub odciskiem palca.</p></div>
+            </article>
+            <article>
+              <span aria-hidden="true">🔑</span>
+              <div><h3>Kopia z hasłem</h3><p>Plik kopii możesz opcjonalnie zaszyfrować hasłem przed przekazaniem dalej.</p></div>
+            </article>
+            <article>
+              <span aria-hidden="true">📤</span>
+              <div><h3>Udostępnianie bez chmury</h3><p>Wyślij wybrane dane dowolną aplikacją — odbiorca scala je u siebie.</p></div>
+            </article>
           </div>
           <p class="privacy-note">
             <strong>Ważne:</strong> dane nie synchronizują się automatycznie.
@@ -473,10 +490,10 @@
             <p class="plan-description">Najważniejsze moduły do codziennej organizacji domu.</p>
             <ul>
               <li><span>✓</span> Do 20 przedmiotów</li>
-              <li><span>✓</span> Do 2 zdjęć na przedmiot</li>
+              <li><span>✓</span> 1 zdjęcie rzeczy + osobny paragon</li>
               <li><span>✓</span> Terminy i kalendarz</li>
               <li><span>✓</span> Finanse z jednym kontem</li>
-              <li><span>✓</span> Zakupy, pakowanie i zadania</li>
+              <li><span>✓</span> Zakupy, pakowanie, zadania i notatki</li>
               <li><span>✓</span> Backup oraz eksport</li>
             </ul>
           </article>
@@ -488,11 +505,11 @@
             <p class="plan-description">Rozszerzone możliwości dla większej liczby rzeczy, danych i codziennych planów.</p>
             <ul>
               <li><span>✓</span> Bez limitu liczby przedmiotów</li>
-              <li><span>✓</span> Do 6 zdjęć na przedmiot</li>
-              <li><span>✓</span> Wiele kont i szersza historia finansów</li>
-              <li><span>✓</span> Zapisane listy zakupów i pakowania</li>
-              <li><span>✓</span> Nawyki, serie i statystyki</li>
-              <li><span>✓</span> Dodatkowe szablony i eksport finansów</li>
+              <li><span>✓</span> Do 6 zdjęć rzeczy + osobny paragon</li>
+              <li><span>✓</span> Wiele kont i połączenie rzeczy z finansami</li>
+              <li><span>✓</span> Historia serwisów i napraw przedmiotu</li>
+              <li><span>✓</span> Nawyki, serie, statystyki i oszczędności</li>
+              <li><span>✓</span> Zapisane listy i pakowanie dla wielu osób</li>
             </ul>
             <a class="button button-primary button-block" href="https://play.google.com/store/apps/details?id=pl.domowik.app">Zobacz w Google Play</a>
           </article>
@@ -533,6 +550,16 @@
           <details>
             <summary>W jakich językach działa aplikacja?<span aria-hidden="true">+</span></summary>
             <p>Interfejs zawiera wersje: polską, angielską, niemiecką, francuską, hiszpańską, ukraińską i czeską.</p>
+          </details>
+
+          <details>
+            <summary>Czy mogę zabezpieczyć dostęp do aplikacji?<span aria-hidden="true">+</span></summary>
+            <p>Tak. Wejście do aplikacji możesz zablokować kodem PIN lub odciskiem palca. Dodatkowo plik kopii zapasowej możesz zaszyfrować hasłem, zanim przekażesz go dalej.</p>
+          </details>
+
+          <details>
+            <summary>Czy Domowik przypomina o terminach?<span aria-hidden="true">+</span></summary>
+            <p>Tak. Do każdego terminu ustawisz przypomnienie z wyprzedzeniem — w dniu zdarzenia albo 1, 3, 7 lub 14 dni wcześniej. Powiadomienia działają lokalnie, a kliknięcie otwiera konkretny termin.</p>
           </details>
         </div>
       </div>
