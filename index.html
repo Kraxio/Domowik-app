@@ -14,7 +14,7 @@
   <meta name="color-scheme" content="light">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#4f46e5">
-  <meta name="description" content="Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.">
+  <meta name="description" content="Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Działa offline, bez konta i bez chmury — dane zostają w pamięci telefonu.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Domowik">
   <meta property="og:locale" content="pl_PL">
@@ -91,7 +91,7 @@
           "url": "https://domowik.dev/",
           "name": "Domowik",
           "alternateName": "Domowik — organizer domu",
-          "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.",
+          "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Działa offline, bez konta i bez chmury — dane zostają w pamięci telefonu.",
           "publisher": { "@id": "https://domowik.dev/#organization" },
           "inLanguage": ["pl", "en", "de", "fr", "es", "uk", "cs"]
         },
@@ -110,7 +110,7 @@
             "https://domowik.dev/screens/finance.webp",
             "https://domowik.dev/screens/history.webp"
           ],
-          "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Bez obowiązkowego konta, z danymi przechowywanymi lokalnie.",
+          "description": "Domowik porządkuje domowe rzeczy, terminy, finanse i listy. Działa offline, bez konta i bez chmury — dane zostają w pamięci telefonu.",
           "applicationCategory": "LifestyleApplication",
           "applicationSubCategory": "Home organization",
           "operatingSystem": "Android",
@@ -437,8 +437,15 @@
           <p class="eyebrow">Prywatność z natury</p>
           <h2 id="privacy-title">Twoje dane zostają pod Twoją kontrolą</h2>
           <p class="lead">
-            Domowik nie ma własnego backendu do przechowywania Twojej domowej
-            bazy. Nie musisz zakładać konta, a aplikacja może działać offline.
+            Domowik nie ma serwera, na który mógłby wysłać Twoje dane. Nie ma
+            konta do założenia, reklam ani narzędzi analitycznych. Spis rzeczy,
+            kwoty i zdjęcia zostają w pamięci telefonu — także wtedy, gdy
+            wyłączysz internet.
+          </p>
+          <p class="privacy-claim">
+            Nie zbieramy niczego, więc nie mamy czego stracić ani komu
+            przekazać. To nie deklaracja — to konsekwencja tego, jak aplikacja
+            jest zbudowana.
           </p>
           <div class="privacy-points">
             <article>
@@ -464,6 +471,18 @@
             <article>
               <span aria-hidden="true">📤</span>
               <div><h3>Udostępnianie bez chmury</h3><p>Wyślij wybrane dane dowolną aplikacją — odbiorca scala je u siebie.</p></div>
+            </article>
+            <article>
+              <span aria-hidden="true">🚫</span>
+              <div><h3>Bez reklam i analityki</h3><p>Aplikacja nie zawiera reklam ani narzędzi śledzących. Nie profilujemy Cię, bo nie mamy jak.</p></div>
+            </article>
+            <article>
+              <span aria-hidden="true">✈️</span>
+              <div><h3>Działa w trybie samolotowym</h3><p>Katalog, terminy, finanse i listy działają bez połączenia z internetem.</p></div>
+            </article>
+            <article>
+              <span aria-hidden="true">#</span>
+              <div><h3>PIN zapisany jako skrót</h3><p>Kod przechowujemy jako nieodwracalny skrót, a biometrię weryfikuje sam Android.</p></div>
             </article>
           </div>
           <p class="privacy-note">
@@ -557,6 +576,11 @@
           <details>
             <summary>Czy mogę zabezpieczyć dostęp do aplikacji?<span aria-hidden="true">+</span></summary>
             <p>Tak. Wejście do aplikacji możesz zablokować kodem PIN lub odciskiem palca. Dodatkowo plik kopii zapasowej możesz zaszyfrować hasłem, zanim przekażesz go dalej.</p>
+          </details>
+
+          <details>
+            <summary>Czy Domowik zbiera jakiekolwiek dane o mnie?<span aria-hidden="true">+</span></summary>
+            <p>Nie. Aplikacja nie ma serwera, na który mogłaby cokolwiek wysłać, nie zawiera reklam ani narzędzi analitycznych. Wszystko, co wpiszesz — przedmioty, kwoty, zdjęcia, terminy — zapisuje się w pamięci telefonu i nie opuszcza go, dopóki sam nie wyeksportujesz kopii. Szczegóły znajdziesz w <a href="/polityka.html">polityce prywatności</a>.</p>
           </details>
 
           <details>

@@ -1377,6 +1377,14 @@ p {
   bottom: -300px;
 }
 
+.privacy-claim {
+  margin-top: -8px;
+  padding-left: 16px;
+  border-left: 3px solid var(--primary);
+  color: var(--text);
+  font-weight: 600;
+}
+
 /* Language picker: real links to per-language pages, so each locale is a
    crawlable URL rather than a client-side swap. */
 .lang-links {
