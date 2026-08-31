@@ -1550,6 +1550,28 @@ p {
   border-color: var(--primary);
 }
 
+/* Below the two-column feature grid (760px) the large card is a single narrow
+   column: its copy wraps tall and the absolutely-positioned screenshot used to
+   overlap the text. Put the screenshot back in normal flow below the copy. The
+   card padding here is 27px, so the negative margins bleed it to the edges. */
+@media (max-width: 759px) {
+  .feature-large {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .feature-large .feature-visual {
+    position: static;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    height: auto;
+    margin: 24px -27px -27px;
+    border-width: 6px 0 0;
+    border-radius: 0;
+  }
+}
+
 @media (max-width: 720px) {
   /* On a phone seven boxed language chips wrap onto a second row and collide
      with the menu button. Collapse them into one tight, borderless row of
