@@ -1663,6 +1663,30 @@ p {
   font-size: .9rem;
 }
 
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.footer-social-link {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-content: center;
+  color: #c6cad4;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid #2a3040;
+  border-radius: 10px;
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease;
+}
+
+.footer-social-link:hover {
+  color: #fff;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
 .footer-links {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
