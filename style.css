@@ -1623,7 +1623,9 @@ p {
 
   .feature-lists,
   .feature-theme,
-  .feature-backup {
+  .feature-backup,
+  .feature-report,
+  .feature-transfer {
     grid-column: span 2;
   }
 
