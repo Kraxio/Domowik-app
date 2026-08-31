@@ -713,6 +713,86 @@ p {
   transform: translateX(3px);
 }
 
+/* Video section — click-to-load YouTube embed. The poster and play button
+   ship with the page; the iframe (youtube-nocookie) loads only on click, so a
+   plain visit pulls nothing from Google and stays fast and private. */
+.video-section {
+  padding-top: 20px;
+}
+
+.video-embed {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.video-play {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.video-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform .18s ease, filter .18s ease;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, .4));
+}
+
+.video-play-btn .yt-shape {
+  transition: fill .18s ease;
+}
+
+.video-play:hover .video-play-btn {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.video-play:hover .yt-shape {
+  fill: #f00;
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-fallback {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: .92rem;
+}
+
+.video-fallback a {
+  color: var(--brand-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.video-fallback a:hover {
+  text-decoration: underline;
+}
+
 .section-heading {
   margin-bottom: 38px;
 }

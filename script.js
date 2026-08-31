@@ -151,3 +151,20 @@ if (heroSlider && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
     start();
   }
 }
+
+// Click-to-load YouTube: nothing loads from Google until the visitor hits play,
+// then we swap in a privacy-friendly nocookie iframe that autoplays.
+document.querySelectorAll('.video-embed [data-yt-play]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const embed = btn.closest('.video-embed');
+    const id = embed?.getAttribute('data-yt');
+    if (!id) return;
+    const title = embed.getAttribute('data-yt-title') || 'YouTube';
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    iframe.title = title;
+    iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    embed.replaceChildren(iframe);
+  });
+});
