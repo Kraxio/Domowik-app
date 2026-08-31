@@ -146,7 +146,12 @@
           </div>
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
-            <img src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" alt="Catálogo de objetos de Domowik con categorías, ubicaciones y valores">
+            <div class="hero-shots" data-hero-slider>
+              <img class="hero-shot is-active" src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Catálogo de objetos en Domowik con categorías, ubicaciones y valor">
+              <img class="hero-shot" src="/screens/en-deadlines.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+              <img class="hero-shot" src="/screens/en-finance.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+              <img class="hero-shot" src="/screens/en-shopping.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+            </div>
           </figure>
         </div>
       </div>
@@ -321,7 +326,7 @@
 
         <div class="screen-controls" aria-label="Controles de la galería">
           <button type="button" data-gallery-prev="" aria-label="Captura anterior">←</button>
-          <span data-gallery-status="" aria-live="polite">1 / 6</span>
+          <span data-gallery-status="" aria-live="polite">1 / 7</span>
           <button type="button" data-gallery-next="" aria-label="Captura siguiente">→</button>
         </div>
 
@@ -350,7 +355,11 @@
             <div class="screen-caption"><strong>Cada reparación registrada</strong><span>Cronología y costes</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-history.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Cronología del objeto con servicios, reparaciones y compra"></div>
           </figure>
-        </div>
+                  <figure class="screen-slide screen-slide-doc">
+            <div class="screen-caption"><strong>Prueba para lo inesperado</strong><span>Informe PDF de inventario</span></div>
+            <div class="screen-doc"><img src="/screens/report-en.webp" width="660" height="900" loading="lazy" decoding="async" alt="Informe PDF de inventario desde Domowik: objetos con valor, fechas, historial de reparaciones y resumen — un documento para la aseguradora"></div>
+          </figure>
+</div>
       </div>
     </section>
 

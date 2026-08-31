@@ -125,3 +125,29 @@ updateGalleryStatus();
 
 const year = document.querySelector('[data-year]');
 if (year) year.textContent = String(new Date().getFullYear());
+
+// Hero device screen: cross-fade through the app views every few seconds.
+// Pauses on hover and when the tab is hidden; honours reduced-motion.
+const heroSlider = document.querySelector('[data-hero-slider]');
+if (heroSlider && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const shots = [...heroSlider.querySelectorAll('.hero-shot')];
+  if (shots.length > 1) {
+    let current = 0;
+    let timer = null;
+    const advance = () => {
+      shots[current].classList.remove('is-active');
+      current = (current + 1) % shots.length;
+      shots[current].classList.add('is-active');
+    };
+    const start = () => {
+      if (timer === null && !document.hidden) timer = window.setInterval(advance, 4000);
+    };
+    const stop = () => {
+      if (timer !== null) { window.clearInterval(timer); timer = null; }
+    };
+    heroSlider.addEventListener('mouseenter', stop);
+    heroSlider.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    start();
+  }
+}

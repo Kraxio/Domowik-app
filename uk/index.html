@@ -146,7 +146,12 @@
           </div>
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
-            <img src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" alt="Каталог предметів Domowik із категоріями, місцями та вартістю">
+            <div class="hero-shots" data-hero-slider>
+              <img class="hero-shot is-active" src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Каталог речей у Domowik з категоріями, місцями та вартістю">
+              <img class="hero-shot" src="/screens/en-deadlines.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+              <img class="hero-shot" src="/screens/en-finance.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+              <img class="hero-shot" src="/screens/en-shopping.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+            </div>
           </figure>
         </div>
       </div>
@@ -321,7 +326,7 @@
 
         <div class="screen-controls" aria-label="Керування галереєю">
           <button type="button" data-gallery-prev="" aria-label="Попередній знімок">←</button>
-          <span data-gallery-status="" aria-live="polite">1 / 6</span>
+          <span data-gallery-status="" aria-live="polite">1 / 7</span>
           <button type="button" data-gallery-next="" aria-label="Наступний знімок">→</button>
         </div>
 
@@ -350,7 +355,11 @@
             <div class="screen-caption"><strong>Кожен ремонт записано</strong><span>Хронологія та витрати</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-history.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Хронологія речі із сервісами, ремонтами та покупкою"></div>
           </figure>
-        </div>
+                  <figure class="screen-slide screen-slide-doc">
+            <div class="screen-caption"><strong>Доказ на чорний день</strong><span>PDF-звіт майна</span></div>
+            <div class="screen-doc"><img src="/screens/report-en.webp" width="660" height="900" loading="lazy" decoding="async" alt="PDF-звіт майна з Domowik: речі з вартістю, датами, історією ремонтів і підсумком — документ для страховика"></div>
+          </figure>
+</div>
       </div>
     </section>
 

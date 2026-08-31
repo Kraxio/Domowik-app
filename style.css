@@ -518,6 +518,31 @@ p {
   transform: rotate(1.5deg);
 }
 
+/* Hero device screen cross-fades through several app views. The first shot is
+   in normal flow and holds the aspect ratio; the rest stack on top and fade. */
+.hero-shots {
+  position: relative;
+}
+
+.hero-shot {
+  width: 100%;
+  border-radius: 25px;
+}
+
+.hero-shot:not(.is-active) {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.hero-shot {
+  transition: opacity .8s ease;
+}
+
+.hero-shot.is-active {
+  opacity: 1;
+}
+
 .phone-speaker {
   position: absolute;
   z-index: 3;
@@ -1108,6 +1133,25 @@ p {
 
 .phone-gallery img {
   border-radius: 21px;
+}
+
+/* Report slide — the PDF is an A4 document, not a phone screen, so it gets a
+   paper card treatment instead of the device frame. */
+.screen-slide-doc {
+  flex-basis: min(82vw, 360px);
+}
+
+.screen-doc {
+  padding: 10px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .38);
+}
+
+.screen-doc img {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
 }
 
 .privacy {

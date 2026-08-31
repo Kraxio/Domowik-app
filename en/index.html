@@ -146,7 +146,12 @@
           </div>
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
-            <img src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" alt="Domowik item catalog with categories, locations and item values">
+            <div class="hero-shots" data-hero-slider>
+              <img class="hero-shot is-active" src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Item catalogue in the Domowik app with categories, locations and item value">
+              <img class="hero-shot" src="/screens/en-deadlines.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+              <img class="hero-shot" src="/screens/en-finance.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+              <img class="hero-shot" src="/screens/en-shopping.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
+            </div>
           </figure>
         </div>
       </div>
@@ -321,7 +326,7 @@
 
         <div class="screen-controls" aria-label="Gallery controls">
           <button type="button" data-gallery-prev="" aria-label="Previous screenshot">←</button>
-          <span data-gallery-status="" aria-live="polite">1 / 6</span>
+          <span data-gallery-status="" aria-live="polite">1 / 7</span>
           <button type="button" data-gallery-next="" aria-label="Next screenshot">→</button>
         </div>
 
@@ -350,7 +355,11 @@
             <div class="screen-caption"><strong>Every repair on record</strong><span>Item timeline and costs</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-history.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Item timeline with services, repairs and purchase"></div>
           </figure>
-        </div>
+                  <figure class="screen-slide screen-slide-doc">
+            <div class="screen-caption"><strong>Proof for a rainy day</strong><span>PDF inventory report</span></div>
+            <div class="screen-doc"><img src="/screens/report-en.webp" width="660" height="900" loading="lazy" decoding="async" alt="PDF inventory report from Domowik: items with value, dates, repair history and a summary — a document for your insurer"></div>
+          </figure>
+</div>
       </div>
     </section>
 
