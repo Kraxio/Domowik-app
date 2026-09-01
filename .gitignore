@@ -1,2 +1,5 @@
 # Źródłowe zrzuty (PNG) — na stronie używamy zoptymalizowanych .webp
 screens/*.png
+
+# Materiały źródłowe/reklamowe (nie część witryny)
+screens/reklama/

@@ -1900,8 +1900,28 @@ p {
 
 .footer-social {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
   margin-top: 18px;
+}
+
+.footer-badge {
+  display: inline-flex;
+  line-height: 0;
+  border-radius: 8px;
+  opacity: .92;
+  transition: opacity .18s ease;
+}
+
+.footer-badge:hover {
+  opacity: 1;
+}
+
+.footer-badge img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
 }
 
 .footer-social-link {
