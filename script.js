@@ -95,9 +95,14 @@ let dragStartX = 0;
 let dragStartScroll = 0;
 let isDragging = false;
 
+let dragMoved = 0;
+let dragTarget = null;
+
 gallery?.addEventListener('pointerdown', (event) => {
   if (event.pointerType === 'touch') return;
   isDragging = true;
+  dragMoved = 0;
+  dragTarget = event.target;
   dragStartX = event.clientX;
   dragStartScroll = gallery.scrollLeft;
   gallery.classList.add('dragging');
@@ -106,6 +111,7 @@ gallery?.addEventListener('pointerdown', (event) => {
 
 gallery?.addEventListener('pointermove', (event) => {
   if (!isDragging) return;
+  dragMoved = Math.max(dragMoved, Math.abs(event.clientX - dragStartX));
   gallery.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
 });
 
@@ -115,6 +121,13 @@ function stopGalleryDrag(event) {
   gallery?.classList.remove('dragging');
   if (gallery?.hasPointerCapture(event.pointerId)) {
     gallery.releasePointerCapture(event.pointerId);
+  }
+  // A near-stationary press on a screenshot is a click, not a drag — because the
+  // gallery captured the pointer, the image never gets its own click event, so
+  // we open the lightbox from here instead.
+  if (dragMoved <= 8 && dragTarget) {
+    const img = dragTarget.closest && dragTarget.closest('.screen-slide img');
+    if (img) gallery.dispatchEvent(new CustomEvent('domowik:zoom', { detail: img }));
   }
 }
 
@@ -218,6 +231,21 @@ document.querySelectorAll('.video-embed [data-yt-play]').forEach((btn) => {
   galleryImgs.forEach((img) => {
     const slide = img.closest('.screen-slide');
     if (slide) slide.classList.add('screen-slide-zoomable');
-    img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt));
   });
+
+  const galleryEl = document.querySelector('[data-gallery]');
+  if (galleryEl) {
+    // Mouse: the drag handler captures the pointer, so it tells us when a press
+    // was actually a click via this custom event.
+    galleryEl.addEventListener('domowik:zoom', (e) => {
+      const img = e.detail;
+      if (img) open(img.currentSrc || img.src, img.alt);
+    });
+    // Touch (and any case with no pointer capture): a normal click still fires.
+    galleryEl.addEventListener('click', (e) => {
+      if (galleryEl.classList.contains('dragging')) return;
+      const img = e.target.closest('.screen-slide img');
+      if (img) open(img.currentSrc || img.src, img.alt);
+    });
+  }
 })();
