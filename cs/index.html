@@ -163,7 +163,8 @@
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
             <div class="hero-shots" data-hero-slider>
-              <img class="hero-shot is-active" src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Katalog věcí v Domowiku s kategoriemi, umístěním a hodnotou">
+              <img class="hero-shot is-active" src="/screens/en-dashboard.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Hlavní přehled Domowiku: celková hodnota, nadcházející termíny, záruky a co vyžaduje pozornost">
+              <img class="hero-shot" src="/screens/en-items.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-deadlines.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-finance.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-shopping.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
@@ -359,12 +360,16 @@
 
         <div class="screen-controls" aria-label="Ovládání galerie">
           <button type="button" data-gallery-prev="" aria-label="Předchozí snímek">←</button>
-          <span data-gallery-status="" aria-live="polite">1 / 7</span>
+          <span data-gallery-status="" aria-live="polite">1 / 10</span>
           <button type="button" data-gallery-next="" aria-label="Další snímek">→</button>
         </div>
 
         <div class="screen-gallery" data-gallery="" tabindex="0" aria-label="Snímky aplikace">
-          <figure class="screen-slide">
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Váš domov ve zkratce</strong><span>Přehled toho, co vyžaduje pozornost</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-dashboard.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Hlavní přehled Domowiku s celkovou hodnotou, termíny, zárukami a sekcí „vyžaduje pozornost”"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Vědět, co máte</strong><span>Katalog předmětů</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-items.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Katalog předmětů s kategoriemi, umístěním a hodnotami"></div>
           </figure>
@@ -384,7 +389,15 @@
             <div class="screen-caption"><strong>Nákupy bez chaosu</strong><span>Produkty podle obchodů</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-shopping.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Nákupní seznam s produkty seskupenými podle obchodů"></div>
           </figure>
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Balení bez zapomínání</strong><span>Seznam pro více osob</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-packing.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Seznam balení v Domowiku se sloupci osob a stavy: sbaleno, sbalit, není třeba"></div>
+          </figure>
           <figure class="screen-slide">
+            <div class="screen-caption"><strong>Dobré každodenní návyky</strong><span>Série a připomínky</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-habits.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Návyky v Domowiku s denním odškrtáváním a sériemi dnů"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Každá oprava zaznamenána</strong><span>Časová osa a náklady</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-history.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Časová osa předmětu se servisy, opravami a nákupem"></div>
           </figure>

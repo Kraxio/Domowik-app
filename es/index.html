@@ -163,7 +163,8 @@
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
             <div class="hero-shots" data-hero-slider>
-              <img class="hero-shot is-active" src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Catálogo de objetos en Domowik con categorías, ubicaciones y valor">
+              <img class="hero-shot is-active" src="/screens/en-dashboard.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Panel principal de Domowik: valor total, próximos vencimientos, garantías y lo que requiere atención">
+              <img class="hero-shot" src="/screens/en-items.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-deadlines.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-finance.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-shopping.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
@@ -359,12 +360,16 @@
 
         <div class="screen-controls" aria-label="Controles de la galería">
           <button type="button" data-gallery-prev="" aria-label="Captura anterior">←</button>
-          <span data-gallery-status="" aria-live="polite">1 / 7</span>
+          <span data-gallery-status="" aria-live="polite">1 / 10</span>
           <button type="button" data-gallery-next="" aria-label="Captura siguiente">→</button>
         </div>
 
         <div class="screen-gallery" data-gallery="" tabindex="0" aria-label="Capturas de la aplicación">
-          <figure class="screen-slide">
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Tu hogar de un vistazo</strong><span>Un panel de lo que requiere atención</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-dashboard.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Panel principal de Domowik con valor total, vencimientos, garantías y una sección de pendientes"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Saber qué tienes</strong><span>Catálogo de objetos</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-items.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Catálogo de objetos con categorías, ubicaciones y valores"></div>
           </figure>
@@ -384,7 +389,15 @@
             <div class="screen-caption"><strong>Compras sin caos</strong><span>Productos agrupados por tienda</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-shopping.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Lista de compras con productos agrupados por tienda"></div>
           </figure>
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Haz el equipaje sin olvidos</strong><span>Una lista para varias personas</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-packing.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Lista de equipaje en Domowik con columnas por persona y estados: hecho, por hacer, no necesario"></div>
+          </figure>
           <figure class="screen-slide">
+            <div class="screen-caption"><strong>Buenos hábitos a diario</strong><span>Rachas y recordatorios</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-habits.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Hábitos en Domowik con marcado diario y rachas de días"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Cada reparación registrada</strong><span>Cronología y costes</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-history.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Cronología del objeto con servicios, reparaciones y compra"></div>
           </figure>

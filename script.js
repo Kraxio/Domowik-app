@@ -168,3 +168,56 @@ document.querySelectorAll('.video-embed [data-yt-play]').forEach((btn) => {
     embed.replaceChildren(iframe);
   });
 });
+
+// Gallery lightbox: click a screenshot to see it enlarged. The overlay is built
+// once on first use; Escape or a click on the backdrop closes it.
+(function initLightbox() {
+  const galleryImgs = document.querySelectorAll('.screen-slide img');
+  if (!galleryImgs.length) return;
+
+  let overlay, overlayImg, lastFocused;
+
+  function buildOverlay() {
+    overlay = document.createElement('div');
+    overlay.className = 'lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.hidden = true;
+    const closeLabel = document.documentElement.lang === 'pl' ? 'Zamknij podgląd' : 'Close preview';
+    overlay.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="' + closeLabel + '">×</button>' +
+      '<img alt="">';
+    overlayImg = overlay.querySelector('img');
+    overlay.querySelector('.lightbox-close').addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.body.appendChild(overlay);
+  }
+
+  function open(src, alt) {
+    if (!overlay) buildOverlay();
+    lastFocused = document.activeElement;
+    overlayImg.src = src;
+    overlayImg.alt = alt || '';
+    overlay.hidden = false;
+    document.body.classList.add('nav-open');
+    overlay.querySelector('.lightbox-close').focus();
+  }
+
+  function close() {
+    if (!overlay) return;
+    overlay.hidden = true;
+    overlayImg.removeAttribute('src');
+    document.body.classList.remove('nav-open');
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay && !overlay.hidden) close();
+  });
+
+  galleryImgs.forEach((img) => {
+    const slide = img.closest('.screen-slide');
+    if (slide) slide.classList.add('screen-slide-zoomable');
+    img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt));
+  });
+})();

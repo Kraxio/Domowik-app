@@ -163,7 +163,8 @@
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
             <div class="hero-shots" data-hero-slider>
-              <img class="hero-shot is-active" src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Каталог речей у Domowik з категоріями, місцями та вартістю">
+              <img class="hero-shot is-active" src="/screens/en-dashboard.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Головна панель Domowik: загальна вартість, найближчі терміни, гарантії та що потребує уваги">
+              <img class="hero-shot" src="/screens/en-items.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-deadlines.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-finance.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-shopping.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
@@ -359,12 +360,16 @@
 
         <div class="screen-controls" aria-label="Керування галереєю">
           <button type="button" data-gallery-prev="" aria-label="Попередній знімок">←</button>
-          <span data-gallery-status="" aria-live="polite">1 / 7</span>
+          <span data-gallery-status="" aria-live="polite">1 / 10</span>
           <button type="button" data-gallery-next="" aria-label="Наступний знімок">→</button>
         </div>
 
         <div class="screen-gallery" data-gallery="" tabindex="0" aria-label="Знімки екрана застосунку">
-          <figure class="screen-slide">
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Ваш дім коротко</strong><span>Панель того, що потребує уваги</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-dashboard.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Головна панель Domowik із загальною вартістю, термінами, гарантіями та розділом «потребує уваги»"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Знати, що у вас є</strong><span>Каталог предметів</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-items.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Каталог предметів із категоріями, місцями та вартістю"></div>
           </figure>
@@ -384,7 +389,15 @@
             <div class="screen-caption"><strong>Покупки без хаосу</strong><span>Товари за магазинами</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-shopping.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Список покупок із товарами, згрупованими за магазинами"></div>
           </figure>
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Пакування без забування</strong><span>Список для кількох людей</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-packing.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Список пакування в Domowik зі стовпцями осіб і станами: спаковано, спакувати, не потрібно"></div>
+          </figure>
           <figure class="screen-slide">
+            <div class="screen-caption"><strong>Добрі щоденні звички</strong><span>Серії та нагадування</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-habits.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Звички в Domowik із щоденним відмічанням і серіями днів"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Кожен ремонт записано</strong><span>Хронологія та витрати</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-history.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Хронологія речі із сервісами, ремонтами та покупкою"></div>
           </figure>

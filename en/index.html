@@ -163,7 +163,8 @@
           <figure class="phone phone-hero">
             <div class="phone-speaker" aria-hidden="true"></div>
             <div class="hero-shots" data-hero-slider>
-              <img class="hero-shot is-active" src="/screens/en-items.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Item catalogue in the Domowik app with categories, locations and item value">
+              <img class="hero-shot is-active" src="/screens/en-dashboard.webp" width="660" height="1467" fetchpriority="high" decoding="async" alt="Domowik home dashboard: total value, upcoming deadlines, warranties and what needs attention">
+              <img class="hero-shot" src="/screens/en-items.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-deadlines.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-finance.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
               <img class="hero-shot" src="/screens/en-shopping.webp" width="660" height="1467" aria-hidden="true" loading="lazy" decoding="async" alt="">
@@ -359,12 +360,16 @@
 
         <div class="screen-controls" aria-label="Gallery controls">
           <button type="button" data-gallery-prev="" aria-label="Previous screenshot">←</button>
-          <span data-gallery-status="" aria-live="polite">1 / 7</span>
+          <span data-gallery-status="" aria-live="polite">1 / 10</span>
           <button type="button" data-gallery-next="" aria-label="Next screenshot">→</button>
         </div>
 
         <div class="screen-gallery" data-gallery="" tabindex="0" aria-label="App screenshots">
-          <figure class="screen-slide">
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Your home at a glance</strong><span>A dashboard of what needs attention</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-dashboard.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Domowik home dashboard with total value, deadlines, warranties and a needs-attention section"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Know what you have</strong><span>Item catalog</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-items.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Item catalog with categories, locations and item values"></div>
           </figure>
@@ -384,7 +389,15 @@
             <div class="screen-caption"><strong>Shopping without chaos</strong><span>Products grouped by store</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-shopping.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Shopping list with products grouped by store"></div>
           </figure>
+                    <figure class="screen-slide">
+            <div class="screen-caption"><strong>Packing without forgetting</strong><span>A list for several people</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-packing.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Packing list in Domowik with per-person columns and states: packed, to pack, not needed"></div>
+          </figure>
           <figure class="screen-slide">
+            <div class="screen-caption"><strong>Good daily habits</strong><span>Streaks and reminders</span></div>
+            <div class="phone phone-gallery"><img src="/screens/en-habits.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Habits in Domowik with daily check-off and day streaks"></div>
+          </figure>
+<figure class="screen-slide">
             <div class="screen-caption"><strong>Every repair on record</strong><span>Item timeline and costs</span></div>
             <div class="phone phone-gallery"><img src="/screens/en-history.webp" width="660" height="1467" loading="lazy" decoding="async" alt="Item timeline with services, repairs and purchase"></div>
           </figure>
