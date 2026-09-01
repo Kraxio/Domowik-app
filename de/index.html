@@ -52,7 +52,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preload" href="/screens/en-items.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="/screens/en-dashboard.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://domowik.dev/#organization","name":"Domowik","url":"https://domowik.dev/","description":"Domowik ordnet Gegenstände, Termine, Finanzen und Listen. Funktioniert offline, ohne Konto und ohne Cloud — die Daten bleiben im Telefon.","email":"domowik-app@proton.me","logo":{"@type":"ImageObject","@id":"https://domowik.dev/#logo","url":"https://domowik.dev/icons/pwa-512x512.png","width":512,"height":512,"caption":"Domowik"},"image":{"@id":"https://domowik.dev/#logo"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"domowik-app@proton.me","availableLanguage":["pl","en","de","fr","es","uk","cs"]},"sameAs":["https://play.google.com/store/apps/details?id=pl.domowik.app"]},{"@type":"WebSite","@id":"https://domowik.dev/#website","url":"https://domowik.dev/de/","name":"Domowik","alternateName":"Domowik — Privater Haushaltsorganizer","description":"Domowik ordnet Gegenstände, Termine, Finanzen und Listen. Funktioniert offline, ohne Konto und ohne Cloud — die Daten bleiben im Telefon.","publisher":{"@id":"https://domowik.dev/#organization"},"inLanguage":"de"},{"@type":"SoftwareApplication","@id":"https://domowik.dev/#app","name":"Domowik","alternateName":"Domowik — Privater Haushaltsorganizer","url":"https://domowik.dev/de/","downloadUrl":"https://play.google.com/store/apps/details?id=pl.domowik.app","installUrl":"https://play.google.com/store/apps/details?id=pl.domowik.app","image":"https://domowik.dev/og-image.jpg","screenshot":["https://domowik.dev/screens/en-items.webp","https://domowik.dev/screens/en-deadlines.webp","https://domowik.dev/screens/en-finance.webp"],"description":"Domowik ordnet Gegenstände, Termine, Finanzen und Listen. Funktioniert offline, ohne Konto und ohne Cloud — die Daten bleiben im Telefon.","applicationCategory":"LifestyleApplication","applicationSubCategory":"Home organization","operatingSystem":"Android","softwareVersion":"1.45.24","inLanguage":"de","featureList":["Katalog der Haushaltsgegenstände mit Fotos und Belegen","Service- und Reparaturhistorie je Gegenstand","Termine, Garantien und Kalender mit Erinnerungen","Haushaltsfinanzen mit Konten und wiederkehrenden Zahlungen","Einkaufs-, Pack- und Aufgabenlisten","Notizen mit Checklisten und Freihandzeichnung","Gewohnheiten mit Serien und Statistiken","Lokale Sicherung, Export als JSON, CSV und ICS","Sicherung mit Passwort","App-Sperre per PIN oder Biometrie","Widget für den Startbildschirm"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN","availability":"https://schema.org/InStock"},"publisher":{"@id":"https://domowik.dev/#organization"},"isPartOf":{"@id":"https://domowik.dev/#website"}}]}</script>
   <script type="application/ld+json">
@@ -69,6 +69,94 @@
   "publisher": {
     "@id": "https://domowik.dev/#organization"
   }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Muss ich ein Konto erstellen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Domowik benötigt kein Konto. Die App-Daten werden lokal auf dem Gerät gespeichert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Funktioniert Domowik ohne Internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Grundfunktionen arbeiten ohne Internet. Eine Verbindung kann etwa beim Premium-Kauf über Google Play oder beim Übertragen eines Termins in Google Kalender nötig sein."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie übertrage ich Daten auf ein neues Telefon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Am einfachsten per WLAN: Sind beide Telefone im selben Netz, wählen Sie „Auf anderes Telefon übertragen“, geben einen kurzen Code ein und die Daten gehen direkt hinüber — ohne Internet, Konto oder Cloud. Alternativ erstellen Sie in den Einstellungen ein vollständiges JSON-Backup und importieren es auf dem neuen Gerät. Daten werden nicht automatisch im Hintergrund synchronisiert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kann ich bei einem Gegenstand speichern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Name, Ort, Kategorie, Notiz, Menge, Wert, Kaufdatum und -ort, Fotos und verknüpfte Termine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was bietet Premium zusätzlich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Premium hebt das Gegenstandslimit auf und erweitert unter anderem Fotos, Finanzen, gespeicherte Listen, Vorlagen und Gewohnheiten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Sprachen unterstützt die App?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Oberfläche ist auf Polnisch, Englisch, Deutsch, Französisch, Spanisch, Ukrainisch und Tschechisch verfügbar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sammelt Domowik Daten über mich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Die App hat keinen Server, an den sie etwas senden könnte, und enthält weder Werbung noch Analysewerkzeuge. Alles, was du eingibst — Gegenstände, Beträge, Fotos, Termine — wird im Speicher des Telefons abgelegt und verlässt es nur, wenn du selbst eine Sicherung exportierst. Einzelheiten stehen in der Datenschutzerklärung ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich den Zugriff auf die App sperren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Der Zugang lässt sich mit einer PIN oder einem Fingerabdruck sperren. Zusätzlich kann die Sicherungsdatei vor der Weitergabe mit einem Passwort verschlüsselt werden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich ein Serviceheft für das Auto führen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Lege das Auto als Gegenstand an und ergänze nach und nach Einträge: Datum, Beschreibung und Kosten. So entsteht eine Zeitleiste — vom Kauf über Öl- und Bremsbelagwechsel bis zur letzten Inspektion. Genauso funktioniert es beim Fahrrad, der Waschmaschine oder der Therme."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Erinnert Domowik an Termine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Zu jedem Termin stellst du eine Erinnerung im Voraus ein — am Tag selbst oder 1, 3, 7 oder 14 Tage vorher. Benachrichtigungen laufen lokal, und ein Tippen öffnet den jeweiligen Termin."
+      }
+    }
+  ]
 }
   </script>
   <script src="/script.js" defer=""></script>

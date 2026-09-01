@@ -53,7 +53,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preload" href="/screens/items.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="/screens/dashboard.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
     {
@@ -155,6 +155,94 @@
   "publisher": {
     "@id": "https://domowik.dev/#organization"
   }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Czy muszę zakładać konto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nie. Domowik nie wymaga własnego konta. Dane aplikacji są przechowywane lokalnie na urządzeniu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy Domowik działa bez internetu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Podstawowe funkcje działają bez internetu. Połączenie może być potrzebne między innymi podczas zakupu Premium w Google Play lub przekazywania terminu do Kalendarza Google."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak przenieść dane na nowy telefon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Najprościej przez WiFi: gdy oba telefony są w tej samej sieci, wybierasz „Przenieś na inny telefon\", podajesz krótki kod i dane lecą bezpośrednio — bez internetu, konta i chmury. Możesz też utworzyć pełną kopię JSON w Ustawieniach i zaimportować ją na nowym urządzeniu. Dane nie synchronizują się automatycznie w tle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co mogę przechowywać przy przedmiocie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nazwę, lokalizację, kategorię, notatkę, ilość, wartość, datę i miejsce zakupu, zdjęcia oraz powiązane terminy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czym różni się Premium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Premium znosi limit liczby przedmiotów i rozszerza m.in. zdjęcia, finanse, zapisane listy, szablony oraz moduł nawyków."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich językach działa aplikacja?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Interfejs zawiera wersje: polską, angielską, niemiecką, francuską, hiszpańską, ukraińską i czeską."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zabezpieczyć dostęp do aplikacji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Wejście do aplikacji możesz zablokować kodem PIN lub odciskiem palca. Dodatkowo plik kopii zapasowej możesz zaszyfrować hasłem, zanim przekażesz go dalej."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy Domowik zbiera jakiekolwiek dane o mnie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nie. Aplikacja nie ma serwera, na który mogłaby cokolwiek wysłać, nie zawiera reklam ani narzędzi analitycznych. Wszystko, co wpiszesz — przedmioty, kwoty, zdjęcia, terminy — zapisuje się w pamięci telefonu i nie opuszcza go, dopóki sam nie wyeksportujesz kopii. Szczegóły znajdziesz w polityce prywatności ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę prowadzić historię napraw samochodu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Dodaj auto jako przedmiot i dopisuj do niego kolejne wpisy: datę, opis i koszt. Powstaje oś czasu — od zakupu, przez wymianę oleju i klocków, po ostatni przegląd. Ten sam sposób sprawdza się przy rowerze, pralce czy kotle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy Domowik przypomina o terminach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Do każdego terminu ustawisz przypomnienie z wyprzedzeniem — w dniu zdarzenia albo 1, 3, 7 lub 14 dni wcześniej. Powiadomienia działają lokalnie, a kliknięcie otwiera konkretny termin."
+      }
+    }
+  ]
 }
   </script>
   <script src="/script.js" defer></script>

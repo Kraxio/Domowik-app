@@ -52,7 +52,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preload" href="/screens/en-items.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="/screens/en-dashboard.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://domowik.dev/#organization","name":"Domowik","url":"https://domowik.dev/","description":"Domowik organiza objetos, fechas, finanzas y listas. Funciona sin conexión, sin cuenta y sin nube: los datos se quedan en el teléfono.","email":"domowik-app@proton.me","logo":{"@type":"ImageObject","@id":"https://domowik.dev/#logo","url":"https://domowik.dev/icons/pwa-512x512.png","width":512,"height":512,"caption":"Domowik"},"image":{"@id":"https://domowik.dev/#logo"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"domowik-app@proton.me","availableLanguage":["pl","en","de","fr","es","uk","cs"]},"sameAs":["https://play.google.com/store/apps/details?id=pl.domowik.app"]},{"@type":"WebSite","@id":"https://domowik.dev/#website","url":"https://domowik.dev/es/","name":"Domowik","alternateName":"Domowik — Organizador privado del hogar","description":"Domowik organiza objetos, fechas, finanzas y listas. Funciona sin conexión, sin cuenta y sin nube: los datos se quedan en el teléfono.","publisher":{"@id":"https://domowik.dev/#organization"},"inLanguage":"es"},{"@type":"SoftwareApplication","@id":"https://domowik.dev/#app","name":"Domowik","alternateName":"Domowik — Organizador privado del hogar","url":"https://domowik.dev/es/","downloadUrl":"https://play.google.com/store/apps/details?id=pl.domowik.app","installUrl":"https://play.google.com/store/apps/details?id=pl.domowik.app","image":"https://domowik.dev/og-image.jpg","screenshot":["https://domowik.dev/screens/en-items.webp","https://domowik.dev/screens/en-deadlines.webp","https://domowik.dev/screens/en-finance.webp"],"description":"Domowik organiza objetos, fechas, finanzas y listas. Funciona sin conexión, sin cuenta y sin nube: los datos se quedan en el teléfono.","applicationCategory":"LifestyleApplication","applicationSubCategory":"Home organization","operatingSystem":"Android","softwareVersion":"1.45.24","inLanguage":"es","featureList":["Catálogo de objetos del hogar con fotos y tiques","Historial de servicios y reparaciones por objeto","Fechas, garantías y calendario con avisos","Finanzas del hogar con cuentas y pagos recurrentes","Listas de compra, equipaje y tareas","Notas con listas de verificación y dibujo a mano","Hábitos con rachas y estadísticas","Copia local y exportación a JSON, CSV e ICS","Copia protegida con contraseña","Bloqueo con código PIN o biometría","Widget en la pantalla de inicio"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN","availability":"https://schema.org/InStock"},"publisher":{"@id":"https://domowik.dev/#organization"},"isPartOf":{"@id":"https://domowik.dev/#website"}}]}</script>
   <script type="application/ld+json">
@@ -69,6 +69,94 @@
   "publisher": {
     "@id": "https://domowik.dev/#organization"
   }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Tengo que crear una cuenta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Domowik no requiere una cuenta. Los datos se guardan localmente en el dispositivo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Domowik funciona sin internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las funciones básicas funcionan sin internet. Puede hacer falta conexión, por ejemplo, para comprar Premium en Google Play o enviar una fecha a Google Calendar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo traslado los datos a un teléfono nuevo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo más fácil es por WiFi: con ambos teléfonos en la misma red, elige «Transferir a otro teléfono», introduce un código corto y los datos pasan directamente — sin internet, cuenta ni nube. También puedes crear una copia JSON completa en Ajustes e importarla en el nuevo dispositivo. Los datos no se sincronizan automáticamente en segundo plano."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué puedo guardar con un objeto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nombre, ubicación, categoría, nota, cantidad, valor, fecha y lugar de compra, fotos y fechas vinculadas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué cambia con Premium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Premium elimina el límite de objetos y amplía fotos, finanzas, listas guardadas, plantillas y hábitos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué idiomas admite la aplicación?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La interfaz está disponible en polaco, inglés, alemán, francés, español, ucraniano y checo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Domowik recopila algún dato sobre mí?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La aplicación no tiene servidor al que enviar nada y no incluye anuncios ni herramientas de analítica. Todo lo que introduces —objetos, importes, fotos, fechas— se guarda en la memoria del teléfono y no sale de ahí salvo que exportes tú mismo una copia. Los detalles están en la política de privacidad ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo bloquear el acceso a la aplicación?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. La entrada puede bloquearse con un código PIN o una huella dactilar. Además, el archivo de copia puede cifrarse con contraseña antes de compartirlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo llevar el historial de reparaciones del coche?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Añade el coche como objeto y ve sumando entradas: fecha, descripción y coste. Se forma una cronología: desde la compra, pasando por cambios de aceite y pastillas, hasta la última revisión. Lo mismo sirve para una bicicleta, una lavadora o una caldera."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Domowik avisa de las fechas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Cada fecha puede llevar un aviso anticipado: el mismo día o 1, 3, 7 o 14 días antes. Las notificaciones funcionan en local y al tocarlas se abre esa fecha."
+      }
+    }
+  ]
 }
   </script>
   <script src="/script.js" defer=""></script>
