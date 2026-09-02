@@ -864,45 +864,6 @@ p {
   border-radius: 8px;
 }
 
-/* Dwustronicowy raport — dwie kartki jedna za drugą (efekt stosu dokumentów),
-   żeby sekcja nie robiła się dwa razy wyższa niż tekst obok i nie zostawiała
-   pustych pól. Strona 2 wychyla się zza strony 1. */
-.report-showcase-pages {
-  position: relative;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-  /* miejsce na wychyloną stronę 2 (offset + obrót) */
-  margin: 0 46px 52px 0;
-}
-
-.report-showcase-pages img {
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: var(--shadow-lg);
-}
-
-.report-showcase-pages img:first-child {
-  position: relative;
-  z-index: 2;
-  padding: 12px;
-  border: 1px solid var(--border);
-}
-
-/* Strona 2 — wysunięta w dół i w prawo zza pierwszej, lekko obrócona. */
-.report-showcase-pages img + img {
-  position: absolute;
-  top: 26px;
-  left: 26px;
-  z-index: 1;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--border);
-  transform: rotate(2.2deg);
-  transform-origin: top left;
-}
-
 /* W galerii obie strony leżą obok siebie — historia napraw auta (strona 2) ma
    być widoczna, a dwie kolumny nie robią slajdu dwa razy wyższego niż telefony
    (co zostawiałoby puste pola nad i pod). */
