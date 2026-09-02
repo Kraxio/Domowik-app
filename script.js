@@ -249,3 +249,62 @@ document.querySelectorAll('.video-embed [data-yt-play]').forEach((btn) => {
     });
   }
 })();
+
+/* Rotacja klatek w galerii — niektóre moduły mają kilka widoków (np. katalog:
+   lista i szczegół; finanse: konto, kategorie, historia). Slajd z atrybutem
+   data-frames="url1|url2|..." (i opcjonalnie data-alts="alt1|alt2|...") cyklicznie
+   przechodzi między klatkami z płynnym cross-fade. Szanuje prefers-reduced-motion
+   i pauzuje, gdy karta jest w tle. */
+(function initFrameRotation() {
+  const imgs = [...document.querySelectorAll('img[data-frames]')]
+    .map((img) => {
+      const frames = (img.getAttribute('data-frames') || '').split('|').map((s) => s.trim()).filter(Boolean);
+      const alts = (img.getAttribute('data-alts') || '').split('|').map((s) => s.trim());
+      return { img, frames, alts, i: 0 };
+    })
+    .filter((r) => r.frames.length > 1);
+  if (!imgs.length) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Wstępne wczytanie kolejnych klatek, żeby przejście było płynne (bez migotania).
+  for (const r of imgs) {
+    for (const url of r.frames.slice(1)) { const p = new Image(); p.src = url; }
+  }
+
+  const INTERVAL = 4200;
+  let timer = 0;
+
+  const step = () => {
+    for (const r of imgs) {
+      r.i = (r.i + 1) % r.frames.length;
+      const img = r.img;
+      img.style.transition = 'opacity .5s ease';
+      img.style.opacity = '0';
+      const next = r.frames[r.i];
+      const nextAlt = r.alts[r.i] || img.alt;
+      const swap = () => {
+        img.src = next;
+        if (nextAlt) img.alt = nextAlt;
+        img.style.opacity = '1';
+        img.removeEventListener('transitionend', swap);
+      };
+      // Podmiana po wyblaknięciu; fallback czasowy gdyby transitionend nie strzelił.
+      let done = false;
+      const guard = () => { if (done) return; done = true; swap(); };
+      img.addEventListener('transitionend', function once(e) {
+        if (e.propertyName !== 'opacity') return;
+        img.removeEventListener('transitionend', once);
+        guard();
+      });
+      setTimeout(guard, 650);
+    }
+  };
+
+  const start = () => { if (!timer) timer = setInterval(step, INTERVAL); };
+  const stop = () => { if (timer) { clearInterval(timer); timer = 0; } };
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+  start();
+})();

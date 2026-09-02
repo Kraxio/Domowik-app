@@ -3,3 +3,6 @@ screens/*.png
 
 # Materiały źródłowe/reklamowe (nie część witryny)
 screens/reklama/
+
+# Robocze źródła screenów DE (PNG + PDF) — na stronę idą tylko gotowe de-*.webp
+screens/ScreenshotsDE/

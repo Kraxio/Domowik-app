@@ -864,6 +864,24 @@ p {
   border-radius: 8px;
 }
 
+/* Dwustronicowy raport — obie strony jedna pod drugą, jak dokument wielostronicowy. */
+.report-showcase-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.report-showcase-pages img + img {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.screen-doc-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 @media (min-width: 860px) {
   .report-showcase-grid {
     grid-template-columns: 1.05fr 0.95fr;
@@ -1942,17 +1960,17 @@ p {
   width: 40px;
   height: 40px;
   place-content: center;
-  color: #c6cad4;
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid #2a3040;
+  color: #1877f2;
+  background: rgba(24, 119, 242, .12);
+  border: 1px solid rgba(24, 119, 242, .35);
   border-radius: 10px;
   transition: color .18s ease, background-color .18s ease, border-color .18s ease;
 }
 
 .footer-social-link:hover {
   color: #fff;
-  background: var(--brand);
-  border-color: var(--brand);
+  background: #1877f2;
+  border-color: #1877f2;
 }
 
 .footer-links {
