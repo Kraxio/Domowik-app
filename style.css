@@ -876,10 +876,11 @@ p {
   padding-top: 14px;
 }
 
-.screen-doc-pages {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* W galerii pokazujemy tylko pierwszą stronę raportu (teaser) — dwustronicowy
+   dokument byłby dwa razy wyższy niż sąsiednie slajdy-telefony i zostawiałby
+   puste pola nad i pod. Pełny 2-stronicowy raport jest w sekcji „report-showcase". */
+.screen-doc-pages img + img {
+  display: none;
 }
 
 @media (min-width: 860px) {
