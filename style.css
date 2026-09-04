@@ -849,6 +849,7 @@ p {
 }
 
 .report-showcase-doc {
+  position: relative;
   justify-self: center;
   max-width: 460px;
   padding: 12px;
@@ -856,12 +857,46 @@ p {
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow-lg);
+  /* Delikatne unoszenie — przyciąga wzrok do raportu (kluczowa wartość). */
+  animation: report-float 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Druga kartka wychylona zza pierwszej (efekt wielostronicowego dokumentu). */
+.report-showcase-doc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  transform: rotate(3deg) translate(10px, 8px);
+  transform-origin: center;
+  z-index: -1;
+  animation: report-float-back 6s ease-in-out infinite;
 }
 
 .report-showcase-doc img {
   display: block;
   width: 100%;
   border-radius: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes report-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes report-float-back {
+  0%, 100% { transform: rotate(3deg) translate(10px, 8px); }
+  50% { transform: rotate(3.5deg) translate(13px, 2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .report-showcase-doc,
+  .report-showcase-doc::before { animation: none; }
 }
 
 /* W galerii obie strony leżą obok siebie — historia napraw auta (strona 2) ma
@@ -1946,10 +1981,46 @@ p {
 .gplay-badge {
   display: inline-flex;
   line-height: 0;
-  transition: transform .18s ease, opacity .18s ease;
+  border-radius: 12px;
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  /* Subtelne „tętno" przyciągające uwagę do głównego CTA (bez migania). */
+  animation: gplay-pulse 2.8s ease-in-out infinite;
 }
-.gplay-badge:hover { transform: translateY(-2px); }
-.gplay-badge img { height: 56px; width: auto; }
+.gplay-badge:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(79, 70, 229, .28);
+  animation-play-state: paused;
+}
+.gplay-badge img { height: 56px; width: auto; border-radius: 12px; }
+
+@keyframes gplay-pulse {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+  50% { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(79, 70, 229, .22); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gplay-badge { animation: none; }
+}
+
+/* Micro-copy zaufania pod głównym CTA (redukcja obiekcji przy kliknięciu). */
+.cta-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  margin: 14px 0 0;
+  font-size: .82rem;
+  font-weight: 600;
+}
+.cta-trust span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.cta-trust span::before { content: "✓"; font-weight: 800; }
+/* Na ciemnym tle final-cta jaśniejszy kolor; na jasnym (hero) — akcentowy. */
+.final-cta .cta-trust { color: rgba(255, 255, 255, .82); }
+.final-cta .cta-trust span::before { color: #6ee7b7; }
+.hero-actions .cta-trust,
+.hero .cta-trust { color: var(--text-muted); }
+.hero-actions .cta-trust span::before,
+.hero .cta-trust span::before { color: var(--teal, #14b8a6); }
 
 .footer-social-link {
   display: grid;
