@@ -134,6 +134,49 @@ function stopGalleryDrag(event) {
 gallery?.addEventListener('pointerup', stopGalleryDrag);
 gallery?.addEventListener('pointercancel', stopGalleryDrag);
 
+/* Auto-przewijanie galerii — powoli sama jedzie w bok, żeby nie trzeba było
+   ciągnąć paskiem. Zatrzymuje się, gdy użytkownik wchodzi w interakcję (dotyk,
+   przeciąganie, najechanie, strzałki) i wraca po chwili bezczynności. Szanuje
+   prefers-reduced-motion i pauzuje, gdy karta jest w tle. */
+(function initGalleryAutoScroll() {
+  if (!gallery || slides.length < 2) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const STEP_MS = 3500;   // co ile przesunąć o jeden slajd
+  const RESUME_MS = 6000; // ile czekać po interakcji, zanim wznowimy
+  let timer = 0;
+  let resumeTimer = 0;
+  let paused = false;
+
+  const advance = () => {
+    if (paused || document.hidden) return;
+    const i = activeSlideIndex();
+    if (i >= slides.length - 1) {
+      // zapętlenie — płynny powrót na początek
+      gallery.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      moveGallery(1);
+    }
+  };
+
+  const start = () => { if (!timer) timer = setInterval(advance, STEP_MS); };
+  const stop = () => { if (timer) { clearInterval(timer); timer = 0; } };
+
+  // Pauza na interakcję; wznowienie po okresie bezczynności.
+  const pause = () => {
+    paused = true;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { paused = false; }, RESUME_MS);
+  };
+  ['pointerdown', 'touchstart', 'wheel', 'mouseenter', 'focusin'].forEach((ev) =>
+    gallery.addEventListener(ev, pause, { passive: true }));
+  document.querySelector('[data-gallery-prev]')?.addEventListener('click', pause);
+  document.querySelector('[data-gallery-next]')?.addEventListener('click', pause);
+
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+  start();
+})();
+
 updateGalleryStatus();
 
 const year = document.querySelector('[data-year]');
