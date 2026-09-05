@@ -54,7 +54,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/screens/dashboard.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="/style.css?v=20260904">
+  <link rel="stylesheet" href="/style.css?v=20260904b">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -244,7 +244,7 @@
   ]
 }
   </script>
-  <script src="/script.js?v=20260904" defer></script>
+  <script src="/script.js?v=20260904b" defer></script>
   <noscript>
     <style>
       .site-header { position: static; height: auto; background: #fff; }
@@ -316,7 +316,7 @@
             w jednej aplikacji, z danymi pod Twoją kontrolą.
           </p>
           <div class="hero-actions">
-            <a class="gplay-badge " href="https://play.google.com/store/apps/details?id=pl.domowik.app"><img src="/icons/gplay/pl.webp" width="200" height="59" loading="lazy" decoding="async" alt="Pobierz Domowika z Google Play"></a>
+            <a class="gplay-badge " href="https://play.google.com/store/apps/details?id=pl.domowik.app"><img src="/icons/gplay/pl.webp" width="200" height="59" loading="eager" fetchpriority="high" decoding="async" alt="Pobierz Domowika z Google Play"></a>
             <a class="button button-secondary button-large" href="#zobacz">Zobacz, jak działa</a>
           </div>
           <ul class="trust-list" aria-label="Najważniejsze wyróżniki">
@@ -843,5 +843,9 @@
       <p>Bez obowiązkowego konta · Dane lokalne · Offline-first</p>
     </div>
   </footer>
+  <div class="mobile-cta" data-mobile-cta aria-hidden="false">
+    <span class="mobile-cta-text"><strong>Domowik</strong><span>Za darmo · bez konta</span></span>
+    <a class="mobile-cta-btn" href="https://play.google.com/store/apps/details?id=pl.domowik.app" aria-label="Pobierz Domowika z Google Play">Pobierz</a>
+  </div>
 </body>
 </html>

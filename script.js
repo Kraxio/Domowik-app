@@ -351,3 +351,18 @@ document.querySelectorAll('.video-embed [data-yt-play]').forEach((btn) => {
   });
   start();
 })();
+
+/* Mobilny sticky pasek „Pobierz" — pojawia się, gdy hero wyjedzie z widoku
+   (użytkownik scrolluje w dół), znika, gdy hero znów jest na ekranie. Dzięki
+   temu główne CTA jest zawsze w zasięgu kciuka bez dublowania go w hero. */
+(function initMobileCta() {
+  const bar = document.querySelector('[data-mobile-cta]');
+  const hero = document.querySelector('.hero');
+  if (!bar || !hero || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    // hero widoczny (choć w części) → chowamy pasek; hero poza ekranem → pokazujemy.
+    const heroVisible = entries.some((e) => e.isIntersecting);
+    bar.classList.toggle('is-visible', !heroVisible);
+  }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+  io.observe(hero);
+})();
