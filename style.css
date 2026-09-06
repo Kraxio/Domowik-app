@@ -2108,6 +2108,22 @@ p {
   color: #fff;
 }
 
+/* Sekcja „Poradniki" w stopce — nagłówek + linki do artykułów (SEO: link do
+   każdego poradnika z każdej strony witryny). Jedna kolumna, bo tytuły dłuższe. */
+.footer-guides {
+  grid-template-columns: 1fr;
+  gap: 9px;
+  align-content: start;
+}
+.footer-links-head {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #8990a3;
+  margin-bottom: 2px;
+}
+
 .footer-bottom {
   display: grid;
   padding-top: 24px;
