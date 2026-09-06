@@ -53,7 +53,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/screens/en-dashboard.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="/style.css?v=20260906">
+  <link rel="stylesheet" href="/style.css?v=20260906b">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://domowik.dev/#organization","name":"Domowik","url":"https://domowik.dev/","description":"Domowik organiza objetos, fechas, finanzas y listas. Funciona sin conexión, sin cuenta y sin nube: los datos se quedan en el teléfono.","email":"domowik-app@proton.me","logo":{"@type":"ImageObject","@id":"https://domowik.dev/#logo","url":"https://domowik.dev/icons/pwa-512x512.png","width":512,"height":512,"caption":"Domowik"},"image":{"@id":"https://domowik.dev/#logo"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"domowik-app@proton.me","availableLanguage":["pl","en","de","fr","es","uk","cs"]},"sameAs":["https://play.google.com/store/apps/details?id=pl.domowik.app"]},{"@type":"WebSite","@id":"https://domowik.dev/#website","url":"https://domowik.dev/es/","name":"Domowik","alternateName":"Domowik — Organizador privado del hogar","description":"Domowik organiza objetos, fechas, finanzas y listas. Funciona sin conexión, sin cuenta y sin nube: los datos se quedan en el teléfono.","publisher":{"@id":"https://domowik.dev/#organization"},"inLanguage":"es"},{"@type":"SoftwareApplication","@id":"https://domowik.dev/#app","name":"Domowik","alternateName":"Domowik — Organizador privado del hogar","url":"https://domowik.dev/es/","downloadUrl":"https://play.google.com/store/apps/details?id=pl.domowik.app","installUrl":"https://play.google.com/store/apps/details?id=pl.domowik.app","image":"https://domowik.dev/og-image.jpg","screenshot":["https://domowik.dev/screens/en-items.webp","https://domowik.dev/screens/en-deadlines.webp","https://domowik.dev/screens/en-finance.webp"],"description":"Domowik organiza objetos, fechas, finanzas y listas. Funciona sin conexión, sin cuenta y sin nube: los datos se quedan en el teléfono.","applicationCategory":"LifestyleApplication","applicationSubCategory":"Home organization","operatingSystem":"Android","softwareVersion":"1.48.4","inLanguage":"es","featureList":["Catálogo de objetos del hogar con fotos y tiques","Historial de servicios y reparaciones por objeto","Fechas, garantías y calendario con avisos","Finanzas del hogar con cuentas y pagos recurrentes","Listas de compra, equipaje y tareas","Notas con listas de verificación y dibujo a mano","Hábitos con rachas y estadísticas","Copia local y exportación a JSON, CSV e ICS","Copia protegida con contraseña","Bloqueo con código PIN o biometría","Widget en la pantalla de inicio"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN","availability":"https://schema.org/InStock"},"publisher":{"@id":"https://domowik.dev/#organization"},"isPartOf":{"@id":"https://domowik.dev/#website"}}]}</script>
   <script type="application/ld+json">
 {
@@ -362,6 +362,7 @@
                 <li>Vistas de lista y cuadrícula</li>
                 <li>Historial de reparaciones y servicios con costes</li>
                 <li>Hasta 6 fotos del objeto + recibo con Premium</li>
+                <li>Ficha PDF del objeto para vender — fotos, datos e historial para el comprador</li>
               </ul>
             </div>
             <div class="feature-visual crop-items" aria-hidden="true">
@@ -372,7 +373,7 @@
           <article class="feature-card feature-deadlines">
             <span class="feature-icon" aria-hidden="true">📅</span>
             <h3>Fechas y calendario</h3>
-            <p>Garantías, revisiones, pagos y tareas en un solo lugar, con calendario, recordatorios e intervalos de fechas.</p>
+            <p>Garantías, revisiones, pagos y tareas en un solo lugar, con calendario, recordatorios e intervalos de fechas. Un <strong>resumen de garantías</strong> aparte muestra cuántas tienes, cuál vence antes y qué valor protegen.</p>
             <div class="deadline-demo" aria-hidden="true">
               <span class="demo-date"><strong>22</strong> JUL</span>
               <span><strong>Revisión del coche</strong><small>mañana, 15:00</small></span>
@@ -381,9 +382,10 @@
           </article>
 
           <article class="feature-card feature-finance">
+            <span class="feature-premium">Premium</span>
             <span class="feature-icon" aria-hidden="true">📊</span>
             <h3>Finanzas del hogar</h3>
-            <p>Cuentas, saldo, gráficos y filtros muestran el presupuesto. Añade compras o mantenimiento sin volver a escribir los datos.</p>
+            <p>Cuentas, saldo, gráficos y filtros muestran el presupuesto. Añade compras o mantenimiento sin volver a escribir los datos. Fija un <strong>presupuesto mensual por categoría</strong> (p. ej. combustible) — la app muestra cuánto has gastado y cuánto queda, avisando si te pasas.</p>
             <div class="bars" aria-hidden="true">
               <i style="--h: 36%"></i><i style="--h: 58%"></i><i style="--h: 43%"></i>
               <i style="--h: 78%"></i><i style="--h: 54%"></i><i style="--h: 92%"></i>
@@ -419,6 +421,7 @@
           </article>
 
           <article class="feature-card feature-report">
+            <span class="feature-premium">Premium</span>
             <span class="feature-icon" aria-hidden="true">📄</span>
             <h3>Informe PDF del inventario</h3>
             <p>Un documento listo para tu aseguradora o en caso de siniestro: objetos con valor, fechas y lugar de compra, números de serie, fotos y recibos como prueba, además del historial de reparaciones.</p>
@@ -429,6 +432,22 @@
             <span class="feature-icon" aria-hidden="true">📲</span>
             <h3>Mueve datos sin la nube</h3>
             <p>Envía todo a otro teléfono directamente por la misma WiFi — solo un código corto — o como archivo. Sin internet, sin cuenta.</p>
+          </article>
+
+          <article class="feature-card feature-habits">
+            <span class="feature-premium">Premium</span>
+            <span class="feature-icon" aria-hidden="true">🎯</span>
+            <h3>Hábitos y rachas</h3>
+            <p>Marca hábitos diarios, crea rachas de días y sigue estadísticas. Añade un importe a un hábito y la app calcula cuánto ahorras (p. ej. sin café fuera).</p>
+            <div class="habit-dots" aria-hidden="true">
+              <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i>
+            </div>
+          </article>
+
+          <article class="feature-card feature-search">
+            <span class="feature-icon" aria-hidden="true">🔍</span>
+            <h3>Buscar en todo</h3>
+            <p>Una búsqueda encuentra un objeto, una fecha, una transacción, una nota o una tarea — resultados de toda la app a la vez, agrupados. Toca para abrir.</p>
           </article>
         </div>
       </div>

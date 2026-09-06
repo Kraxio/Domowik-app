@@ -1030,6 +1030,23 @@ p {
   max-width: 570px;
 }
 
+/* Znacznik funkcji Premium w rogu karty. */
+.feature-premium {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: linear-gradient(135deg, var(--brand), #2563eb);
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, .3);
+}
+
 .feature-icon {
   display: grid;
   width: 48px;
@@ -1231,6 +1248,14 @@ p {
   font-size: .72rem;
   font-weight: 800;
 }
+
+/* Kropki serii nawyków — dekoracja karty funkcji Nawyki. */
+.habit-dots { display: flex; gap: 8px; margin-top: 28px; }
+.habit-dots i {
+  width: 20px; height: 20px; border-radius: 6px;
+  background: var(--soft); border: 1px solid var(--border);
+}
+.habit-dots i.on { background: var(--chart-income, #16a34a); border-color: transparent; }
 
 .screenshots {
   color: #fff;
