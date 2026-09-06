@@ -2271,7 +2271,9 @@ p {
   .feature-theme,
   .feature-backup,
   .feature-report,
-  .feature-transfer {
+  .feature-transfer,
+  .feature-habits,
+  .feature-search {
     grid-column: span 2;
   }
 
