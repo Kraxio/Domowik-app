@@ -1059,7 +1059,7 @@ p {
 }
 
 .feature-large {
-  min-height: 570px;
+  min-height: 500px;
   padding-bottom: 0;
 }
 
@@ -1088,9 +1088,9 @@ p {
 .feature-visual {
   position: absolute;
   right: 18px;
-  bottom: -250px;
+  bottom: -110px;
   left: 18px;
-  height: 500px;
+  height: 400px;
   background: var(--canvas);
   border: 6px solid #171b24;
   border-radius: 28px 28px 0 0;
@@ -2267,6 +2267,7 @@ p {
     grid-column: span 2;
   }
 
+  .feature-items,
   .feature-lists,
   .feature-theme,
   .feature-backup,
@@ -2279,9 +2280,9 @@ p {
 
   .feature-visual {
     right: 28px;
-    bottom: -295px;
+    bottom: -190px;
     left: 28px;
-    height: 560px;
+    height: 470px;
   }
 
   .screen-gallery {
