@@ -1047,6 +1047,22 @@ p {
   box-shadow: 0 4px 12px rgba(79, 70, 229, .3);
 }
 
+.feature-badge-new {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, .3);
+}
+
 .feature-icon {
   display: grid;
   width: 48px;
@@ -2274,7 +2290,8 @@ p {
   .feature-report,
   .feature-transfer,
   .feature-habits,
-  .feature-search {
+  .feature-search,
+  .feature-scan {
     grid-column: span 2;
   }
 
