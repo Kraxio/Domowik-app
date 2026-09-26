@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4f46e5">
+<title>Domowik — Kontakt i opinie / Contact & feedback</title>
+<link rel="canonical" href="https://domowik.dev/kontakt.html">
+<meta name="robots" content="index, follow">
+<meta name="description" content="Napisz do nas — pomysły, uwagi i zgłoszenia dotyczące aplikacji Domowik. Twoja opinia pomaga nam ją ulepszać.">
+<style>
+  :root {
+    --primary: #4f46e5; --accent: #7c3aed; --bg: #f3f4f9; --card: #ffffff;
+    --border: #e3e7ef; --text: #1c2433; --text-muted: #69707f; --ok: #0f8a5f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #6d64f5; --accent: #9d5cf6; --bg: #12151c; --card: #1c212c;
+      --border: #2a3040; --text: #e6e9f0; --text-muted: #98a0b3; --ok: #34d399;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    max-width: 640px; margin: 0 auto; padding: 0 16px 48px;
+    line-height: 1.6; color: var(--text); background: var(--bg);
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; text-wrap: balance; }
+  h2 { font-size: 1.05rem; margin-top: 1.6em; }
+  p { margin: .5em 0; }
+  .muted { color: var(--text-muted); font-size: .9rem; }
+  a { color: var(--primary); }
+
+  .langbar {
+    position: sticky; top: 0; z-index: 5;
+    display: flex; gap: 6px; flex-wrap: wrap;
+    padding: 14px 0; margin: 0 0 8px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .langbar button {
+    font: inherit; font-size: .85rem; font-weight: 600;
+    padding: 7px 14px; border-radius: 999px;
+    border: 1.5px solid var(--border); background: var(--card); color: var(--text);
+    cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+  }
+  .langbar button.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+  .beta-note {
+    background: var(--card); border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px; padding: 12px 14px; margin: 14px 0 6px;
+    font-size: .92rem;
+  }
+
+  form { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+  label { display: flex; flex-direction: column; gap: 6px; font-size: .92rem; font-weight: 600; }
+  select, textarea, input[type="email"] {
+    font: inherit; color: var(--text); background: var(--card);
+    border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 12px;
+    width: 100%;
+  }
+  textarea { min-height: 130px; resize: vertical; }
+  select:focus, textarea:focus, input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+  .hint { font-weight: 400; color: var(--text-muted); font-size: .85rem; }
+  button.submit {
+    font: inherit; font-weight: 700; font-size: 1rem;
+    padding: 12px 18px; border: none; border-radius: 12px;
+    background: var(--primary); color: #fff; cursor: pointer;
+    transition: opacity .15s;
+  }
+  button.submit:hover { opacity: .92; }
+  button.submit:disabled { opacity: .55; cursor: default; }
+
+  .form-status { font-size: .92rem; margin-top: 4px; min-height: 1.2em; }
+  .form-status.err { color: #d33; }
+  .thanks {
+    display: none; background: var(--card); border: 1px solid var(--border);
+    border-left: 4px solid var(--ok); border-radius: 12px; padding: 14px 16px; margin-top: 12px;
+  }
+  .thanks.show { display: block; }
+  .contact-alt { margin-top: 1.6em; font-size: .92rem; }
+  .backlink { display: inline-block; margin: 22px 0 0; font-size: .9rem; }
+</style>
+</head>
+<body>
+
+<nav class="langbar" id="langbar" aria-label="Wybór języka / Language switch">
+  <button type="button" data-lang="pl">Polski</button>
+  <button type="button" data-lang="en">English</button>
+  <button type="button" data-lang="de">Deutsch</button>
+  <button type="button" data-lang="fr">Français</button>
+  <button type="button" data-lang="es">Español</button>
+  <button type="button" data-lang="uk">Українська</button>
+  <button type="button" data-lang="cs">Čeština</button>
+</nav>
+
+<!-- ============================================================
+     UWAGA: podmień endpoint Formspree poniżej (w atrybucie data-endpoint
+     na <body> nie ma go — ustaw w skrypcie zmienną FORMSPREE_ENDPOINT).
+     Utwórz darmowy formularz na https://formspree.io i wklej jego URL,
+     np. https://formspree.io/f/xxxxabcd
+     ============================================================ -->
+
+<!-- ===================== PL ===================== -->
+<section id="sec-pl" data-lang="pl">
+  <h1>Napisz do nas</h1>
+  <p class="muted">Twoje pomysły i uwagi pomagają ulepszać Domowika.</p>
+  <div class="beta-note">🧾 <strong>Skan paragonu jest w wersji BETA</strong> i obecnie darmowy dla wszystkich. Jeśli coś odczytał źle — daj znać, na czym polegał problem (np. jaki sklep). To bardzo pomaga w poprawkach.</div>
+  <form class="feedback-form" novalidate>
+    <label>Czego dotyczy opinia?
+      <select name="temat">
+        <option>Ogólna opinia</option>
+        <option>Problem ze skanem paragonu</option>
+        <option>Błąd / coś nie działa</option>
+        <option>Pomysł na nową funkcję</option>
+        <option>Pytanie</option>
+      </select>
+    </label>
+    <label>Wiadomość
+      <textarea name="wiadomosc" required placeholder="Opisz krótko, co masz na myśli…"></textarea>
+    </label>
+    <label>Twój e-mail <span class="hint">(opcjonalnie — jeśli chcesz odpowiedź)</span>
+      <input type="email" name="email" placeholder="ty@example.com">
+    </label>
+    <button type="submit" class="submit">Wyślij</button>
+    <div class="form-status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="thanks">✅ Dziękujemy! Wiadomość została wysłana. Jeśli podałeś e-mail, odpiszemy, gdy będzie trzeba.</div>
+  <p class="contact-alt">Wolisz e-mail? Napisz na <b>domowik-app@proton.me</b> albo odwiedź nas na <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebooku</a>.</p>
+  <a class="backlink" href="/">← Poznaj aplikację Domowik</a>
+</section>
+
+<!-- ===================== EN ===================== -->
+<section id="sec-en" data-lang="en" hidden>
+  <h1>Get in touch</h1>
+  <p class="muted">Your ideas and feedback help us make Domowik better.</p>
+  <div class="beta-note">🧾 <strong>Receipt scanning is in BETA</strong> and currently free for everyone. If it read something wrong, tell us what went wrong (e.g. which store). It really helps us improve it.</div>
+  <form class="feedback-form" novalidate>
+    <label>What is your feedback about?
+      <select name="topic">
+        <option>General feedback</option>
+        <option>Receipt scan issue</option>
+        <option>Bug / something broken</option>
+        <option>Feature idea</option>
+        <option>Question</option>
+      </select>
+    </label>
+    <label>Message
+      <textarea name="message" required placeholder="Briefly describe what you have in mind…"></textarea>
+    </label>
+    <label>Your email <span class="hint">(optional — if you'd like a reply)</span>
+      <input type="email" name="email" placeholder="you@example.com">
+    </label>
+    <button type="submit" class="submit">Send</button>
+    <div class="form-status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="thanks">✅ Thank you! Your message has been sent. If you left an email, we'll reply when needed.</div>
+  <p class="contact-alt">Prefer email? Write to <b>domowik-app@proton.me</b> or find us on <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
+  <a class="backlink" href="/en/">← Discover Domowik</a>
+</section>
+
+<!-- ===================== DE ===================== -->
+<section id="sec-de" data-lang="de" hidden>
+  <h1>Schreib uns</h1>
+  <p class="muted">Deine Ideen und dein Feedback helfen, Domowik zu verbessern.</p>
+  <div class="beta-note">🧾 <strong>Der Belegscan ist in der BETA</strong> und derzeit für alle kostenlos. Wenn etwas falsch erkannt wurde, sag uns, was schiefging (z. B. welches Geschäft). Das hilft uns sehr bei Verbesserungen.</div>
+  <form class="feedback-form" novalidate>
+    <label>Worum geht es?
+      <select name="topic">
+        <option>Allgemeines Feedback</option>
+        <option>Problem mit dem Belegscan</option>
+        <option>Fehler / funktioniert nicht</option>
+        <option>Idee für eine Funktion</option>
+        <option>Frage</option>
+      </select>
+    </label>
+    <label>Nachricht
+      <textarea name="message" required placeholder="Beschreibe kurz, was du meinst…"></textarea>
+    </label>
+    <label>Deine E-Mail <span class="hint">(optional — falls du eine Antwort möchtest)</span>
+      <input type="email" name="email" placeholder="du@example.com">
+    </label>
+    <button type="submit" class="submit">Senden</button>
+    <div class="form-status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="thanks">✅ Danke! Deine Nachricht wurde gesendet. Wenn du eine E-Mail hinterlassen hast, antworten wir bei Bedarf.</div>
+  <p class="contact-alt">Lieber per E-Mail? Schreib an <b>domowik-app@proton.me</b> oder besuche uns auf <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
+  <a class="backlink" href="/de/">← Domowik entdecken</a>
+</section>
+
+<!-- ===================== FR ===================== -->
+<section id="sec-fr" data-lang="fr" hidden>
+  <h1>Écrivez-nous</h1>
+  <p class="muted">Vos idées et retours nous aident à améliorer Domowik.</p>
+  <div class="beta-note">🧾 <strong>Le scan de ticket est en BETA</strong> et actuellement gratuit pour tous. Si quelque chose a été mal lu, dites-nous ce qui n'a pas marché (par ex. quel magasin). Cela nous aide beaucoup.</div>
+  <form class="feedback-form" novalidate>
+    <label>Sujet du message
+      <select name="topic">
+        <option>Retour général</option>
+        <option>Problème de scan de ticket</option>
+        <option>Bug / ça ne marche pas</option>
+        <option>Idée de fonction</option>
+        <option>Question</option>
+      </select>
+    </label>
+    <label>Message
+      <textarea name="message" required placeholder="Décrivez brièvement votre idée…"></textarea>
+    </label>
+    <label>Votre e-mail <span class="hint">(facultatif — si vous voulez une réponse)</span>
+      <input type="email" name="email" placeholder="vous@example.com">
+    </label>
+    <button type="submit" class="submit">Envoyer</button>
+    <div class="form-status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="thanks">✅ Merci ! Votre message a été envoyé. Si vous avez laissé un e-mail, nous répondrons si nécessaire.</div>
+  <p class="contact-alt">Vous préférez l'e-mail ? Écrivez à <b>domowik-app@proton.me</b> ou retrouvez-nous sur <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
+  <a class="backlink" href="/fr/">← Découvrir Domowik</a>
+</section>
+
+<!-- ===================== ES ===================== -->
+<section id="sec-es" data-lang="es" hidden>
+  <h1>Escríbenos</h1>
+  <p class="muted">Tus ideas y comentarios nos ayudan a mejorar Domowik.</p>
+  <div class="beta-note">🧾 <strong>El escaneo de tickets está en BETA</strong> y ahora es gratis para todos. Si leyó algo mal, cuéntanos qué falló (p. ej. qué tienda). Nos ayuda mucho a mejorarlo.</div>
+  <form class="feedback-form" novalidate>
+    <label>¿Sobre qué es tu mensaje?
+      <select name="topic">
+        <option>Opinión general</option>
+        <option>Problema con el escaneo de tickets</option>
+        <option>Error / algo no funciona</option>
+        <option>Idea de función</option>
+        <option>Pregunta</option>
+      </select>
+    </label>
+    <label>Mensaje
+      <textarea name="message" required placeholder="Describe brevemente tu idea…"></textarea>
+    </label>
+    <label>Tu correo <span class="hint">(opcional — si quieres respuesta)</span>
+      <input type="email" name="email" placeholder="tu@example.com">
+    </label>
+    <button type="submit" class="submit">Enviar</button>
+    <div class="form-status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="thanks">✅ ¡Gracias! Tu mensaje se ha enviado. Si dejaste un correo, responderemos cuando haga falta.</div>
+  <p class="contact-alt">¿Prefieres el correo? Escribe a <b>domowik-app@proton.me</b> o encuéntranos en <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
+  <a class="backlink" href="/es/">← Descubre Domowik</a>
+</section>
+
+<!-- ===================== UK ===================== -->
+<section id="sec-uk" data-lang="uk" hidden>
+  <h1>Напишіть нам</h1>
+  <p class="muted">Ваші ідеї та відгуки допомагають робити Domowik кращим.</p>
+  <div class="beta-note">💡 Розкажіть, що можна покращити, або поставте запитання — ми читаємо всі повідомлення.</div>
+  <form class="feedback-form" novalidate>
+    <label>Про що ваше повідомлення?
+      <select name="topic">
+        <option>Загальний відгук</option>
+        <option>Помилка / щось не працює</option>
+        <option>Ідея для функції</option>
+        <option>Запитання</option>
+      </select>
+    </label>
+    <label>Повідомлення
+      <textarea name="message" required placeholder="Коротко опишіть, що ви маєте на увазі…"></textarea>
+    </label>
+    <label>Ваша пошта <span class="hint">(необовʼязково — якщо хочете відповідь)</span>
+      <input type="email" name="email" placeholder="ви@example.com">
+    </label>
+    <button type="submit" class="submit">Надіслати</button>
+    <div class="form-status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="thanks">✅ Дякуємо! Повідомлення надіслано. Якщо ви залишили пошту, ми відповімо за потреби.</div>
+  <p class="contact-alt">Бажаєте написати листом? Пишіть на <b>domowik-app@proton.me</b> або знайдіть нас у <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
+  <a class="backlink" href="/uk/">← Дізнатися про Domowik</a>
+</section>
+
+<!-- ===================== CS ===================== -->
+<section id="sec-cs" data-lang="cs" hidden>
+  <h1>Napište nám</h1>
+  <p class="muted">Vaše nápady a připomínky nám pomáhají Domowik vylepšovat.</p>
+  <div class="beta-note">🧾 <strong>Sken účtenky je ve verzi BETA</strong> a nyní zdarma pro všechny. Pokud něco přečetl špatně, dejte nám vědět, co nefungovalo (např. který obchod). Moc nám to pomáhá.</div>
+  <form class="feedback-form" novalidate>
+    <label>Čeho se zpráva týká?
+      <select name="topic">
+        <option>Obecná zpětná vazba</option>
+        <option>Problém se skenem účtenky</option>
+        <option>Chyba / něco nefunguje</option>
+        <option>Nápad na funkci</option>
+        <option>Dotaz</option>
+      </select>
+    </label>
+    <label>Zpráva
+      <textarea name="message" required placeholder="Stručně popište, co máte na mysli…"></textarea>
+    </label>
+    <label>Váš e-mail <span class="hint">(nepovinné — pokud chcete odpověď)</span>
+      <input type="email" name="email" placeholder="vy@example.com">
+    </label>
+    <button type="submit" class="submit">Odeslat</button>
+    <div class="form-status" role="status" aria-live="polite"></div>
+  </form>
+  <div class="thanks">✅ Děkujeme! Zpráva byla odeslána. Pokud jste zadali e-mail, odpovíme, až bude potřeba.</div>
+  <p class="contact-alt">Raději e-mailem? Napište na <b>domowik-app@proton.me</b> nebo nás najděte na <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebooku</a>.</p>
+  <a class="backlink" href="/cs/">← Poznejte Domowik</a>
+</section>
+
+<script>
+(function () {
+  // ⬇️ PODMIEŃ na swój endpoint z formspree.io (np. "https://formspree.io/f/xxxxabcd").
+  //    Dopóki jest pusty, formularz pokaże komunikat i podpowie e-mail.
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mbglaeqb';
+
+  var sections = document.querySelectorAll('section[data-lang]');
+  var buttons = document.querySelectorAll('#langbar button');
+  var KEY = 'domowik-contact-lang';
+
+  function show(lang) {
+    sections.forEach(function (s) { s.hidden = s.dataset.lang !== lang; });
+    buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.lang === lang); });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.lang); });
+  });
+
+  // Aplikacja może dołączyć ?v=<wersja>&lang=<xx> przy otwieraniu strony.
+  var params = new URLSearchParams(location.search);
+  var appVersion = params.get('v') || '';
+  var forcedLang = (params.get('lang') || '').toLowerCase().slice(0, 2);
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  var sysLang = (navigator.language || 'pl').toLowerCase().slice(0, 2);
+  var available = Array.prototype.map.call(sections, function (s) { return s.dataset.lang; });
+  var initial = (available.indexOf(forcedLang) !== -1) ? forcedLang
+    : (saved && available.indexOf(saved) !== -1) ? saved
+    : (available.indexOf(sysLang) !== -1 ? sysLang : 'pl');
+  show(initial);
+
+  // Obsługa wysyłki każdego formularza (jeden na język).
+  var forms = document.querySelectorAll('form.feedback-form');
+  forms.forEach(function (form) {
+    var section = form.closest('section');
+    var statusEl = form.querySelector('.form-status');
+    var thanksEl = section.querySelector('.thanks');
+    var submitBtn = form.querySelector('button.submit');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+
+      var msg = form.querySelector('[name="message"], [name="wiadomosc"]');
+      if (msg && !msg.value.trim()) {
+        statusEl.classList.add('err');
+        statusEl.textContent = '✏️';
+        msg.focus();
+        return;
+      }
+
+      if (!FORMSPREE_ENDPOINT) {
+        // Brak endpointu → nie udawaj, że wysłano. Podpowiedz e-mail.
+        statusEl.classList.add('err');
+        statusEl.textContent = 'domowik-app@proton.me';
+        return;
+      }
+
+      var data = new FormData(form);
+      data.append('_page', location.pathname);
+      data.append('_lang', section.dataset.lang);
+      if (appVersion) data.append('_appVersion', appVersion);
+
+      submitBtn.disabled = true;
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          form.style.display = 'none';
+          thanksEl.classList.add('show');
+        } else {
+          submitBtn.disabled = false;
+          statusEl.classList.add('err');
+          statusEl.textContent = 'domowik-app@proton.me';
+        }
+      }).catch(function () {
+        submitBtn.disabled = false;
+        statusEl.classList.add('err');
+        statusEl.textContent = 'domowik-app@proton.me';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
