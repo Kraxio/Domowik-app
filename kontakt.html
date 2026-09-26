@@ -63,6 +63,14 @@
   textarea { min-height: 130px; resize: vertical; }
   select:focus, textarea:focus, input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
   .hint { font-weight: 400; color: var(--text-muted); font-size: .85rem; }
+  .consent {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-weight: 400; font-size: .88rem; color: var(--text-muted); line-height: 1.45;
+  }
+  .consent input { width: 18px; height: 18px; margin-top: 2px; flex: 0 0 auto; accent-color: var(--primary); }
+  .consent a { color: var(--primary); }
+  .consent.consent-missing { color: #d33; }
+  .consent.consent-missing input { outline: 2px solid #d33; outline-offset: 2px; }
   button.submit {
     font: inherit; font-weight: 700; font-size: 1rem;
     padding: 12px 18px; border: none; border-radius: 12px;
@@ -123,6 +131,7 @@
     <label>Twój e-mail <span class="hint">(opcjonalnie — jeśli chcesz odpowiedź)</span>
       <input type="email" name="email" placeholder="ty@example.com">
     </label>
+    <label class="consent"><input type="checkbox" class="consent-box" required> <span>Akceptuję przetwarzanie moich danych w celu odpowiedzi na wiadomość. Formularz obsługuje Formspree (USA). <a href="/polityka.html" target="_blank" rel="noopener">polityka prywatności</a>.</span></label>
     <button type="submit" class="submit">Wyślij</button>
     <div class="form-status" role="status" aria-live="polite"></div>
   </form>
@@ -152,6 +161,7 @@
     <label>Your email <span class="hint">(optional — if you'd like a reply)</span>
       <input type="email" name="email" placeholder="you@example.com">
     </label>
+    <label class="consent"><input type="checkbox" class="consent-box" required> <span>I agree to my data being processed to reply to my message. This form is handled by Formspree (USA). <a href="/polityka.html" target="_blank" rel="noopener">privacy policy</a>.</span></label>
     <button type="submit" class="submit">Send</button>
     <div class="form-status" role="status" aria-live="polite"></div>
   </form>
@@ -181,6 +191,7 @@
     <label>Deine E-Mail <span class="hint">(optional — falls du eine Antwort möchtest)</span>
       <input type="email" name="email" placeholder="du@example.com">
     </label>
+    <label class="consent"><input type="checkbox" class="consent-box" required> <span>Ich stimme der Verarbeitung meiner Daten zur Beantwortung meiner Nachricht zu. Das Formular wird von Formspree (USA) verarbeitet. <a href="/polityka.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span></label>
     <button type="submit" class="submit">Senden</button>
     <div class="form-status" role="status" aria-live="polite"></div>
   </form>
@@ -210,6 +221,7 @@
     <label>Votre e-mail <span class="hint">(facultatif — si vous voulez une réponse)</span>
       <input type="email" name="email" placeholder="vous@example.com">
     </label>
+    <label class="consent"><input type="checkbox" class="consent-box" required> <span>J’accepte le traitement de mes données pour répondre à mon message. Ce formulaire est géré par Formspree (États-Unis). <a href="/polityka.html" target="_blank" rel="noopener">politique de confidentialité</a>.</span></label>
     <button type="submit" class="submit">Envoyer</button>
     <div class="form-status" role="status" aria-live="polite"></div>
   </form>
@@ -239,6 +251,7 @@
     <label>Tu correo <span class="hint">(opcional — si quieres respuesta)</span>
       <input type="email" name="email" placeholder="tu@example.com">
     </label>
+    <label class="consent"><input type="checkbox" class="consent-box" required> <span>Acepto el tratamiento de mis datos para responder a mi mensaje. Este formulario lo gestiona Formspree (EE. UU.). <a href="/polityka.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
     <button type="submit" class="submit">Enviar</button>
     <div class="form-status" role="status" aria-live="polite"></div>
   </form>
@@ -267,6 +280,7 @@
     <label>Ваша пошта <span class="hint">(необовʼязково — якщо хочете відповідь)</span>
       <input type="email" name="email" placeholder="ви@example.com">
     </label>
+    <label class="consent"><input type="checkbox" class="consent-box" required> <span>Погоджуюся на обробку моїх даних для відповіді на повідомлення. Форму обробляє Formspree (США). <a href="/polityka.html" target="_blank" rel="noopener">політику конфіденційності</a>.</span></label>
     <button type="submit" class="submit">Надіслати</button>
     <div class="form-status" role="status" aria-live="polite"></div>
   </form>
@@ -296,6 +310,7 @@
     <label>Váš e-mail <span class="hint">(nepovinné — pokud chcete odpověď)</span>
       <input type="email" name="email" placeholder="vy@example.com">
     </label>
+    <label class="consent"><input type="checkbox" class="consent-box" required> <span>Souhlasím se zpracováním svých údajů za účelem odpovědi na zprávu. Formulář zpracovává Formspree (USA). <a href="/polityka.html" target="_blank" rel="noopener">zásady ochrany soukromí</a>.</span></label>
     <button type="submit" class="submit">Odeslat</button>
     <div class="form-status" role="status" aria-live="polite"></div>
   </form>
@@ -358,6 +373,17 @@
         msg.focus();
         return;
       }
+
+      // Zgoda RODO wymagana — bez niej nie wysyłamy (preventDefault omija natywne required).
+      var consent = form.querySelector('.consent-box');
+      var consentLabel = consent ? consent.closest('.consent') : null;
+      if (consent && !consent.checked) {
+        if (consentLabel) consentLabel.classList.add('consent-missing');
+        statusEl.textContent = '';
+        consent.focus();
+        return;
+      }
+      if (consentLabel) consentLabel.classList.remove('consent-missing');
 
       if (!FORMSPREE_ENDPOINT) {
         // Brak endpointu → nie udawaj, że wysłano. Podpowiedz e-mail.
