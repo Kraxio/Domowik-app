@@ -450,6 +450,15 @@ p {
   background-clip: text;
 }
 
+/* Slogan pod H1 — dawny nagłówek, teraz podtytuł wizualny (H1 = fraza SEO). */
+.hero-slogan {
+  margin: -6px 0 18px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-muted, #69707f);
+  letter-spacing: -0.01em;
+}
+
 .hero-lead {
   max-width: 610px;
   margin-bottom: 28px;
