@@ -437,9 +437,14 @@ p {
 }
 
 .hero h1 {
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   color: var(--text);
   font-weight: 850;
+  /* H1 to teraz pełna fraza (nie krótki slogan) — mniejszy, czytelny rozmiar,
+     żeby nie rozjeżdżał się na ekranie i nie nachodził na kolejne linie. */
+  font-size: clamp(1.85rem, 5vw, 3.1rem);
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
 .hero h1 span {
