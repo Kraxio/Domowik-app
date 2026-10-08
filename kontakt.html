@@ -88,7 +88,21 @@
   }
   .thanks.show { display: block; }
   .contact-alt { margin-top: 1.6em; font-size: .92rem; }
-  .backlink { display: inline-block; margin: 22px 0 0; font-size: .9rem; }
+  /* Zachęta powrotu na stronę główną — wyraźny przycisk (dodatkowy ruch). */
+  .home-cta {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    margin: 26px 0 4px; padding: 16px 18px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff; border-radius: 14px; text-decoration: none;
+    box-shadow: 0 6px 18px rgba(79,70,229,.28);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .home-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(79,70,229,.34); }
+  .home-cta:active { transform: translateY(0); }
+  .home-cta-text { display: flex; flex-direction: column; gap: 2px; }
+  .home-cta-title { font-weight: 700; font-size: 1rem; }
+  .home-cta-sub { font-size: .85rem; opacity: .9; }
+  .home-cta-arrow { font-size: 1.4rem; flex: 0 0 auto; }
 </style>
 </head>
 <body>
@@ -137,7 +151,10 @@
   </form>
   <div class="thanks">✅ Dziękujemy! Wiadomość została wysłana. Jeśli podałeś e-mail, odpiszemy, gdy będzie trzeba.</div>
   <p class="contact-alt">Wolisz e-mail? Napisz na <b>domowik-app@proton.me</b> albo odwiedź nas na <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebooku</a>.</p>
-  <a class="backlink" href="/">← Poznaj aplikację Domowik</a>
+  <a class="home-cta" href="/">
+    <span class="home-cta-text"><span class="home-cta-title">Zobacz, co potrafi Domowik</span><span class="home-cta-sub">Organizer domu, spis majątku i gwarancji — offline</span></span>
+    <span class="home-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <!-- ===================== EN ===================== -->
@@ -167,7 +184,10 @@
   </form>
   <div class="thanks">✅ Thank you! Your message has been sent. If you left an email, we'll reply when needed.</div>
   <p class="contact-alt">Prefer email? Write to <b>domowik-app@proton.me</b> or find us on <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
-  <a class="backlink" href="/en/">← Discover Domowik</a>
+  <a class="home-cta" href="/en/">
+    <span class="home-cta-text"><span class="home-cta-title">See what Domowik can do</span><span class="home-cta-sub">Home organizer, inventory & warranties — offline</span></span>
+    <span class="home-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <!-- ===================== DE ===================== -->
@@ -197,7 +217,10 @@
   </form>
   <div class="thanks">✅ Danke! Deine Nachricht wurde gesendet. Wenn du eine E-Mail hinterlassen hast, antworten wir bei Bedarf.</div>
   <p class="contact-alt">Lieber per E-Mail? Schreib an <b>domowik-app@proton.me</b> oder besuche uns auf <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
-  <a class="backlink" href="/de/">← Domowik entdecken</a>
+  <a class="home-cta" href="/de/">
+    <span class="home-cta-text"><span class="home-cta-title">Entdecke, was Domowik kann</span><span class="home-cta-sub">Haushaltsorganizer, Inventar & Garantien — offline</span></span>
+    <span class="home-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <!-- ===================== FR ===================== -->
@@ -227,7 +250,10 @@
   </form>
   <div class="thanks">✅ Merci ! Votre message a été envoyé. Si vous avez laissé un e-mail, nous répondrons si nécessaire.</div>
   <p class="contact-alt">Vous préférez l'e-mail ? Écrivez à <b>domowik-app@proton.me</b> ou retrouvez-nous sur <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
-  <a class="backlink" href="/fr/">← Découvrir Domowik</a>
+  <a class="home-cta" href="/fr/">
+    <span class="home-cta-text"><span class="home-cta-title">Découvrez tout ce que fait Domowik</span><span class="home-cta-sub">Organiseur maison, inventaire & garanties — hors ligne</span></span>
+    <span class="home-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <!-- ===================== ES ===================== -->
@@ -257,7 +283,10 @@
   </form>
   <div class="thanks">✅ ¡Gracias! Tu mensaje se ha enviado. Si dejaste un correo, responderemos cuando haga falta.</div>
   <p class="contact-alt">¿Prefieres el correo? Escribe a <b>domowik-app@proton.me</b> o encuéntranos en <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
-  <a class="backlink" href="/es/">← Descubre Domowik</a>
+  <a class="home-cta" href="/es/">
+    <span class="home-cta-text"><span class="home-cta-title">Descubre todo lo que hace Domowik</span><span class="home-cta-sub">Organizador del hogar, inventario y garantías — sin conexión</span></span>
+    <span class="home-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <!-- ===================== UK ===================== -->
@@ -286,7 +315,10 @@
   </form>
   <div class="thanks">✅ Дякуємо! Повідомлення надіслано. Якщо ви залишили пошту, ми відповімо за потреби.</div>
   <p class="contact-alt">Бажаєте написати листом? Пишіть на <b>domowik-app@proton.me</b> або знайдіть нас у <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebook</a>.</p>
-  <a class="backlink" href="/uk/">← Дізнатися про Domowik</a>
+  <a class="home-cta" href="/uk/">
+    <span class="home-cta-text"><span class="home-cta-title">Подивіться, що вміє Domowik</span><span class="home-cta-sub">Органайзер дому, опис майна та гарантій — офлайн</span></span>
+    <span class="home-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <!-- ===================== CS ===================== -->
@@ -316,7 +348,10 @@
   </form>
   <div class="thanks">✅ Děkujeme! Zpráva byla odeslána. Pokud jste zadali e-mail, odpovíme, až bude potřeba.</div>
   <p class="contact-alt">Raději e-mailem? Napište na <b>domowik-app@proton.me</b> nebo nás najděte na <a href="https://www.facebook.com/profile.php?id=61593061237136" target="_blank" rel="noopener">Facebooku</a>.</p>
-  <a class="backlink" href="/cs/">← Poznejte Domowik</a>
+  <a class="home-cta" href="/cs/">
+    <span class="home-cta-text"><span class="home-cta-title">Podívejte se, co umí Domowik</span><span class="home-cta-sub">Organizér domácnosti, inventář a záruky — offline</span></span>
+    <span class="home-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <script>
