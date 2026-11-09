@@ -2236,11 +2236,11 @@ p {
   }
 
   .hero-visual {
-    min-height: 660px;
+    min-height: 640px;
   }
 
   .phone-hero {
-    width: 330px;
+    width: 300px;
   }
 
   .hero-actions {
@@ -2416,13 +2416,13 @@ p {
   }
 
   .hero-grid {
-    grid-template-columns: 1.05fr .95fr;
+    grid-template-columns: 1.15fr .85fr;
     min-height: calc(100svh - 190px);
     gap: 72px;
   }
 
   .phone-hero {
-    width: 350px;
+    width: 312px;
   }
 
   .note-attention {
